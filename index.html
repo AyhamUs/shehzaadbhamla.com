@@ -3,167 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNS Flushing Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/heroicons@1.0.6/outline.css">
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            animation: rotateRainbow 10s linear infinite;
-        }
+    <title>Shehzaad Bhamla | Portfolio</title>
 
-        @keyframes rotateRainbow {
-            0% { background-color: red; }
-            14% { background-color: orange; }
-            28% { background-color: yellow; }
-            42% { background-color: green; }
-            57% { background-color: blue; }
-            71% { background-color: indigo; }
-            85% { background-color: violet; }
-            100% { background-color: red; }
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpg" href="shehzaad.jpg">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Shehzaad Bhamla - A Systems Support Specialist passionate about cybersecurity and protecting digital assets. Check out my portfolio and projects.">
+    <meta name="keywords" content="Shehzaad Bhamla, Systems Support Specialist, Cybersecurity, IT, Portfolio">
+    <meta name="author" content="Shehzaad Bhamla">
+
+    <!-- Social Media Sharing Metadata -->
+    <meta property="og:title" content="Shehzaad Bhamla | Systems Support Specialist Portfolio">
+    <meta property="og:description" content="Explore Shehzaad Bhamla's portfolio as a Systems Support Specialist, with a passion for cybersecurity and protecting digital assets.">
+    <meta property="og:image" content="shehzaad.jpg">
+    <meta property="og:url" content="https://www.yoursite.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shehzaad Bhamla | Systems Support Specialist Portfolio">
+    <meta name="twitter:description" content="Explore Shehzaad Bhamla's portfolio as a Systems Support Specialist, with a passion for cybersecurity and protecting digital assets.">
+    <meta name="twitter:image" content="shehzaad.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom animations */
+        .fade-in { animation: fadeIn 1s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body>
-
-<section class="py-10 bg-gray-50 sm:py-16 lg:py-24">
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Pricing & Plans</h2>
-            <p class="max-w-md mx-auto mt-4 text-base leading-relaxed text-gray-600">A guy walked into a bar with a Do Not Smoke policy, he sits down for a drink and the man nexts to him pulls out a cigarette and is about to light it, and then the man screams "Don't light that! I'll get DNS Poisoning!".</p>
+<body class="bg-gray-100 text-gray-900 font-sans leading-relaxed tracking-wide">
+    <!-- Navbar -->
+    <header class="bg-gray-900 text-white">
+        <div class="container mx-auto flex justify-between items-center py-6">
+            <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
+            <nav class="space-x-4">
+                <a href="#about" class="hover:text-yellow-500">About</a>
+                <a href="#experience" class="hover:text-yellow-500">Experience</a>
+                <a href="#projects" class="hover:text-yellow-500">Projects</a>
+                <a href="#contact" class="hover:text-yellow-500">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="mt-10">
-            <div class="flex items-center justify-center space-x-2.5">
-                <span class="text-base font-medium text-gray-900"> Monthly </span>
-
-                <button type="button" class="relative inline-flex flex-shrink-0 h-6 py-0.5 transition-colors duration-200 ease-in-out bg-transparent border-2 border-blue-600 rounded-full cursor-pointer w-12 focus:outline-none" role="switch">
-                    <span aria-hidden="true" class="inline-block w-4 h-4 transition duration-200 ease-in-out translate-x-6 bg-blue-600 rounded-full shadow pointer-events-none"></span>
-                </button>
-
-                <span class="text-base font-medium text-gray-900"> Yearly </span>
-            </div>
+    <!-- Hero Section -->
+    <section class="bg-gray-800 text-white py-20">
+        <div class="container mx-auto text-center fade-in max-w-3xl">
+            <img src="shehzaad.jpg" alt="Shehzaad Bhamla" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-yellow-500">
+            <h2 class="text-4xl font-semibold">Hi, I'm Shehzaad</h2>
+            <p class="mt-4 text-gray-300">
+                I'm a motivated and results-driven professional with a passion for cybersecurity, looking to contribute my expertise in a dynamic cybersecurity role. I aim to use my technical knowledge and problem-solving skills to safeguard digital assets against emerging threats.
+            </p>
         </div>
+    </section>
 
-        <div class="grid max-w-3xl grid-cols-1 gap-6 mx-auto sm:grid-cols-2 mt-14 md:gap-9">
-            <div class="overflow-hidden bg-transparent border-2 border-gray-200 rounded-md">
-                <div class="p-6 md:py-8 md:px-9">
-                    <h3 class="text-xl font-semibold text-black">DNS Flush</h3>
-                    <p class="mt-2.5 text-sm text-gray-600">All the basic DNS Flush to boost your career</p>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold text-center text-gray-900">About Me</h2>
+            <p class="text-center mt-4 max-w-3xl mx-auto text-gray-700">
+                Add ur stuff here so u can dns flush
+            </p>
+        </div>
+    </section>
 
-                    <div class="flex items-end mt-5">
-                        <div class="flex items-start">
-                            <span class="text-xl font-medium text-black"> $ </span>
-                            <p class="text-6xl font-medium tracking-tight">69</p>
-                        </div>
-                        <span class="ml-0.5 text-lg text-gray-600"> / month </span>
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-100">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold text-center text-gray-900">Experience</h2>
+            <div class="mt-10 space-y-8">
+                 <!-- Generac Power Systems Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="generac.png" alt="Generac Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Systems Support Specialist, Generac Power Systems</h3>
+                        <p class="text-gray-700">August 2022 – Present</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Resolved service requests and addressed user issues.</li>
+                            <li>Created and updated documentation and training materials.</li>
+                            <li>Set up and configured equipment, software, and system deployments.</li>
+                            <li>Collaborated with customer service and sales to resolve issues.</li>
+                            <li>Streamlined device deployment with Microsoft Autopilot in Azure AD for seamless user onboarding.</li>
+                        </ul>
                     </div>
-
-                    <a href="#" title="" class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 font-semibold text-gray-900 transition-all duration-200 bg-transparent border-2 rounded-full border-fuchsia-600 hover:bg-fuchsia-600 hover:text-white focus:text-white focus:bg-fuchsia-600">
-                        Start 14 Days Free Trial
-                    </a>
-
-                    <ul class="flex flex-col mt-8 space-y-4">
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> 1 Domain License </span>
-                            <svg class="w-4 h-4 ml-0.5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> Full Celebration Library </span>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> 120+ Coded Blocks </span>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <strike class="text-base font-medium text-gray-400"> Design Files Included </strike>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <strike class="text-base font-medium text-gray-400"> Premium Support </strike>
-                        </li>
-                    </ul>
                 </div>
-            </div>
 
-            <div class="overflow-hidden bg-white border-2 border-transparent rounded-md">
-                <div class="p-6 md:py-8 md:px-9">
-                    <h3 class="text-xl font-semibold text-black">Print Spooler</h3>
-                    <p class="mt-2.5 text-sm text-gray-600">All the extended features to boost your printing paper levels</p>
-
-                    <div class="flex items-end mt-5">
-                        <div class="flex items-start">
-                            <span class="text-xl font-medium text-black"> $ </span>
-                            <p class="text-6xl font-medium tracking-tight">699</p>
-                        </div>
-                        <span class="ml-0.5 text-lg text-gray-600"> / month </span>
+                <!-- Mians Oil Clark Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="onthego.png" alt="Mians Oil Clark Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Gas Station Manager, Mians Oil Clark</h3>
+                        <p class="text-gray-700">June 2019 – August 2022</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Trained, managed, and motivated employees for skill development.</li>
+                            <li>Identified client business needs and introduced services as solutions.</li>
+                            <li>Monitored inventory levels and managed merchandise orders.</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <a href="#" title="" class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 font-semibold text-white transition-all duration-200 border-2 border-transparent rounded-full bg-gradient-to-r from-fuchsia-600 to-blue-600 hover:opacity-80 focus:opacity-80">
-                        Start 14 Days Free Trial
-                    </a>
+                <!-- Progressive Parking Solutions Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="pps.png" alt="Progressive Parking Solutions Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Valet, Progressive Parking Solutions</h3>
+                        <p class="text-gray-700">June 2017 – May 2019</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Delivered safe and seamless parking experiences for guests.</li>
+                            <li>Greeted guests, explained valet procedures, and promoted satisfaction.</li>
+                            <li>Maintained organization and cleanliness in work areas.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <ul class="flex flex-col mt-8 space-y-4">
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> 100 Domain License </span>
-                            <svg class="w-4 h-4 ml-0.5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> Full Celebration Library </span>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> 120+ Coded Blocks </span>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> Design Files Included </span>
-                        </li>
-                        <li class="inline-flex items-center space-x-2">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-base font-medium text-gray-900"> Premium Support </span>
-                        </li>
-                    </ul>
+                <!-- Pick N Save Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="https://www.picknsave.com/android-chrome-512x512.png" alt="Pick N Save Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Dairy Clerk, Pick N Save</h3>
+                        <p class="text-gray-700">September 2016 - May 2017</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Inspected goods for damage and addressed replacement needs.</li>
+                            <li>Restocked shelves with current merchandise to promote sales.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold text-center text-gray-900">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
+                <!-- Project Cards -->
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Nessus Vulnerability Assessment</h3>
+                    <p class="mt-2 text-gray-700">Configured Nessus Essentials for vulnerability scans on Windows 10 hosts. Implemented vulnerability management and remediation processes.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Microsoft Windows Defender & Firewall</h3>
+                    <p class="mt-2 text-gray-700">Configured Windows Defender and Firewall for network protection and asset security.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Wireshark Network Analysis</h3>
+                    <p class="mt-2 text-gray-700">Installed Wireshark, captured packet data, and analyzed network traffic for HTTP and HTTPS protocols.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Malware Analysis Lab</h3>
+                    <p class="mt-2 text-gray-700">Configured virtual environments and conducted malware analysis using tools like Procmon and Wireshark.</p>
+                </div>
+                <!-- Additional Projects -->
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Phishing Simulation and Awareness</h3>
+                    <p class="mt-2 text-gray-700">Conducted phishing simulation and awareness training to educate users on identifying and reporting phishing attacks.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Security Incident Response</h3>
+                    <p class="mt-2 text-gray-700">Assisted in incident response drills and created a checklist for handling security incidents effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+        &copy; 2024 Shehzaad Bhamla | Designed with Tailwind CSS
+    </footer>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+            document.querySelectorAll('.fade-in').forEach(element => observer.observe(element));
+        });
+    </script>
 </body>
 </html>
-
