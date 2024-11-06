@@ -28,165 +28,155 @@
         /* Custom animations */
         .fade-in { animation: fadeIn 1s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Custom loading screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .loading-bar {
+            width: 80%;
+            height: 8px;
+            background-color: #FBBF24; /* Yellow from Tailwind */
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background-color: #1F2937; /* Dark Gray for Progress Bar */
+            animation: loading 3s linear infinite;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 50%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans leading-relaxed tracking-wide">
-    <!-- Navbar -->
-    <header class="bg-gray-900 text-white">
-        <div class="container mx-auto flex justify-between items-center py-6">
-            <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
-            
-            <!-- Mobile Hamburger Icon -->
-            <div class="lg:hidden flex items-center">
-                <button id="menu-toggle" class="text-white focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <img src="shehzaad.jpg" alt="Shehzaad Bhamla" class="w-40 h-40 rounded-full mb-4 border-4 border-yellow-500">
+        <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until loading is complete) -->
+    <div id="main-content" style="display: none;">
+
+        <!-- Navbar -->
+        <header class="bg-gray-900 text-white">
+            <div class="container mx-auto flex justify-between items-center py-6">
+                <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
+
+                <!-- Mobile Hamburger Icon -->
+                <div class="lg:hidden flex items-center">
+                    <button id="menu-toggle" class="text-white focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex space-x-6">
+                    <a href="#about" class="hover:text-yellow-500">About</a>
+                    <a href="#experience" class="hover:text-yellow-500">Experience</a>
+                    <a href="#projects" class="hover:text-yellow-500">Projects</a>
+                    <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
+                </nav>
             </div>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex space-x-6">
-                <a href="#about" class="hover:text-yellow-500">About</a>
-                <a href="#experience" class="hover:text-yellow-500">Experience</a>
-                <a href="#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
-            </nav>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="lg:hidden bg-gray-900 text-white w-full hidden">
-            <div class="flex flex-col items-center py-4 space-y-4">
-                <a href="#about" class="hover:text-yellow-500">About</a>
-                <a href="#experience" class="hover:text-yellow-500">Experience</a>
-                <a href="#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden bg-gray-900 text-white w-full hidden">
+                <div class="flex flex-col items-center py-4 space-y-4">
+                    <a href="#about" class="hover:text-yellow-500">About</a>
+                    <a href="#experience" class="hover:text-yellow-500">Experience</a>
+                    <a href="#projects" class="hover:text-yellow-500">Projects</a>
+                    <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gray-800 text-white py-20">
-        <div class="container mx-auto text-center fade-in max-w-3xl">
-            <img src="shehzaad.jpg" alt="Shehzaad Bhamla" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-yellow-500">
-            <h2 class="text-4xl font-semibold">Hi, I'm Shehzaad</h2>
-            <p class="mt-4 text-gray-300">
-                I'm a motivated and results-driven professional with a passion for cybersecurity, looking to contribute my expertise in a dynamic cybersecurity role. I aim to use my technical knowledge and problem-solving skills to safeguard digital assets against emerging threats.
-            </p>
-        </div>
-    </section>
+        <!-- Hero Section -->
+        <section class="bg-gray-800 text-white py-20">
+            <div class="container mx-auto text-center fade-in max-w-3xl">
+                <img src="shehzaad.jpg" alt="Shehzaad Bhamla" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-yellow-500">
+                <h2 class="text-4xl font-semibold">Hi, I'm Shehzaad</h2>
+                <p class="mt-4 text-gray-300">
+                    I'm a motivated and results-driven professional with a passion for cybersecurity, looking to contribute my expertise in a dynamic cybersecurity role. I aim to use my technical knowledge and problem-solving skills to safeguard digital assets against emerging threats.
+                </p>
+            </div>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold text-center text-gray-900">About Me</h2>
-            <p class="text-center mt-4 max-w-3xl mx-auto text-gray-700">
-                Hi, I'm Shehzaad! I'm passionate about staying active and enjoy playing tennis and basketball whenever I get the chance. I also love working out and pushing myself to stay fit. In addition to my love for sports, I'm always eager to learn new languages—currently, I speak both Hindi and English. I'm always looking for new ways to challenge myself and grow, whether it's through physical activity or learning something new.
-            </p>
-        </div>
-    </section>
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-semibold text-center text-gray-900">About Me</h2>
+                <p class="text-center mt-4 max-w-3xl mx-auto text-gray-700">
+                    Hi, I'm Shehzaad! I'm passionate about staying active and enjoy playing tennis and basketball whenever I get the chance. I also love working out and pushing myself to stay fit. In addition to my love for sports, I'm always eager to learn new languages—currently, I speak both Hindi and English. I'm always looking for new ways to challenge myself and grow, whether it's through physical activity or learning something new.
+                </p>
+            </div>
+        </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-gray-100">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold text-center text-gray-900">Experience</h2>
-            <div class="mt-10 space-y-8">
-                 <!-- Generac Power Systems Experience -->
-                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
-                    <img src="generac.png" alt="Generac Logo" class="w-16 h-16 mr-4">
-                    <div>
-                        <h3 class="text-2xl font-bold">Systems Support Specialist, Generac Power Systems</h3>
-                        <p class="text-gray-700">August 2022 – Present</p>
-                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
-                            <li>Resolved service requests and addressed user issues.</li>
-                            <li>Created and updated documentation and training materials.</li>
-                            <li>Set up and configured equipment, software, and system deployments.</li>
-                            <li>Collaborated with customer service and sales to resolve issues.</li>
-                            <li>Streamlined device deployment with Microsoft Autopilot in Azure AD for seamless user onboarding.</li>
-                        </ul>
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-gray-100">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-semibold text-center text-gray-900">Experience</h2>
+                <div class="mt-10 space-y-8">
+                    <!-- Generac Power Systems Experience -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                        <img src="generac.png" alt="Generac Logo" class="w-16 h-16 mr-4">
+                        <div>
+                            <h3 class="text-2xl font-bold">Systems Support Specialist, Generac Power Systems</h3>
+                            <p class="text-gray-700">August 2022 – Present</p>
+                            <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                                <li>Resolved service requests and addressed user issues.</li>
+                                <li>Created and updated documentation and training materials.</li>
+                                <li>Set up and configured equipment, software, and system deployments.</li>
+                                <li>Collaborated with customer service and sales to resolve issues.</li>
+                                <li>Streamlined device deployment with Microsoft Autopilot in Azure AD for seamless user onboarding.</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Mians Oil Clark Experience -->
-                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
-                    <img src="onthego.png" alt="Mians Oil Clark Logo" class="w-16 h-16 mr-4">
-                    <div>
-                        <h3 class="text-2xl font-bold">Gas Station Manager, Mians Oil Clark</h3>
-                        <p class="text-gray-700">June 2019 – August 2022</p>
-                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
-                            <li>Trained, managed, and motivated employees for skill development.</li>
-                            <li>Identified client business needs and introduced services as solutions.</li>
-                            <li>Monitored inventory levels and managed merchandise orders.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Progressive Parking Solutions Experience -->
-                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
-                    <img src="pps.png" alt="Progressive Parking Solutions Logo" class="w-16 h-16 mr-4">
-                    <div>
-                        <h3 class="text-2xl font-bold">Valet, Progressive Parking Solutions</h3>
-                        <p class="text-gray-700">June 2017 – May 2019</p>
-                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
-                            <li>Delivered safe and seamless parking experiences for guests.</li>
-                            <li>Greeted guests, explained valet procedures, and promoted satisfaction.</li>
-                            <li>Maintained organization and cleanliness in work areas.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Pick N Save Experience -->
-                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
-                    <img src="https://www.picknsave.com/android-chrome-512x512.png" alt="Pick N Save Logo" class="w-16 h-16 mr-4">
-                    <div>
-                        <h3 class="text-2xl font-bold">Dairy Clerk, Pick N Save</h3>
-                        <p class="text-gray-700">September 2016 - May 2017</p>
-                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
-                            <li>Inspected goods for damage and addressed replacement needs.</li>
-                            <li>Restocked shelves with current merchandise to promote sales.</li>
-                        </ul>
+                    <!-- Mians Oil Clark Experience -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                        <img src="mians.jpg" alt="Mians Oil Logo" class="w-16 h-16 mr-4">
+                        <div>
+                            <h3 class="text-2xl font-bold">IT Specialist, Mians Oil Clark</h3>
+                            <p class="text-gray-700">January 2020 – August 2022</p>
+                            <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                                <li>Provided IT support, resolving hardware/software issues.</li>
+                                <li>Improved internal processes with software updates and network security measures.</li>
+                                <li>Responsible for maintaining IT infrastructure and user accounts.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold text-center text-gray-900">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
-                <!-- Project Cards -->
-                <div class="bg-gray-100 shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-bold">Nessus Vulnerability Assessment</h3>
-                    <p class="mt-2 text-gray-700">Configured Nessus Essentials for vulnerability scans on Windows 10 hosts. Implemented vulnerability management and remediation processes.</p>
-                </div>
-                <div class="bg-gray-100 shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-bold">Microsoft Windows Defender & Firewall</h3>
-                    <p class="mt-2 text-gray-700">Configured Windows Defender and Firewall for network protection and asset security.</p>
-                </div>
-                <div class="bg-gray-100 shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-bold">Wireshark Network Analysis</h3>
-                    <p class="mt-2 text-gray-700">Installed Wireshark, captured packet data, and analyzed network traffic for HTTP and HTTPS protocols.</p>
-                </div>
-                <div class="bg-gray-100 shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-bold">Malware Analysis Lab</h3>
-                    <p class="mt-2 text-gray-700">Configured virtual environments and conducted malware analysis using tools like Procmon and Wireshark.</p>
-                </div>
-                <!-- Additional Projects -->
-                <div class="bg-gray-100 shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-bold">Phishing Simulation and Awareness</h3>
-                    <p class="mt-2 text-gray-700">Conducted phishing simulation and awareness training to educate users on identifying and reporting phishing attacks.</p>
-                </div>
-                <div class="bg-gray-100 shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-bold">Security Incident Response</h3>
-                    <p class="mt-2 text-gray-700">Assisted in incident response drills and created a checklist for handling security incidents effectively.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
+     <!-- Skills Section -->
 <section id="skills" class="py-20 bg-gray-50">
     <div class="container mx-auto">
         <h2 class="text-3xl font-semibold text-center text-gray-900">Skills</h2>
@@ -248,31 +238,14 @@
     </div>
 </section>
 
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
-        &copy; 2024 Shehzaad Bhamla
-    </footer>
-
-    <!-- JavaScript for Mobile Menu Toggle -->
+    <!-- JavaScript for Page Load Handling -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                    }
-                });
-            });
-            document.querySelectorAll('.fade-in').forEach(element => observer.observe(element));
+        // Hide the loading screen and show the main content once the page is fully loaded
+        window.addEventListener('load', function() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
         });
     </script>
+
 </body>
 </html>
