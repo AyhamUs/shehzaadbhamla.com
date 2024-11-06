@@ -100,6 +100,7 @@
                 <nav class="hidden lg:flex space-x-6">
                     <a href="#about" class="hover:text-yellow-500">About</a>
                     <a href="#experience" class="hover:text-yellow-500">Experience</a>
+                    <a href="#skills" class="hover:text-yellow-500">Skills</a>
                     <a href="#projects" class="hover:text-yellow-500">Projects</a>
                     <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
                 </nav>
@@ -110,6 +111,7 @@
                 <div class="flex flex-col items-center py-4 space-y-4">
                     <a href="#about" class="hover:text-yellow-500">About</a>
                     <a href="#experience" class="hover:text-yellow-500">Experience</a>
+                    <a href="#skills" class="hover:text-yellow-500">Skills</a>
                     <a href="#projects" class="hover:text-yellow-500">Projects</a>
                     <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
                 </div>
@@ -174,76 +176,82 @@
                 </div>
             </div>
         </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-50">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-semibold text-center text-gray-900">Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
+                    <!-- Skill 1: Microsoft Intune -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
+                            <path d="M10 12H7v4H4v-4H1l4-4 4 4h-3zm14 0h-3v4h-3v-4h-3l4-4 4 4zM9 3v6H4V3h5zm6 0v6h-5V3h5z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-xl text-gray-900">Microsoft Intune</h3>
+                        <p class="text-gray-700">Mobile device management and application lifecycle management solution by Microsoft.</p>
+                    </div>
+                    
+                    <!-- Skill 2: Active Directory -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
+                            <path d="M13 9h-2V5H5v14h6v-4h2v4h6V5h-6v4zm-2 0V5h-2v4H5v8h6v-4h2v4h6V5h-6V9z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-xl text-gray-900">Active Directory</h3>
+                        <p class="text-gray-700">Directory service for handling permissions and access to networked resources.</p>
+                    </div>
+                    
+                    <!-- Skill 3: Cybersecurity -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.68 3.6 8.64 8.16 9.66l1.26 2.48 1.26-2.48C18.4 20.64 22 16.68 22 12c0-5.52-4.48-10-10-10zm0 16c-3.36 0-6-2.64-6-6s2.64-6 6-6 6 2.64 6 6-2.64 6-6 6z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-xl text-gray-900">Cybersecurity</h3>
+                        <p class="text-gray-700">Protecting systems, networks, and data from digital attacks, theft, or damage.</p>
+                    </div>
+
+                    <!-- Skill 4: Wireshark -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
+                            <path d="M18 12V4a8 8 0 0 0-16 0v8c0 4.42 3.58 8 8 8s8-3.58 8-8zM5 12V4c0-1.11.89-2 2-2h10c1.11 0 2 .89 2 2v8c0 1.11-.89 2-2 2H7c-1.11 0-2-.89-2-2z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-xl text-gray-900">Wireshark</h3>
+                        <p class="text-gray-700">Network protocol analyzer that helps in capturing and analyzing packet-level network traffic.</p>
+                    </div>
+
+                    <!-- Skill 5: Nessus -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
+                            <path d="M12 3l1.57 3.17 3.57.26c.52.04.73.69.35 1.05l-2.71 2.3.94 3.55c.16.58-.47 1.06-.97.74l-3.16-1.98-3.16 1.98c-.5.32-1.13-.16-.97-.74l.94-3.55-2.71-2.3c-.38-.36-.17-1.01.35-1.05l3.57-.26L12 3z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-xl text-gray-900">Nessus</h3>
+                        <p class="text-gray-700">A vulnerability scanner used for finding vulnerabilities and security flaws in networks.</p>
+                    </div>
+
+                    <!-- Skill 6: Windows Defender -->
+                    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
+                            <path d="M12 3l1.57 3.17 3.57.26c.52.04.73.69.35 1.05l-2.71 2.3.94 3.55c.16.58-.47 1.06-.97.74l-3.16-1.98-3.16 1.98c-.5.32-1.13-.16-.97-.74l.94-3.55-2.71-2.3c-.38-.36-.17-1.01.35-1.05l3.57-.26L12 3z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-xl text-gray-900">Windows Defender</h3>
+                        <p class="text-gray-700">A security feature in Microsoft Windows that helps protect against viruses and other malicious software.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
-
-     <!-- Skills Section -->
-<section id="skills" class="py-20 bg-gray-50">
-    <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold text-center text-gray-900">Skills</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
-            <!-- Skill 1: Microsoft Intune -->
-            <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
-                    <path d="M10 12H7v4H4v-4H1l4-4 4 4h-3zm14 0h-3v4h-3v-4h-3l4-4 4 4zM9 3v6H4V3h5zm6 0v6h-5V3h5z"></path>
-                </svg>
-                <h3 class="font-semibold text-xl text-gray-900">Microsoft Intune</h3>
-                <p class="text-gray-700">Mobile device management and application lifecycle management solution by Microsoft.</p>
-            </div>
-            
-            <!-- Skill 2: Active Directory -->
-            <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
-                    <path d="M13 9h-2V5H5v14h6v-4h2v4h6V5h-6v4zm-2 0V5h-2v4H5v8h6v-4h2v4h6V5h-6V9z"></path>
-                </svg>
-                <h3 class="font-semibold text-xl text-gray-900">Active Directory</h3>
-                <p class="text-gray-700">Directory service for handling permissions and access to networked resources.</p>
-            </div>
-            
-            <!-- Skill 3: Cybersecurity -->
-            <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
-                    <path d="M12 2C6.48 2 2 6.48 2 12c0 4.68 3.6 8.64 8.16 9.66l1.26 2.48 1.26-2.48C18.4 20.64 22 16.68 22 12c0-5.52-4.48-10-10-10zm0 16c-3.36 0-6-2.64-6-6s2.64-6 6-6 6 2.64 6 6-2.64 6-6 6z"></path>
-                </svg>
-                <h3 class="font-semibold text-xl text-gray-900">Cybersecurity</h3>
-                <p class="text-gray-700">Protecting systems, networks, and data from digital attacks, theft, or damage.</p>
-            </div>
-
-            <!-- Skill 4: Wireshark -->
-            <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
-                    <path d="M18 12V4a8 8 0 0 0-16 0v8c0 4.42 3.58 8 8 8s8-3.58 8-8zM5 12V4c0-1.11.89-2 2-2h10c1.11 0 2 .89 2 2v8c0 1.11-.89 2-2 2H7c-1.11 0-2-.89-2-2z"></path>
-                </svg>
-                <h3 class="font-semibold text-xl text-gray-900">Wireshark</h3>
-                <p class="text-gray-700">Network protocol analyzer that helps in capturing and analyzing packet-level network traffic.</p>
-            </div>
-
-            <!-- Skill 5: Nessus -->
-            <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
-                    <path d="M12 3l1.57 3.17 3.57.26c.52.04.73.69.35 1.05l-2.71 2.3.94 3.55c.16.58-.47 1.06-.97.74l-3.16-1.98-3.16 1.98c-.5.32-1.13-.16-.97-.74l.94-3.55-2.71-2.3c-.38-.36-.17-1.01.35-1.05l3.57-.26L12 3z"></path>
-                </svg>
-                <h3 class="font-semibold text-xl text-gray-900">Nessus</h3>
-                <p class="text-gray-700">A vulnerability scanner used for finding vulnerabilities and security flaws in networks.</p>
-            </div>
-
-            <!-- Skill 6: Windows Defender -->
-            <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
-                    <path d="M12 3l1.57 3.17 3.57.26c.52.04.73.69.35 1.05l-2.71 2.3.94 3.55c.16.58-.47 1.06-.97.74l-3.16-1.98-3.16 1.98c-.5.32-1.13-.16-.97-.74l.94-3.55-2.71-2.3c-.38-.36-.17-1.01.35-1.05l3.57-.26L12 3z"></path>
-                </svg>
-                <h3 class="font-semibold text-xl text-gray-900">Windows Defender</h3>
-                <p class="text-gray-700">A security feature in Microsoft Windows that helps protect against viruses and other malicious software.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
     <!-- JavaScript for Page Load Handling -->
     <script>
-        // Hide the loading screen and show the main content once the page is fully loaded
         window.addEventListener('load', function() {
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         });
     </script>
 
