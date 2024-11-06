@@ -58,7 +58,7 @@
             width: 0;
             height: 100%;
             background-color: #1F2937; /* Dark Gray for Progress Bar */
-            animation: loading 3s linear infinite;
+            animation: loading 5s linear forwards; /* Increased animation duration to 5 seconds */
         }
 
         @keyframes loading {
@@ -151,16 +151,14 @@
                             <h3 class="text-2xl font-bold">Systems Support Specialist, Generac Power Systems</h3>
                             <p class="text-gray-700">August 2022 – Present</p>
                             <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
-                                <li>Resolved service requests and addressed user issues.</li>
-                                <li>Created and updated documentation and training materials.</li>
-                                <li>Set up and configured equipment, software, and system deployments.</li>
-                                <li>Collaborated with customer service and sales to resolve issues.</li>
-                                <li>Streamlined device deployment with Microsoft Autopilot in Azure AD for seamless user onboarding.</li>
+                                <li>Resolved service requests and addressed system issues in a timely manner.</li>
+                                <li>Monitored and maintained system performance to ensure business continuity.</li>
+                                <li>Collaborated with cross-functional teams to implement IT solutions.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Mians Oil Clark Experience -->
+                    <!-- Mians Oil Experience -->
                     <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
                         <img src="mians.jpg" alt="Mians Oil Logo" class="w-16 h-16 mr-4">
                         <div>
@@ -190,7 +188,7 @@
                         <h3 class="font-semibold text-xl text-gray-900">Microsoft Intune</h3>
                         <p class="text-gray-700">Mobile device management and application lifecycle management solution by Microsoft.</p>
                     </div>
-                    
+
                     <!-- Skill 2: Active Directory -->
                     <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
@@ -199,7 +197,7 @@
                         <h3 class="font-semibold text-xl text-gray-900">Active Directory</h3>
                         <p class="text-gray-700">Directory service for handling permissions and access to networked resources.</p>
                     </div>
-                    
+
                     <!-- Skill 3: Cybersecurity -->
                     <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
@@ -244,8 +242,11 @@
     <!-- JavaScript for Page Load Handling -->
     <script>
         window.addEventListener('load', function() {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
+            // Delay hiding the loading screen to allow users to see the progress
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 5000); // Loading screen stays for 5 seconds
         });
 
         // Mobile menu toggle
@@ -254,6 +255,5 @@
             menu.classList.toggle('hidden');
         });
     </script>
-
 </body>
 </html>
