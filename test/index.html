@@ -68,26 +68,6 @@
                 width: 100%;
             }
         }
-
-        /* New Navbar Styles */
-        nav a:hover {
-            color: #f59e0b; /* Soft Yellow */
-            text-decoration: underline;
-        }
-
-        .sticky-navbar {
-            position: sticky;
-            top: 0;
-            background-color: transparent;
-            z-index: 10;
-        }
-
-        /* Hero Section */
-        .hero-bg {
-            background-image: url('background.jpg'); /* Change to your background image */
-            background-size: cover;
-            background-position: center;
-        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans leading-relaxed tracking-wide">
@@ -102,7 +82,7 @@
     </div>
 
     <!-- Navbar -->
-    <header class="sticky-navbar bg-gray-900 text-white">
+    <header class="bg-gray-900 text-white">
         <div class="container mx-auto flex justify-between items-center py-6">
             <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
             
@@ -120,7 +100,7 @@
                 <a href="#about" class="hover:text-yellow-500">About</a>
                 <a href="#experience" class="hover:text-yellow-500">Experience</a>
                 <a href="#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="#skills" class="hover:text-yellow-500">Skills</a>
+		<a href="#skills" class="hover:text-yellow-500">Skills</a>
                 <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
             </nav>
         </div>
@@ -131,14 +111,14 @@
                 <a href="#about" class="hover:text-yellow-500">About</a>
                 <a href="#experience" class="hover:text-yellow-500">Experience</a>
                 <a href="#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="#skills" class="hover:text-yellow-500">Skills</a>
+		<a href="#skills" class="hover:text-yellow-500">Skills</a>
                 <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white py-20">
+    <section class="bg-gray-800 text-white py-20">
         <div class="container mx-auto text-center fade-in max-w-3xl">
             <img src="shehzaad.jpg" alt="Shehzaad Bhamla" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-yellow-500">
             <h2 class="text-4xl font-semibold">Hi, I'm Shehzaad</h2>
@@ -163,7 +143,62 @@
         <div class="container mx-auto">
             <h2 class="text-3xl font-semibold text-center text-gray-900">Experience</h2>
             <div class="mt-10 space-y-8">
-                <!-- Experience entries here (same as before) -->
+                 <!-- Generac Power Systems Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="generac.png" alt="Generac Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Systems Support Specialist, Generac Power Systems</h3>
+                        <p class="text-gray-700">August 2022 – Present</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Resolved service requests and addressed user issues.</li>
+                            <li>Created and updated documentation and training materials.</li>
+                            <li>Set up and configured equipment, software, and system deployments.</li>
+                            <li>Collaborated with customer service and sales to resolve issues.</li>
+                            <li>Streamlined device deployment with Microsoft Autopilot in Azure AD for seamless user onboarding.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mians Oil Clark Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="onthego.png" alt="Mians Oil Clark Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Gas Station Manager, Mians Oil Clark</h3>
+                        <p class="text-gray-700">June 2019 – August 2022</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Trained, managed, and motivated employees for skill development.</li>
+                            <li>Identified client business needs and introduced services as solutions.</li>
+                            <li>Monitored inventory levels and managed merchandise orders.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Progressive Parking Solutions Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="pps.png" alt="Progressive Parking Solutions Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Valet, Progressive Parking Solutions</h3>
+                        <p class="text-gray-700">June 2017 – May 2019</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Delivered safe and seamless parking experiences for guests.</li>
+                            <li>Greeted guests, explained valet procedures, and promoted satisfaction.</li>
+                            <li>Maintained organization and cleanliness in work areas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pick N Save Experience -->
+                <div class="bg-white shadow-md rounded-lg p-6 flex items-start">
+                    <img src="https://www.picknsave.com/android-chrome-512x512.png" alt="Pick N Save Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Dairy Clerk, Pick N Save</h3>
+                        <p class="text-gray-700">September 2016 - May 2017</p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                            <li>Inspected goods for damage and addressed replacement needs.</li>
+                            <li>Restocked shelves with current merchandise to promote sales.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -173,17 +208,45 @@
         <div class="container mx-auto">
             <h2 class="text-3xl font-semibold text-center text-gray-900">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
-                <!-- Project Cards here (same as before) -->
+                <!-- Project Cards -->
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Nessus Vulnerability Assessment</h3>
+                    <p class="mt-2 text-gray-700">Configured Nessus Essentials for vulnerability scans on Windows 10 hosts.</p>
+			<p class="mt-2 text-gray-700">Implemented vulnerability management and remediation processes. Discover, Prioritize, Assess, Report, Remediate, Verify.</p>
+			 		
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Microsoft Windows Defender & Firewall</h3>
+                    <p class="mt-2 text-gray-700">Configured Windows Defender and Firewall for network protection and asset security.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Wireshark Network Analysis</h3>
+                    <p class="mt-2 text-gray-700">Installed Wireshark, captured packet data, and analyzed network traffic for HTTP and HTTPS protocols.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Malware Analysis Lab</h3>
+                    <p class="mt-2 text-gray-700">Configured virtual environments and conducted malware analysis using tools like Procmon and Wireshark.</p>
+                </div>
+                <!-- Additional Projects -->
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Phishing Simulation and Awareness</h3>
+                    <p class="mt-2 text-gray-700">Conducted phishing simulation and awareness training to educate users on identifying and reporting phishing attacks.</p>
+                </div>
+                <div class="bg-gray-100 shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-bold">Analyze Network Traffic with TCP Dump</h3>
+                    <p class="mt-2 text-gray-700">Created and analyzed dump files to capture network traffic.</p>
+                </div>
             </div>
         </div>
     </section>
 
+   
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold text-center text-gray-900">Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
-                 <!-- Skill 1: Microsoft Intune -->
+<section id="skills" class="py-20 bg-gray-50">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-semibold text-center text-gray-900">Skills</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
+            <!-- Skill 1: Microsoft Intune -->
             <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-16 h-16 text-gray-600 mb-4">
                     <path d="M10 12H7v4H4v-4H1l4-4 4 4h-3zm14 0h-3v4h-3v-4h-3l4-4 4 4zM9 3v6H4V3h5zm6 0v6h-5V3h5z"></path>
@@ -220,24 +283,44 @@
                 <p class="text-gray-700">A security feature in Microsoft Windows that helps protect against viruses and other malicious software.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="bg-gray-900 text-white py-6 mt-20">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 Shehzaad Bhamla. All rights reserved.</p>
-        </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+        &copy; 2024 Shehzaad Bhamla
     </footer>
 
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        // Handle mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+        // Wait for page content to load
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        // Handle loading screen removal
-        window.addEventListener('load', function() {
-            document.getElementById('loading-screen').style.display = 'none';
+            // Mobile menu toggle logic
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Observer to fade in sections as they come into view
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+
+            // Fading sections as they come into view
+            document.querySelectorAll('.fade-in').forEach(element => observer.observe(element));
+
+            // Loading screen removal after 2.5 seconds
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.display = 'none';
+            }, 2500); // 2.5 seconds
         });
     </script>
 </body>
 </html>
+
