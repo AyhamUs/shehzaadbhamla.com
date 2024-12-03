@@ -41,46 +41,21 @@
             flex: 1;
         }
 
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
+        .pdf-list a {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #1f2937;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item img {
-            width: 400px;
-            height: 300px;
-            object-fit: cover;
-            margin: auto;
-        }
-
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            z-index: 10;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .carousel-control.left {
-            left: 10px;
-        }
-
-        .carousel-control.right {
-            right: 10px;
+        .pdf-list a:hover {
+            background: #1f2937;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -111,74 +86,19 @@
                 <h2 class="text-3xl font-semibold text-gray-900">Certifications</h2>
                 <p class="mt-4 text-gray-700 max-w-2xl mx-auto">Explore my certifications that showcase my skills and dedication to professional growth in cybersecurity and IT systems support.</p>
 
-                <!-- Carousel -->
-                <div class="carousel mt-10">
-                    <div class="carousel-inner">
-                        <!-- Carousel Items -->
-                        <div class="carousel-item">
-                            <a href="Domain1 Security Principles.pdf" target="_blank">
-                                <img src="thumbnails/domain1.jpg" alt="Domain 1 Security Principles" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Introduction_to_Cybersecurity_Badge.pdf" target="_blank">
-                                <img src="thumbnails/cybersecurity.jpg" alt="Introduction to Cybersecurity Badge" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="ISC2 Cert.pdf" target="_blank">
-                                <img src="thumbnails/isc2.jpg" alt="ISC2 Certification" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Coursera Certification.pdf" target="_blank">
-                                <img src="thumbnails/coursera1.jpg" alt="Coursera Certification" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Coursera Microsoft Certification.pdf" target="_blank">
-                                <img src="thumbnails/coursera2.jpg" alt="Coursera Microsoft Certification" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Coursera TCP.pdf" target="_blank">
-                                <img src="thumbnails/tcp.jpg" alt="Coursera TCP Certification" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Coursera Wireshark.pdf" target="_blank">
-                                <img src="thumbnails/wireshark.jpg" alt="Coursera Wireshark Certification" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Domain 2 Incident Response Disaster Recovery Concepts.pdf" target="_blank">
-                                <img src="thumbnails/domain2.jpg" alt="Domain 2 Incident Response Disaster Recovery Concepts" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Domain 3 Access Control Concepts.pdf" target="_blank">
-                                <img src="thumbnails/domain3.jpg" alt="Domain 3 Access Control Concepts" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Domain 4 Network Security.pdf" target="_blank">
-                                <img src="thumbnails/domain4.jpg" alt="Domain 4 Network Security" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="Domain 5 Security Operations.pdf" target="_blank">
-                                <img src="thumbnails/domain5.jpg" alt="Domain 5 Security Operations" class="rounded-lg shadow-lg">
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Carousel Controls -->
-                    <div class="carousel-control left" onclick="prevSlide()">
-                        &#8249;
-                    </div>
-                    <div class="carousel-control right" onclick="nextSlide()">
-                        &#8250;
-                    </div>
+                <!-- PDF List -->
+                <div class="pdf-list mt-10 text-left">
+                    <a href="Domain1 Security Principles.pdf" target="_blank">Domain 1 Security Principles</a>
+                    <a href="Introduction_to_Cybersecurity_Badge.pdf" target="_blank">Introduction to Cybersecurity Badge</a>
+                    <a href="ISC2 Cert.pdf" target="_blank">ISC2 Certification</a>
+                    <a href="Coursera Certification.pdf" target="_blank">Coursera Certification</a>
+                    <a href="Coursera Microsoft Certification.pdf" target="_blank">Coursera Microsoft Certification</a>
+                    <a href="Coursera TCP.pdf" target="_blank">Coursera TCP Certification</a>
+                    <a href="Coursera Wireshark.pdf" target="_blank">Coursera Wireshark Certification</a>
+                    <a href="Domain 2 Incident Response Disaster Recovery Concepts.pdf" target="_blank">Domain 2 Incident Response Disaster Recovery Concepts</a>
+                    <a href="Domain 3 Access Control Concepts.pdf" target="_blank">Domain 3 Access Control Concepts</a>
+                    <a href="Domain 4 Network Security.pdf" target="_blank">Domain 4 Network Security</a>
+                    <a href="Domain 5 Security Operations.pdf" target="_blank">Domain 5 Security Operations</a>
                 </div>
             </div>
         </section>
@@ -188,30 +108,5 @@
     <footer class="bg-gray-900 text-gray-400 py-6 text-center">
         &copy; 2024 Shehzaad Bhamla
     </footer>
-
-    <!-- JavaScript for Carousel -->
-    <script>
-        let currentIndex = 0;
-        const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
-
-        function updateCarousel() {
-            const inner = document.querySelector('.carousel-inner');
-            inner.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            updateCarousel();
-        }
-
-        // Auto-slide every 5 seconds
-        setInterval(nextSlide, 5000);
-    </script>
 </body>
 </html>
