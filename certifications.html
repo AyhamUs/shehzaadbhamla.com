@@ -3,137 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shehzaad Bhamla | Certifications</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpg" href="shehzaad.jpg">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Explore the certifications of Shehzaad Bhamla showcasing expertise in cybersecurity and IT systems support.">
-    <meta name="keywords" content="Shehzaad Bhamla, Certifications, Cybersecurity, IT, Portfolio">
-    <meta name="author" content="Shehzaad Bhamla">
-
-    <!-- Social Media Sharing Metadata -->
-    <meta property="og:title" content="Certifications | Shehzaad Bhamla">
-    <meta property="og:description" content="Explore the certifications of Shehzaad Bhamla showcasing expertise in cybersecurity and IT systems support.">
-    <meta property="og:image" content="shehzaad.jpg">
-    <meta property="og:url" content="https://shehzaadbhamla.com/certifications.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Certifications | Shehzaad Bhamla">
-    <meta name="twitter:description" content="Explore the certifications of Shehzaad Bhamla showcasing expertise in cybersecurity and IT systems support.">
-    <meta name="twitter:image" content="shehzaad.jpg">
-
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <style>
-        * {
-            font-family: 'Ubuntu', sans-serif;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        .pdf-list a {
-            display: block;
-            padding: 10px;
-            margin: 5px 0;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #1f2937;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .pdf-list a:hover {
-            background: #1f2937;
-            color: #ffffff;
-        }
-    </style>
+    <title>Responsive Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans leading-relaxed tracking-wide">
-
+<body class="bg-gray-900 text-white">
     <!-- Navbar -->
-    <header class="bg-gray-900 text-white">
-        <div class="container mx-auto flex justify-between items-center py-6">
-            <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
+    <nav class="bg-gray-800 shadow-lg p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-yellow-500">MyLogo</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-6">
+                <a href="#" class="hover:text-yellow-500 transition">Home</a>
+                <a href="#" class="hover:text-yellow-500 transition">About</a>
+                <a href="#" class="hover:text-yellow-500 transition">Services</a>
+                <a href="#" class="hover:text-yellow-500 transition">Contact</a>
+            </div>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex space-x-6">
-                <a href="index.html" class="hover:text-yellow-500">Home</a>
-                <a href="index.html#about" class="hover:text-yellow-500">About</a>
-                <a href="index.html#experience" class="hover:text-yellow-500">Experience</a>
-                <a href="index.html#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="certifications.html" class="text-yellow-500">Certifications</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
-            </nav>
-
-            <!-- Hamburger Menu Icon -->
-            <button id="hamburger-icon" class="block lg:hidden text-white">
-                <span class="material-icons">menu</span>
-            </button>
+            <!-- Hamburger Menu (Mobile) -->
+            <div class="lg:hidden flex items-center">
+                <button id="menu-toggle" class="text-yellow-500 focus:outline-none transition-transform duration-300 transform">
+                    <!-- Hamburger Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-gray-900 text-white">
-            <div class="flex flex-col items-center py-4 space-y-4">
-                <a href="index.html" class="hover:text-yellow-500">Home</a>
-                <a href="index.html#about" class="hover:text-yellow-500">About</a>
-                <a href="index.html#experience" class="hover:text-yellow-500">Experience</a>
-                <a href="index.html#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="certifications.html" class="hover:text-yellow-500">Certifications</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
-            </div>
+        <div id="mobile-menu" class="hidden lg:hidden flex-col mt-4 space-y-2">
+            <a href="#" class="block text-center py-2 hover:bg-yellow-500 hover:text-gray-900">Home</a>
+            <a href="#" class="block text-center py-2 hover:bg-yellow-500 hover:text-gray-900">About</a>
+            <a href="#" class="block text-center py-2 hover:bg-yellow-500 hover:text-gray-900">Services</a>
+            <a href="#" class="block text-center py-2 hover:bg-yellow-500 hover:text-gray-900">Contact</a>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <section class="py-20 bg-white">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-semibold text-gray-900">Certifications</h2>
-                <p class="mt-4 text-gray-700 max-w-2xl mx-auto">Explore my certifications that showcase my skills and dedication to professional growth in cybersecurity and IT systems support.</p>
-                <div class="pdf-list mt-10 text-left">
-                    <a href="certs/Introduction_to_Cybersecurity_Badge.pdf" target="_blank">Introduction to Cybersecurity Badge</a>
-                    <a href="certs/ISC2Cert.pdf" target="_blank">ISC2 Certification</a>
-                    <a href="certs/CourseraCertification.pdf" target="_blank">Coursera Certification</a>
-                    <a href="certs/CourseraMicrosoftCertification.pdf" target="_blank">Coursera Microsoft Certification</a>
-                    <a href="certs/CourseraTCP.pdf" target="_blank">Coursera TCP Certification</a>
-                    <a href="certs/CourseraWireshark.pdf" target="_blank">Coursera Wireshark Certification</a>
-                    <a href="certs/Domain1.pdf" target="_blank">Domain 1 Security Principles</a>
-                    <a href="certs/Domain2.pdf" target="_blank">Domain 2 Incident Response Disaster Recovery Concepts</a>
-                    <a href="certs/Domain3.pdf" target="_blank">Domain 3 Access Control Concepts</a>
-                    <a href="certs/Domain4.pdf" target="_blank">Domain 4 Network Security</a>
-                    <a href="certs/Domain5.pdf" target="_blank">Domain 5 Security Operations</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
-        &copy; 2024 Shehzaad Bhamla
-    </footer>
-
-    <!-- JavaScript -->
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const hamburgerIcon = document.getElementById("hamburger-icon");
-            const mobileMenu = document.getElementById("mobile-menu");
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            hamburgerIcon.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-            });
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuToggle.classList.toggle('rotate-90'); // Optional: Rotate animation
         });
     </script>
 </body>
