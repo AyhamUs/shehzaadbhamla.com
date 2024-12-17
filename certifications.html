@@ -75,31 +75,32 @@
                 <a href="certifications.html" class="text-yellow-500">Certifications</a>
                 <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
             </nav>
+
+            <!-- Hamburger Menu Icon (visible only on mobile) -->
+            <button id="hamburger-icon" class="lg:hidden text-white">
+                <span class="material-icons">menu</span>
+            </button>
         </div>
 
-         <!-- Mobile Menu -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="lg:hidden bg-gray-900 text-white w-full hidden">
             <div class="flex flex-col items-center py-4 space-y-4">
-                 <a href="index.html" class="hover:text-yellow-500">Home</a>
+                <a href="index.html" class="hover:text-yellow-500">Home</a>
                 <a href="index.html#about" class="hover:text-yellow-500">About</a>
                 <a href="index.html#experience" class="hover:text-yellow-500">Experience</a>
                 <a href="index.html#projects" class="hover:text-yellow-500">Projects</a>
-		<a href="certifications.html" class="hover:text-yellow-500">Certifications</a>
+                <a href="certifications.html" class="hover:text-yellow-500">Certifications</a>
                 <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
             </div>
         </div>
-
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Certifications Section -->
         <section class="py-20 bg-white">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl font-semibold text-gray-900">Certifications</h2>
                 <p class="mt-4 text-gray-700 max-w-2xl mx-auto">Explore my certifications that showcase my skills and dedication to professional growth in cybersecurity and IT systems support.</p>
-
-                <!-- PDF List -->
                 <div class="pdf-list mt-10 text-left">
                     <a href="certs/Introduction_to_Cybersecurity_Badge.pdf" target="_blank">Introduction to Cybersecurity Badge</a>
                     <a href="certs/ISC2Cert.pdf" target="_blank">ISC2 Certification</a>
@@ -121,5 +122,15 @@
     <footer class="bg-gray-900 text-gray-400 py-6 text-center">
         &copy; 2024 Shehzaad Bhamla
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        hamburgerIcon.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
 </body>
 </html>
