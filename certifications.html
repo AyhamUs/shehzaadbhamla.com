@@ -88,9 +88,19 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        /* Swiper slide images */
+        /* Limit the width of the images */
         .swiper-slide img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
             cursor: pointer; /* Indicate image is clickable */
+            border-radius: 8px;
+        }
+
+        /* Ensure swiper container is responsive */
+        .swiper-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -178,6 +188,10 @@
                             <img src="certsjpg/Domain5.jpg" alt="Domain 5 Security Operations" class="w-full h-auto object-cover rounded-lg">
                         </div>
                     </div>
+
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
 
                 <!-- PDF List Section -->
@@ -209,7 +223,6 @@
 
     <!-- JavaScript -->
     <script>
-        // Initialize Swiper.js with autoplay enabled and improved navigation styling
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             spaceBetween: 10,
