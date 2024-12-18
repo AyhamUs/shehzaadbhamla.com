@@ -223,6 +223,13 @@
 
     <!-- JavaScript -->
     <script>
+        document.getElementById('hamburger-icon').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    // Toggle the 'hidden' class to show/hide the mobile menu
+    mobileMenu.classList.toggle('hidden');
+});
+
+        
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             spaceBetween: 10,
