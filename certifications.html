@@ -28,6 +28,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Swiper CSS (for Carousel) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
     <style>
         * {
             font-family: 'Ubuntu', sans-serif;
@@ -104,57 +107,52 @@
                 <h2 class="text-3xl font-semibold text-gray-900">Certifications</h2>
                 <p class="mt-4 text-gray-700 max-w-2xl mx-auto">Explore my certifications that showcase my skills and dedication to professional growth in cybersecurity and IT systems support.</p>
 
-                <!-- Carousel Section -->
-                <div id="carousel" class="mt-10 relative">
-                    <!-- Carousel Images -->
-                    <div class="flex overflow-hidden">
-                        <div class="w-full flex-shrink-0">
+                <!-- Swiper Carousel Section -->
+                <div class="mt-10 swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Swiper Slides -->
+                        <div class="swiper-slide">
                             <img src="certsjpg/CourseraGoogleCourse.jpg" alt="Coursera Google Course" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/CourseraMicrosoftCertification.jpg" alt="Coursera Microsoft Certification" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/CourseraTCP.jpg" alt="Coursera TCP" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/CourseraWireshark.jpg" alt="Coursera Wireshark" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/Domain1.jpg" alt="Domain 1 Security Principles" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/Domain2.jpg" alt="Domain 2 Incident Response" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/Domain3.jpg" alt="Domain 3 Access Control" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/Domain4.jpg" alt="Domain 4 Network Security" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/Domain5.jpg" alt="Domain 5 Security Operations" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/ISC2.jpg" alt="ISC2 Certification" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/Introduction_to_Cybersecurity_Badge.jpg" alt="Introduction to Cybersecurity Badge" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="w-full flex-shrink-0">
+                        <div class="swiper-slide">
                             <img src="certsjpg/QualysEDR.jpg" alt="Qualys EDR" class="w-full h-auto object-cover rounded-lg">
                         </div>
                     </div>
 
-                    <!-- Carousel Navigation -->
-                    <div class="absolute inset-0 flex items-center justify-between px-4">
-                        <button id="prev" class="text-white bg-gray-900 p-2 rounded-full shadow-md hover:bg-gray-700">
-                            <span class="material-icons">chevron_left</span>
-                        </button>
-                        <button id="next" class="text-white bg-gray-900 p-2 rounded-full shadow-md hover:bg-gray-700">
-                            <span class="material-icons">chevron_right</span>
-                        </button>
-                    </div>
+                    <!-- Swiper Pagination and Navigation -->
+                    <div class="swiper-button-next text-white bg-gray-900 p-2 rounded-full shadow-md hover:bg-gray-700"></div>
+                    <div class="swiper-button-prev text-white bg-gray-900 p-2 rounded-full shadow-md hover:bg-gray-700"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
 
                 <!-- PDF List Section -->
@@ -181,29 +179,33 @@
         &copy; 2024 Shehzaad Bhamla
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <!-- JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const prevButton = document.getElementById('prev');
-            const nextButton = document.getElementById('next');
-            const carousel = document.getElementById('carousel');
-            const slides = carousel.querySelector('.flex');
-            let currentIndex = 0;
-
-            const moveToSlide = (index) => {
-                const slideWidth = slides.children[0].offsetWidth;
-                slides.style.transform = `translateX(-${index * slideWidth}px)`;
-            };
-
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % slides.children.length;
-                moveToSlide(currentIndex);
-            });
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + slides.children.length) % slides.children.length;
-                moveToSlide(currentIndex);
-            });
+        // Initialize Swiper.js
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            }
         });
     </script>
 </body>
