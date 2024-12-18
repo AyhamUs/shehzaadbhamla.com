@@ -63,19 +63,34 @@
             color: #ffffff;
         }
 
-        /* Swiper Navigation Buttons */
+        /* Fixing the carousel navigation buttons */
         .swiper-button-next,
         .swiper-button-prev {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             border-radius: 50%;
+            width: 40px; /* Fixed width */
+            height: 40px; /* Fixed height */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px; /* Adjust icon size */
         }
 
         .swiper-button-next:hover,
         .swiper-button-prev:hover {
             background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Swiper slide images */
+        .swiper-slide img {
+            cursor: pointer; /* Indicate image is clickable */
         }
     </style>
 </head>
@@ -125,64 +140,32 @@
                 <!-- Swiper Carousel Section -->
                 <div class="mt-10 swiper-container">
                     <div class="swiper-wrapper">
-                        <!-- Swiper Slides -->
-                        <div class="swiper-slide">
-                            <img src="certsjpg/CourseraGoogleCourse.jpg" alt="Coursera Google Course" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/CourseraMicrosoftCertification.jpg" alt="Coursera Microsoft Certification" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/CourseraTCP.jpg" alt="Coursera TCP" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/CourseraWireshark.jpg" alt="Coursera Wireshark" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/Domain1.jpg" alt="Domain 1 Security Principles" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/Domain2.jpg" alt="Domain 2 Incident Response" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/Domain3.jpg" alt="Domain 3 Access Control" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/Domain4.jpg" alt="Domain 4 Network Security" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/Domain5.jpg" alt="Domain 5 Security Operations" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="certsjpg/ISC2.jpg" alt="ISC2 Certification" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide">
+                        <!-- Swiper Slides with onclick for enlarging image -->
+                        <div class="swiper-slide" onclick="window.open('certs/Introduction_to_Cybersecurity_Badge.pdf', '_blank')">
                             <img src="certsjpg/Introduction_to_Cybersecurity_Badge.jpg" alt="Introduction to Cybersecurity Badge" class="w-full h-auto object-cover rounded-lg">
                         </div>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" onclick="window.open('certs/QualysEDR.pdf', '_blank')">
                             <img src="certsjpg/QualysEDR.jpg" alt="Qualys EDR" class="w-full h-auto object-cover rounded-lg">
                         </div>
+                        <div class="swiper-slide" onclick="window.open('certs/ISC2Cert.pdf', '_blank')">
+                            <img src="certsjpg/ISC2.jpg" alt="ISC2 Certification" class="w-full h-auto object-cover rounded-lg">
+                        </div>
+                        <div class="swiper-slide" onclick="window.open('certs/CourseraGoogleCourse.pdf', '_blank')">
+                            <img src="certsjpg/CourseraGoogleCourse.jpg" alt="Coursera Google Course" class="w-full h-auto object-cover rounded-lg">
+                        </div>
+                        <div class="swiper-slide" onclick="window.open('certs/CourseraMicrosoftCertification.pdf', '_blank')">
+                            <img src="certsjpg/CourseraMicrosoftCertification.jpg" alt="Coursera Microsoft Certification" class="w-full h-auto object-cover rounded-lg">
+                        </div>
+                        <div class="swiper-slide" onclick="window.open('certs/CourseraTCP.pdf', '_blank')">
+                            <img src="certsjpg/CourseraTCP.jpg" alt="Coursera TCP" class="w-full h-auto object-cover rounded-lg">
+                        </div>
+                        <div class="swiper-slide" onclick="window.open('certs/CourseraWireshark.pdf', '_blank')">
+                            <img src="certsjpg/CourseraWireshark.jpg" alt="Coursera Wireshark" class="w-full h-auto object-cover rounded-lg">
+                        </div>
                     </div>
-
-                    <!-- Navigation Buttons -->
+                    <!-- Navigation buttons -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
-                </div>
-
-                <!-- PDF List Section -->
-                <div class="pdf-list mt-10 text-left max-w-2xl mx-auto">
-                    <a href="certs/Introduction_to_Cybersecurity_Badge.pdf" target="_blank">Introduction to Cybersecurity Badge</a>
-                    <a href="certs/ENTERNAMEHERE.pdf" target="_blank">Qualys EDR</a>
-                    <a href="certs/ISC2Cert.pdf" target="_blank">ISC2 Certification</a>
-                    <a href="certs/CourseraCertification.pdf" target="_blank">Coursera Certification</a>
-                    <a href="certs/CourseraMicrosoftCertification.pdf" target="_blank">Coursera Microsoft Certification</a>
-                    <a href="certs/CourseraTCP.pdf" target="_blank">Coursera TCP Certification</a>
-                    <a href="certs/CourseraWireshark.pdf" target="_blank">Coursera Wireshark Certification</a>
-                    <a href="certs/Domain1.pdf" target="_blank">Domain 1 Security Principles</a>
-                    <a href="certs/Domain2.pdf" target="_blank">Domain 2 Incident Response Disaster Recovery Concepts</a>
-                    <a href="certs/Domain3.pdf" target="_blank">Domain 3 Access Control Concepts</a>
-                    <a href="certs/Domain4.pdf" target="_blank">Domain 4 Network Security</a>
-                    <a href="certs/Domain5.pdf" target="_blank">Domain 5 Security Operations</a>
                 </div>
             </div>
         </section>
