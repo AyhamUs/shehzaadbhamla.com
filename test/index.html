@@ -82,29 +82,29 @@
                 z-index: 9999; /* Ensure it stays on top */
             }
 
-            #loading-bar {
-                width: 50%;
-                height: 5px;
-                background-color: #d1d5db; /* Grey color */
-                margin-top: 20px;
-                position: relative;
+            #loading-screen .spinner {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #f59e0b; /* Orange */
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite;
             }
 
-            #loading-bar span {
-                position: absolute;
-                height: 100%;
-                width: 0;
-                background-color: #f59e0b; /* Orange color */
-                animation: load 1.5s ease-in-out forwards;
-            }
-
-            @keyframes load {
+            @keyframes spin {
                 0% {
-                    width: 0;
+                    transform: rotate(0deg);
                 }
                 100% {
-                    width: 100%;
+                    transform: rotate(360deg);
                 }
+            }
+
+            #loading-text {
+                margin-top: 20px;
+                color: #f59e0b; /* Orange color */
+                font-size: 1.5rem;
+                font-weight: bold;
             }
         </style>
     </head>
