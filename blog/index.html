@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Fitness Blog</title>
+  <title>Fitness Blog - Your Ultimate Fitness Guide</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -20,32 +21,59 @@
         </ul>
       </nav>
     </div>
+    <div class="hero">
+      <h2>Welcome to Your Fitness Journey</h2>
+      <p>Discover tips, workouts, and nutrition advice to help you live your healthiest life.</p>
+      <a href="blog.html" class="cta-button">Explore Blog Posts</a>
+    </div>
   </header>
 
   <main>
     <section class="intro">
-      <h2>Welcome to Your Fitness Journey</h2>
-      <p>Discover tips, workouts, and nutrition advice to help you live your healthiest life.</p>
+      <h2>Why Fitness Matters</h2>
+      <p>Fitness is not just about looking good; it's about feeling great, staying healthy, and improving your quality of life. Whether you're a beginner or a seasoned athlete, our blog has something for everyone.</p>
       <img src="images/fitness-image.jpg" alt="Fitness Image">
     </section>
 
     <section class="recent-posts">
-      <h3>Recent Blog Posts</h3>
+      <h2>Recent Blog Posts</h2>
       <div class="post-preview">
-        <h4>How to Start Your Fitness Journey</h4>
-        <p>Embark on your fitness adventure with these beginner tips.</p>
-        <a href="blog.html">Read More</a>
+        <img src="images/beginner-fitness.jpg" alt="Beginner Fitness">
+        <h3>How to Start Your Fitness Journey</h3>
+        <p>Embark on your fitness adventure with these beginner tips. Learn how to set goals, stay motivated, and build a routine that works for you.</p>
+        <a href="blog.html#beginner-tips" class="read-more">Read More</a>
       </div>
       <div class="post-preview">
-        <h4>5 Best Foods for Muscle Growth</h4>
-        <p>These foods will fuel your body and help build muscle faster.</p>
-        <a href="blog.html">Read More</a>
+        <img src="images/muscle-food.jpg" alt="Food for Muscle Growth">
+        <h3>5 Best Foods for Muscle Growth</h3>
+        <p>These foods will fuel your body and help build muscle faster. Discover the best sources of protein, carbs, and healthy fats for muscle recovery.</p>
+        <a href="blog.html#muscle-foods" class="read-more">Read More</a>
       </div>
+      <div class="post-preview">
+        <img src="images/home-workouts.jpg" alt="Home Workouts">
+        <h3>Effective Home Workouts</h3>
+        <p>No gym? No problem! Check out these effective home workouts that require minimal equipment and deliver maximum results.</p>
+        <a href="blog.html#home-workouts" class="read-more">Read More</a>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Get the latest fitness tips, workout plans, and nutrition advice delivered straight to your inbox.</p>
+      <form action="#" method="post">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Fitness Blog</p>
+    <p>&copy; 2025 Fitness Blog. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>
