@@ -100,17 +100,21 @@
 
     const countdownElement = document.getElementById("countdown");
 
-    function updateUI() {
-      document.getElementById("money").textContent = money.toFixed(2);
-      document.getElementById("bank").textContent = bank.toFixed(2);
-      document.getElementById("realEstate").textContent = (buildings * 2000).toFixed(2);
-      document.getElementById("stocks").textContent = (shares * stockPrice).toFixed(2);
-      document.getElementById("stockPrice").textContent = stockPrice.toFixed(2);
-      document.getElementById("buildings").textContent = buildings;
-      document.getElementById("shares").textContent = shares;
-      countdownElement.textContent = countdown;
-      updateCharts();
-    }
+    function formatNumber(num) {
+  return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function updateUI() {
+  document.getElementById("money").textContent = formatNumber(money);
+  document.getElementById("bank").textContent = formatNumber(bank);
+  document.getElementById("realEstate").textContent = formatNumber(buildings * 2000);
+  document.getElementById("stocks").textContent = formatNumber(shares * stockPrice);
+  document.getElementById("stockPrice").textContent = formatNumber(stockPrice);
+  document.getElementById("buildings").textContent = buildings.toLocaleString();
+  document.getElementById("shares").textContent = shares.toLocaleString();
+  countdownElement.textContent = countdown;
+  updateCharts();
+}
 
     function buyCD() {
       let amount = parseFloat(document.getElementById("cdAmount").value);
