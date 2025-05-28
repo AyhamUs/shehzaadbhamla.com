@@ -76,7 +76,7 @@
   </div>
 
   <script>
-    let money = 10000;
+    let money = 1500000;
     let bank = 0;
     let buildings = 0;
     let stockPrice = 100;
@@ -174,22 +174,25 @@
       updateUI();
     }, 10000);
 
-    // Stock price fluctuation
-    setInterval(() => {
-      const change = Math.random() * 20 - 10;
-      stockPrice = Math.max(5, stockPrice + change);
-      stockHistory.push(stockPrice);
-      moneyHistory.push(money);
-      timeLabels.push(new Date().toLocaleTimeString());
+    // More forgiving & growth-oriented stock price fluctuation
+setInterval(() => {
+  // Slight upward bias: center is around +2
+  const change = (Math.random() - 0.3) * 15; // Range: -4.5 to +10.5
+  stockPrice = Math.max(10, stockPrice + change); // Set floor at $10
 
-      if (stockHistory.length > 20) {
-        stockHistory.shift();
-        moneyHistory.shift();
-        timeLabels.shift();
-      }
+  stockHistory.push(stockPrice);
+  moneyHistory.push(money);
+  timeLabels.push(new Date().toLocaleTimeString());
 
-      updateUI();
-    }, 8000);
+  if (stockHistory.length > 20) {
+    stockHistory.shift();
+    moneyHistory.shift();
+    timeLabels.shift();
+  }
+
+  updateUI();
+}, 8000);
+
 
     // Countdown timer
     setInterval(() => {
