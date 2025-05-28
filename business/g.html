@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Business Tycoon Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4">
+
+  <div class="max-w-5xl mx-auto space-y-6">
+    <h1 class="text-4xl font-bold text-center mb-4">💼 Business Tycoon</h1>
+
+    <!-- Dashboard -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">📊 Dashboard</h2>
+      <p>💰 Money: $<span id="money">10000</span></p>
+      <p>🏦 Bank (CDs): $<span id="bank">0</span></p>
+      <p>🏘️ Real Estate Value: $<span id="realEstate">0</span></p>
+      <p>📈 Stocks Value: $<span id="stocks">0</span></p>
+      <p>⏳ Next payout in: <span id="countdown">10</span> seconds</p>
+    </div>
+
+    <!-- Bank Section -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">🏦 Certificates of Deposit</h2>
+      <p>Earn 5% interest every 10 seconds</p>
+      <input type="number" id="cdAmount" placeholder="Amount to invest" class="border p-2 mt-2 mr-2" />
+      <button onclick="buyCD()" class="bg-blue-500 text-white px-4 py-2 rounded">Buy CD</button>
+    </div>
+
+    <!-- Withdraw CD -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">🏦 Withdraw from Bank</h2>
+      <p>You lose 10% on early withdrawals.</p>
+      <div class="space-x-2 mt-2">
+        <button onclick="withdrawCD(0.25)" class="bg-yellow-400 text-white px-4 py-2 rounded">Withdraw 25%</button>
+        <button onclick="withdrawCD(0.5)" class="bg-yellow-500 text-white px-4 py-2 rounded">Withdraw 50%</button>
+        <button onclick="withdrawCD(0.75)" class="bg-yellow-600 text-white px-4 py-2 rounded">Withdraw 75%</button>
+        <button onclick="withdrawCD(1)" class="bg-red-500 text-white px-4 py-2 rounded">Withdraw All</button>
+      </div>
+    </div>
+
+    <!-- Real Estate -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">🏘️ Real Estate Market</h2>
+      <p>Buy buildings that generate $50 every 10 seconds</p>
+      <button onclick="buyBuilding()" class="bg-green-500 text-white px-4 py-2 rounded">Buy Building ($2,000)</button>
+      <button onclick="buy5Building()" class="bg-green-500 text-white px-4 py-2 rounded">Buy 5 Buildings ($10,000)</button>
+      <button onclick="sellBuilding()" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Sell Building ($1,500)</button>
+      <p>Buildings Owned: <span id="buildings">0</span></p>
+    </div>
+
+    <!-- Stock Market -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">📈 Stock Market</h2>
+      <p>Stock price: $<span id="stockPrice">100</span></p>
+      <input type="number" id="stockQty" placeholder="Shares to buy/sell" class="border p-2 mt-2 mr-2" />
+      <button onclick="buyStock()" class="bg-blue-600 text-white px-4 py-2 rounded">Buy Stock</button>
+      <button onclick="sellStock()" class="bg-yellow-600 text-white px-4 py-2 rounded ml-2">Sell Stock</button>
+      <p>Shares Owned: <span id="shares">0</span></p>
+    </div>
+
+    <!-- Stock Price Chart -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">📉 Stock Price Over Time</h2>
+      <canvas id="stockChart" height="100"></canvas>
+    </div>
+
+    <!-- Money Chart -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold">💸 Money Over Time</h2>
+      <canvas id="moneyChart" height="100"></canvas>
+    </div>
+  </div>
+
+  <script>
+    let money = 1500000;
+    let bank = 0;
+    let buildings = 0;
+    let stockPrice = 100;
+    let shares = 0;
+
+    let stockHistory = [stockPrice];
+    let moneyHistory = [money];
+    let timeLabels = [new Date().toLocaleTimeString()];
+    let countdown = 10;
+
+    const countdownElement = document.getElementById("countdown");
+
+    function updateUI() {
+      document.getElementById("money").textContent = money.toFixed(2);
+      document.getElementById("bank").textContent = bank.toFixed(2);
+      document.getElementById("realEstate").textContent = (buildings * 2000).toFixed(2);
+      document.getElementById("stocks").textContent = (shares * stockPrice).toFixed(2);
+      document.getElementById("stockPrice").textContent = stockPrice.toFixed(2);
+      document.getElementById("buildings").textContent = buildings;
+      document.getElementById("shares").textContent = shares;
+      countdownElement.textContent = countdown;
+      updateCharts();
+    }
+
+    function buyCD() {
+      let amount = parseFloat(document.getElementById("cdAmount").value);
+      if (amount > 0 && amount <= money) {
+        money -= amount;
+        bank += amount;
+        updateUI();
+      }
+    }
+
+    function withdrawCD(percent = 1) {
+      if (bank > 0 && percent > 0 && percent <= 1) {
+        const amountToWithdraw = bank * percent;
+        const penalty = amountToWithdraw * 0.1;
+        money += amountToWithdraw - penalty;
+        bank -= amountToWithdraw;
+        updateUI();
+      }
+    }
+
+    function buyBuilding() {
+      if (money >= 2000) {
+        money -= 2000;
+        buildings += 1;
+        updateUI();
+      }
+    }
+
+    function buy5Building() {
+      if (money >= 10000) {
+        money -= 10000;
+        buildings += 5;
+        updateUI();
+      }
+    }
+
+    function sellBuilding() {
+      if (buildings > 0) {
+        money += 1500;
+        buildings -= 1;
+        updateUI();
+      }
+    }
+
+    function buyStock() {
+      let qty = parseInt(document.getElementById("stockQty").value);
+      if (qty > 0 && money >= qty * stockPrice) {
+        money -= qty * stockPrice;
+        shares += qty;
+        updateUI();
+      }
+    }
+
+    function sellStock() {
+      let qty = parseInt(document.getElementById("stockQty").value);
+      if (qty > 0 && shares >= qty) {
+        money += qty * stockPrice;
+        shares -= qty;
+        updateUI();
+      }
+    }
+
+    // CD interest
+    setInterval(() => {
+      bank *= 1.05;
+      updateUI();
+    }, 10000);
+
+    // Rent income
+    setInterval(() => {
+      money += buildings * 50;
+      updateUI();
+    }, 10000);
+
+    // Stock price fluctuation
+    setInterval(() => {
+      const change = Math.random() * 20 - 10;
+      stockPrice = Math.max(5, stockPrice + change);
+      stockHistory.push(stockPrice);
+      moneyHistory.push(money);
+      timeLabels.push(new Date().toLocaleTimeString());
+
+      if (stockHistory.length > 20) {
+        stockHistory.shift();
+        moneyHistory.shift();
+        timeLabels.shift();
+      }
+
+      updateUI();
+    }, 8000);
+
+    // Countdown timer
+    setInterval(() => {
+      countdown--;
+      if (countdown <= 0) countdown = 10;
+      countdownElement.textContent = countdown;
+    }, 1000);
+
+    // Save game to cookies
+    function saveGame() {
+      const gameData = {
+        money,
+        bank,
+        buildings,
+        stockPrice,
+        shares,
+        stockHistory,
+        moneyHistory,
+        timeLabels
+      };
+      document.cookie = "gameData=" + encodeURIComponent(JSON.stringify(gameData)) + "; path=/; max-age=31536000";
+    }
+
+    // Load game from cookies
+    function loadGame() {
+      const cookieData = document.cookie.split("; ").find(row => row.startsWith("gameData="));
+      if (cookieData) {
+        try {
+          const savedData = JSON.parse(decodeURIComponent(cookieData.split("=")[1]));
+          money = savedData.money;
+          bank = savedData.bank;
+          buildings = savedData.buildings;
+          stockPrice = savedData.stockPrice;
+          shares = savedData.shares;
+          stockHistory = savedData.stockHistory;
+          moneyHistory = savedData.moneyHistory;
+          timeLabels = savedData.timeLabels;
+        } catch (e) {
+          console.error("Failed to load game data:", e);
+        }
+      }
+    }
+
+    setInterval(saveGame, 10000);
+
+    // Charts
+    let stockChart, moneyChart;
+
+    function initCharts() {
+      const stockCtx = document.getElementById("stockChart").getContext("2d");
+      const moneyCtx = document.getElementById("moneyChart").getContext("2d");
+
+      stockChart = new Chart(stockCtx, {
+        type: 'line',
+        data: {
+          labels: timeLabels,
+          datasets: [{
+            label: 'Stock Price',
+            data: stockHistory,
+            borderColor: 'blue',
+            fill: false,
+            tension: 0.2
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { display: false },
+            y: { beginAtZero: false }
+          }
+        }
+      });
+
+      moneyChart = new Chart(moneyCtx, {
+        type: 'line',
+        data: {
+          labels: timeLabels,
+          datasets: [{
+            label: 'Cash Balance',
+            data: moneyHistory,
+            borderColor: 'green',
+            fill: false,
+            tension: 0.2
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { display: false },
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    function updateCharts() {
+      stockChart.data.labels = timeLabels;
+      stockChart.data.datasets[0].data = stockHistory;
+      stockChart.update();
+
+      moneyChart.data.labels = timeLabels;
+      moneyChart.data.datasets[0].data = moneyHistory;
+      moneyChart.update();
+    }
+
+    window.onload = () => {
+      loadGame();
+      initCharts();
+      updateUI();
+    };
+  </script>
+</body>
+</html>
