@@ -53,14 +53,25 @@
     </div>
 
     <!-- Stock Market -->
-    <div class="bg-white p-4 rounded shadow">
-      <h2 class="text-xl font-semibold">📈 Stock Market</h2>
-      <p>Stock price: $<span id="stockPrice">100</span></p>
-      <input type="number" id="stockQty" placeholder="Shares to buy/sell" class="border p-2 mt-2 mr-2" />
-      <button onclick="buyStock()" class="bg-blue-600 text-white px-4 py-2 rounded">Buy Stock</button>
-      <button onclick="sellStock()" class="bg-yellow-600 text-white px-4 py-2 rounded ml-2">Sell Stock</button>
-      <p>Shares Owned: <span id="shares">0</span></p>
-    </div>
+<div class="bg-white p-4 rounded shadow">
+  <h2 class="text-xl font-semibold">📈 Stock Market</h2>
+  <p>Stock price: $<span id="stockPrice">100</span></p>
+
+  <div class="mt-4">
+    <label class="block font-medium mb-1">💵 Buy with Amount ($):</label>
+    <input type="number" id="buyAmount" placeholder="Amount in dollars" class="border p-2 mr-2" />
+    <button onclick="buyStock()" class="bg-blue-600 text-white px-4 py-2 rounded">Buy Stock</button>
+  </div>
+
+  <div class="mt-4">
+    <label class="block font-medium mb-1">📦 Sell Shares (#):</label>
+    <input type="number" id="sellQty" placeholder="Number of shares" class="border p-2 mr-2" />
+    <button onclick="sellStock()" class="bg-yellow-600 text-white px-4 py-2 rounded">Sell Stock</button>
+  </div>
+
+  <p class="mt-4">Shares Owned: <span id="shares">0</span></p>
+</div>
+
 
     <!-- Stock Price Chart -->
     <div class="bg-white p-4 rounded shadow">
@@ -145,22 +156,26 @@
     }
 
     function buyStock() {
-      let qty = parseInt(document.getElementById("stockQty").value);
-      if (qty > 0 && money >= qty * stockPrice) {
-        money -= qty * stockPrice;
-        shares += qty;
-        updateUI();
-      }
+  let amount = parseFloat(document.getElementById("buyAmount").value);
+  if (amount > 0 && money >= amount) {
+    let qty = Math.floor(amount / stockPrice);
+    if (qty > 0) {
+      money -= qty * stockPrice;
+      shares += qty;
+      updateUI();
     }
+  }
+}
 
-    function sellStock() {
-      let qty = parseInt(document.getElementById("stockQty").value);
-      if (qty > 0 && shares >= qty) {
-        money += qty * stockPrice;
-        shares -= qty;
-        updateUI();
-      }
-    }
+function sellStock() {
+  let qty = parseInt(document.getElementById("sellQty").value);
+  if (qty > 0 && shares >= qty) {
+    money += qty * stockPrice;
+    shares -= qty;
+    updateUI();
+  }
+}
+
 
     // CD interest
     setInterval(() => {
