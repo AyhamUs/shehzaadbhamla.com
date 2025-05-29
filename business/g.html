@@ -52,6 +52,7 @@
       <p>Buy buildings that generate $50 every 10 seconds</p>
       <button onclick="buyBuilding()" class="bg-green-500 text-white px-4 py-2 rounded">Buy Building ($2,000)</button>
       <button onclick="buy5Building()" class="bg-green-500 text-white px-4 py-2 rounded">Buy 5 Buildings ($10,000)</button>
+	  <button onclick="buy1000Building()" class="bg-green-500 text-white px-4 py-2 rounded">Buy 1000 Buildings ($2,000,000)</button>
       <button onclick="sellBuilding()" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Sell Building ($1,500)</button>
       <p>Buildings Owned: <span id="buildings">0</span></p>
     </div>
@@ -151,6 +152,14 @@ function updateUI() {
       if (money >= 10000) {
         money -= 10000;
         buildings += 5;
+        updateUI();
+      }
+    }
+	
+	function buy1000Building() {
+      if (money >= 2000000) {
+        money -= 2000000;
+        buildings += 1000;
         updateUI();
       }
     }
