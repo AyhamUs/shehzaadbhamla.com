@@ -62,6 +62,10 @@
             animation: float 6s ease-in-out infinite;
         }
 
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -254,10 +258,17 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+            <a href="#certifications-section" class="text-gray-400 hover:text-white transition-colors duration-300">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
     </section>
 
     <!-- Certifications Section -->
-    <section class="py-20 relative z-10">
+    <section id="certifications-section" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Category Filters -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
@@ -423,37 +434,29 @@
                         <i class="fas fa-sitemap text-cyan-400"></i>
                     </div>
                 </div>
-            </div>
 
-            <!-- Load More Button -->
-            <div class="text-center mt-12">
-                <button id="load-more-btn" class="glass text-white px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-semibold hover-lift">
-                    <i class="fas fa-plus mr-2"></i>View All Certifications
-                </button>
-            </div>
-
-            <!-- Hidden certifications (initially hidden) -->
-            <div id="additional-certs" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8 hidden">
-                <!-- Domain 1-5 certifications and others -->
-                <div class="cert-card cybersecurity animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/Domain1.pdf', '_blank')">
+                <!-- TryHackMe Pre Security -->
+                <div class="cert-card cybersecurity animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/THMPreSecurity.pdf', '_blank')" style="animation-delay: 0.8s;">
                     <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="certsjpg/Domain1.jpg" alt="Domain 1 Security Principles" class="cert-image w-full h-48 object-cover">
+                        <img src="certsjpg/THMPreSecurity.jpg" alt="TryHackMe Pre Security" class="cert-image w-full h-48 object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                             <p class="text-white p-4 font-semibold">
                                 <i class="fas fa-external-link-alt mr-2"></i>View Certificate
                             </p>
                         </div>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Domain 1: Security Principles</h3>
-                    <p class="text-gray-400 text-sm mb-3">Fundamental security principles and concepts</p>
+                    <h3 class="text-lg font-bold text-white mb-2">TryHackMe Pre Security</h3>
+                    <p class="text-gray-400 text-sm mb-3">Foundational cybersecurity learning path completion</p>
                     <div class="flex items-center justify-between">
-                        <span class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full text-xs">Domain 1</span>
-                        <i class="fas fa-book text-indigo-400"></i>
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs">TryHackMe</span>
+                        <i class="fas fa-graduation-cap text-green-400"></i>
                     </div>
-                </div>
+                </div>                </div>
 
+            <!-- Hidden certifications (initially hidden) -->
+            <div id="additional-certs" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8 hidden">
+                <!-- Domain 2-5 certifications and others -->
                 <!-- Add more hidden certifications here... -->
-                <!-- Domain 2-5, TryHackMe, etc. -->
             </div>
         </div>
     </section>
@@ -520,6 +523,26 @@
                 });
             }
 
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            const icon = mobileMenuButton.querySelector('i');
+                            icon.className = 'fas fa-bars text-xl';
+                        }
+                    }
+                });
+            });
+
             // Category filtering
             const filterButtons = document.querySelectorAll('.filter-btn');
             const certCards = document.querySelectorAll('.cert-card');
@@ -555,22 +578,6 @@
                     });
                 });
             });
-
-            // Load more functionality
-            const loadMoreBtn = document.getElementById('load-more-btn');
-            const additionalCerts = document.getElementById('additional-certs');
-            
-            if (loadMoreBtn && additionalCerts) {
-                loadMoreBtn.addEventListener('click', () => {
-                    if (additionalCerts.classList.contains('hidden')) {
-                        additionalCerts.classList.remove('hidden');
-                        loadMoreBtn.innerHTML = '<i class="fas fa-minus mr-2"></i>Show Less';
-                    } else {
-                        additionalCerts.classList.add('hidden');
-                        loadMoreBtn.innerHTML = '<i class="fas fa-plus mr-2"></i>View All Certifications';
-                    }
-                });
-            }
 
             // Add hover effects to cards
             document.querySelectorAll('.hover-lift').forEach(card => {
