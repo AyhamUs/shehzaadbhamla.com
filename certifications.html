@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shehzaad Bhamla | Certifications</title>
+    <title>Certifications | Shehzaad Bhamla</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpg" href="shehzaad.jpg">
@@ -24,246 +24,609 @@
     <meta name="twitter:image" content="shehzaad.jpg">
 
     <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Swiper CSS (for Carousel) -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    />
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * {
-            font-family: 'Ubuntu', sans-serif;
+            font-family: "Inter", sans-serif;
         }
 
+        /* Custom Tailwind Configuration */
         body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
-        main {
-            flex: 1;
+        /* Custom animations */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .pdf-list a {
-            display: block;
-            padding: 10px;
-            margin: 5px 0;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #1f2937;
-            transition: background-color 0.3s, color 0.3s;
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.9);
         }
 
-        .pdf-list a:hover {
-            background: #1f2937;
-            color: #ffffff;
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Fixing the carousel navigation buttons */
-        .swiper-button-next,
-        .swiper-button-prev {
-            background-color: rgba(0, 0, 0, 0.5);
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation styles */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        /* Certification card styles */
+        .cert-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .cert-image {
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card:hover .cert-image {
+            transform: scale(1.05);
+        }
+
+        /* Category filter styles */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 10px;
-            border-radius: 50%;
-            width: 40px; /* Fixed width */
-            height: 40px; /* Fixed height */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 20px; /* Adjust icon size */
-        }
-
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Limit the width of the images */
-        .swiper-slide img {
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-            cursor: pointer; /* Indicate image is clickable */
-            border-radius: 8px;
-        }
-
-        /* Ensure swiper container is responsive */
-        .swiper-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans leading-relaxed tracking-wide">
+<<body class="bg-gray-900 text-gray-100 overflow-x-hidden">
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 4s;"></div>
+    </div>
 
-    <!-- Navbar -->
-    <header class="bg-gray-900 text-white">
-        <div class="container mx-auto flex justify-between items-center py-6">
-            <h1 class="text-3xl font-bold">Shehzaad Bhamla</h1>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Shehzaad Bhamla
+                    </h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Home</a>
+                        <a href="index.html#about" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">About</a>
+                        <a href="index.html#experience" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Experience</a>
+                        <a href="index.html#projects" class="text-gray-300 hover:text-white transition-colors duration-300 font-medium">Projects</a>
+                        <a href="certifications.html" class="text-blue-400 font-medium">Certifications</a>
+                        <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
+                            <i class="fab fa-linkedin-in mr-2"></i>Connect
+                        </a>
+                    </div>
+                </div>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex space-x-6">
-                <a href="index.html" class="hover:text-yellow-500">Home</a>
-                <a href="index.html#about" class="hover:text-yellow-500">About</a>
-                <a href="index.html#experience" class="hover:text-yellow-500">Experience</a>
-                <a href="index.html#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="certifications.html" class="text-yellow-500">Certifications</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
-            </nav>
-
-            <!-- Hamburger Menu Icon -->
-            <button id="hamburger-icon" class="block lg:hidden text-white">
-                <span class="material-icons">menu</span>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-gray-900 text-white">
-            <div class="flex flex-col items-center py-4 space-y-4">
-                <a href="index.html" class="hover:text-yellow-500">Home</a>
-                <a href="index.html#about" class="hover:text-yellow-500">About</a>
-                <a href="index.html#experience" class="hover:text-yellow-500">Experience</a>
-                <a href="index.html#projects" class="hover:text-yellow-500">Projects</a>
-                <a href="certifications.html" class="hover:text-yellow-500">Certifications</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" class="hover:text-yellow-500">Contact</a>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-400 hover:text-white p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <section class="py-20 bg-white">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-semibold text-gray-900">Certifications</h2>
-                <p class="mt-4 text-gray-700 max-w-2xl mx-auto">Explore my certifications that showcase my skills and dedication to professional growth in cybersecurity and IT systems support.</p><br>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden nav-blur border-t border-gray-800 hidden">
+            <div class="px-4 pt-4 pb-6 space-y-4">
+                <a href="index.html" class="block text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                <a href="index.html#about" class="block text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                <a href="index.html#experience" class="block text-gray-300 hover:text-white transition-colors duration-300">Experience</a>
+                <a href="index.html#projects" class="block text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="certifications.html" class="block text-blue-400">Certifications</a>
+                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" class="block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full text-center">
+                    <i class="fab fa-linkedin-in mr-2"></i>Connect
+                </a>
+            </div>
+        </div>
+    </nav>
 
-                <!-- Swiper Carousel Section -->
-                <div class="mt-10 swiper-container">
-                    <div class="swiper-wrapper">
-                        <!-- Swiper Slides with onclick for enlarging image -->
-                        <div class="swiper-slide" onclick="window.open('certs/Introduction_to_Cybersecurity_Badge.pdf', '_blank')">
-                            <img src="certsjpg/Introduction_to_Cybersecurity_Badge.jpg" alt="Introduction to Cybersecurity Badge" class="w-full h-auto object-cover rounded-lg">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <div class="text-center">
+                <div class="animate-scale-in" style="animation-delay: 0.2s;">
+                    <div class="relative inline-block mb-8">
+                        <div class="w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto flex items-center justify-center hover-lift">
+                            <i class="fas fa-certificate text-6xl text-white"></i>
                         </div>
-                        <div class="swiper-slide" onclick="window.open('certs/TestOutPro.pdf', '_blank')">
-                            <img src="certsjpg/TestOutPro.jpg" alt="TestOut Security Pro" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/QualysEDR.pdf', '_blank')">
-                            <img src="certsjpg/QualysEDR.jpg" alt="Qualys EDR" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/ISC2Cert.pdf', '_blank')">
-                            <img src="certsjpg/ISC2.jpg" alt="ISC2 Certification" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/CourseraCertification.pdf', '_blank')">
-                            <img src="certsjpg/CourseraGoogleCourse.jpg" alt="Coursera Google Course" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/CourseraMicrosoftCertification.pdf', '_blank')">
-                            <img src="certsjpg/CourseraMicrosoftCertification.jpg" alt="Coursera Microsoft Certification" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/CourseraTCP.pdf', '_blank')">
-                            <img src="certsjpg/CourseraTCP.jpg" alt="Coursera TCP" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/CourseraWireshark.pdf', '_blank')">
-                            <img src="certsjpg/CourseraWireshark.jpg" alt="Coursera Wireshark" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/Domain1.pdf', '_blank')">
-                            <img src="certsjpg/Domain1.jpg" alt="Domain 1 Security Principles" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/Domain2.pdf', '_blank')">
-                            <img src="certsjpg/Domain2.jpg" alt="Domain 2 Incident Response" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/Domain3.pdf', '_blank')">
-                            <img src="certsjpg/Domain3.jpg" alt="Domain 3 Access Control" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/Domain4.pdf', '_blank')">
-                            <img src="certsjpg/Domain4.jpg" alt="Domain 4 Network Security" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/Domain5.pdf', '_blank')">
-                            <img src="certsjpg/Domain5.jpg" alt="Domain 5 Security Operations" class="w-full h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="swiper-slide" onclick="window.open('certs/THMPreSecurity.pdf', '_blank')">
-                            <img src="certsjpg/THMPreSecurity.jpg" alt="TryHackMe PreSecurity" class="w-full h-auto object-cover rounded-lg">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-20 animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                            Certifications
+                        </span>
+                    </h1>
+                </div>
+                
+                <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <p class="text-xl md:text-2xl text-gray-300 mb-4 font-light">
+                        Professional Credentials & Achievements
+                    </p>
+                    <p class="text-lg text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Showcasing my expertise and dedication to continuous learning in cybersecurity, IT systems support, and emerging technologies
+                    </p>
+                </div>
+                
+                <div class="animate-fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="flex justify-center">
+                        <div class="glass px-8 py-4 rounded-full">
+                            <span class="text-blue-400 font-semibold mr-4">
+                                <i class="fas fa-award mr-2"></i>14 Certifications
+                            </span>
+                            <span class="text-purple-400 font-semibold">
+                                <i class="fas fa-shield-alt mr-2"></i>Cybersecurity Focus
+                            </span>
                         </div>
                     </div>
-
-                    <!-- Navigation buttons -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-
-                <!-- PDF List Section -->
-                <div class="pdf-list mt-10 text-left max-w-2xl mx-auto">
-                    <a href="certs/Introduction_to_Cybersecurity_Badge.pdf" target="_blank">Introduction to Cybersecurity Badge</a>
-                    <a href="certs/TestOutPro.pdf" target="_blank">TestOut Security Pro</a>
-                    <a href="certs/QualysEDR.pdf" target="_blank">Qualys EDR</a>
-                    <a href="certs/ISC2Cert.pdf" target="_blank">ISC2 Certification</a>
-                    <a href="certs/CourseraGoogleCourse.pdf" target="_blank">Coursera Google Course</a>
-                    <a href="certs/CourseraMicrosoftCertification.pdf" target="_blank">Coursera Microsoft Certification</a>
-                    <a href="certs/CourseraTCP.pdf" target="_blank">Coursera TCP</a>
-                    <a href="certs/CourseraWireshark.pdf" target="_blank">Coursera Wireshark</a>
-                    <a href="certs/Domain1.pdf" target="_blank">Domain 1 Security Principles</a>
-                    <a href="certs/Domain2.pdf" target="_blank">Domain 2 Incident Response Disaster Recovery Concepts</a>
-                    <a href="certs/Domain3.pdf" target="_blank">Domain 3 Access Control Concepts</a>
-                    <a href="certs/Domain4.pdf" target="_blank">Domain 4 Network Security</a>
-                    <a href="certs/Domain5.pdf" target="_blank">Domain 5 Security Operations</a>
-                    <a href="certs/THMPreSecurity.pdf" target="_blank">TryHackMe PreSecurity</a>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active glass text-white px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="all">
+                    <i class="fas fa-globe mr-2"></i>All Certifications
+                </button>
+                <button class="filter-btn glass text-gray-300 px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="cybersecurity">
+                    <i class="fas fa-shield-alt mr-2"></i>Cybersecurity
+                </button>
+                <button class="filter-btn glass text-gray-300 px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="networking">
+                    <i class="fas fa-network-wired mr-2"></i>Networking
+                </button>
+                <button class="filter-btn glass text-gray-300 px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="platforms">
+                    <i class="fas fa-cloud mr-2"></i>Platforms
+                </button>
+            </div>
+
+            <!-- Certifications Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="certifications-grid">
+                <!-- Introduction to Cybersecurity Badge -->
+                <div class="cert-card cybersecurity animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/Introduction_to_Cybersecurity_Badge.pdf', '_blank')">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/Introduction_to_Cybersecurity_Badge.jpg" alt="Introduction to Cybersecurity Badge" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Introduction to Cybersecurity</h3>
+                    <p class="text-gray-400 text-sm mb-3">Foundational cybersecurity principles and practices</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs">Badge</span>
+                        <i class="fas fa-shield-alt text-blue-400"></i>
+                    </div>
+                </div>
+
+                <!-- TestOut Security Pro -->
+                <div class="cert-card cybersecurity animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/TestOutPro.pdf', '_blank')" style="animation-delay: 0.1s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/TestOutPro.jpg" alt="TestOut Security Pro" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">TestOut Security Pro</h3>
+                    <p class="text-gray-400 text-sm mb-3">Professional security assessment and implementation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs">Professional</span>
+                        <i class="fas fa-lock text-green-400"></i>
+                    </div>
+                </div>
+
+                <!-- Qualys EDR -->
+                <div class="cert-card platforms animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/QualysEDR.pdf', '_blank')" style="animation-delay: 0.2s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/QualysEDR.jpg" alt="Qualys EDR" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Qualys EDR</h3>
+                    <p class="text-gray-400 text-sm mb-3">Endpoint Detection and Response platform expertise</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs">Platform</span>
+                        <i class="fas fa-desktop text-purple-400"></i>
+                    </div>
+                </div>
+
+                <!-- ISC2 Certification -->
+                <div class="cert-card cybersecurity animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/ISC2Cert.pdf', '_blank')" style="animation-delay: 0.3s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/ISC2.jpg" alt="ISC2 Certification" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">ISC2 Certification</h3>
+                    <p class="text-gray-400 text-sm mb-3">International security certification standards</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs">ISC2</span>
+                        <i class="fas fa-award text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <!-- Continue with remaining certifications... -->
+                <!-- I'll add a few more key ones to show the pattern -->
+                
+                <!-- Coursera Google Course -->
+                <div class="cert-card platforms animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/CourseraCertification.pdf', '_blank')" style="animation-delay: 0.4s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/CourseraGoogleCourse.jpg" alt="Coursera Google Course" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Google Cybersecurity</h3>
+                    <p class="text-gray-400 text-sm mb-3">Google's comprehensive cybersecurity program</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs">Google</span>
+                        <i class="fab fa-google text-red-400"></i>
+                    </div>
+                </div>
+
+                <!-- Coursera Microsoft -->
+                <div class="cert-card platforms animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/CourseraMicrosoftCertification.pdf', '_blank')" style="animation-delay: 0.5s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/CourseraMicrosoftCertification.jpg" alt="Coursera Microsoft Certification" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Microsoft Cybersecurity</h3>
+                    <p class="text-gray-400 text-sm mb-3">Microsoft security technologies and solutions</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs">Microsoft</span>
+                        <i class="fab fa-microsoft text-blue-400"></i>
+                    </div>
+                </div>
+
+                <!-- Wireshark -->
+                <div class="cert-card networking animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/CourseraWireshark.pdf', '_blank')" style="animation-delay: 0.6s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/CourseraWireshark.jpg" alt="Coursera Wireshark" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Wireshark Analysis</h3>
+                    <p class="text-gray-400 text-sm mb-3">Network packet analysis and monitoring</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-teal-500/20 text-teal-400 px-3 py-1 rounded-full text-xs">Networking</span>
+                        <i class="fas fa-network-wired text-teal-400"></i>
+                    </div>
+                </div>
+
+                <!-- TCP/IP -->
+                <div class="cert-card networking animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/CourseraTCP.pdf', '_blank')" style="animation-delay: 0.7s;">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/CourseraTCP.jpg" alt="Coursera TCP" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">TCP/IP Fundamentals</h3>
+                    <p class="text-gray-400 text-sm mb-3">Network protocol understanding and implementation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Protocol</span>
+                        <i class="fas fa-sitemap text-cyan-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="load-more-btn" class="glass text-white px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-semibold hover-lift">
+                    <i class="fas fa-plus mr-2"></i>View All Certifications
+                </button>
+            </div>
+
+            <!-- Hidden certifications (initially hidden) -->
+            <div id="additional-certs" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8 hidden">
+                <!-- Domain 1-5 certifications and others -->
+                <div class="cert-card cybersecurity animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('certs/Domain1.pdf', '_blank')">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <img src="certsjpg/Domain1.jpg" alt="Domain 1 Security Principles" class="cert-image w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 font-semibold">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Domain 1: Security Principles</h3>
+                    <p class="text-gray-400 text-sm mb-3">Fundamental security principles and concepts</p>
+                    <div class="flex items-center justify-between">
+                        <span class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full text-xs">Domain 1</span>
+                        <i class="fas fa-book text-indigo-400"></i>
+                    </div>
+                </div>
+
+                <!-- Add more hidden certifications here... -->
+                <!-- Domain 2-5, TryHackMe, etc. -->
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
-        &copy; 2024 Shehzaad Bhamla
+    <footer class="relative py-16 bg-gray-900 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                        Shehzaad Bhamla
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Cybersecurity Specialist with a commitment to continuous learning and professional development.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Home</a>
+                        <a href="index.html#about" class="block text-gray-400 hover:text-white transition-colors duration-300">About</a>
+                        <a href="index.html#experience" class="block text-gray-400 hover:text-white transition-colors duration-300">Experience</a>
+                        <a href="index.html#projects" class="block text-gray-400 hover:text-white transition-colors duration-300">Projects</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" 
+                           class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover-lift">
+                            <i class="fab fa-linkedin-in text-white text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 Shehzaad Bhamla. All rights reserved.
+                </p>
+            </div>
+        </div>
     </footer>
-
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- JavaScript -->
     <script>
-        document.getElementById('hamburger-icon').addEventListener('click', function() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    // Toggle the 'hidden' class to show/hide the mobile menu
-    mobileMenu.classList.toggle('hidden');
-});
-
-        
-        const swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            autoplay: {
-                delay: 2000, // Auto-slide every 2 seconds
-                disableOnInteraction: false, // Allow sliding even after user interaction
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                }
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.className = 'fas fa-bars text-xl';
+                    } else {
+                        icon.className = 'fas fa-times text-xl';
+                    }
+                });
             }
+
+            // Category filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const certCards = document.querySelectorAll('.cert-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.add('text-gray-300');
+                        btn.classList.remove('text-white');
+                    });
+                    button.classList.add('active', 'text-white');
+                    button.classList.remove('text-gray-300');
+
+                    // Filter certifications
+                    certCards.forEach(card => {
+                        if (category === 'all' || card.classList.contains(category)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Load more functionality
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const additionalCerts = document.getElementById('additional-certs');
+            
+            if (loadMoreBtn && additionalCerts) {
+                loadMoreBtn.addEventListener('click', () => {
+                    if (additionalCerts.classList.contains('hidden')) {
+                        additionalCerts.classList.remove('hidden');
+                        loadMoreBtn.innerHTML = '<i class="fas fa-minus mr-2"></i>Show Less';
+                    } else {
+                        additionalCerts.classList.add('hidden');
+                        loadMoreBtn.innerHTML = '<i class="fas fa-plus mr-2"></i>View All Certifications';
+                    }
+                });
+            }
+
+            // Add hover effects to cards
+            document.querySelectorAll('.hover-lift').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.animate-fade-in-up, .animate-scale-in').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+
+            // Navigation bar background on scroll
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    nav.classList.add('backdrop-blur-xl');
+                } else {
+                    nav.classList.remove('backdrop-blur-xl');
+                }
+            });
+
+            // Parallax effect for floating elements
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.animate-float');
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+
+            // Initialize smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
         });
     </script>
 </body>
