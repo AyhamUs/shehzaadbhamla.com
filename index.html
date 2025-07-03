@@ -226,9 +226,113 @@
                 backdrop-filter: blur(20px);
                 background: rgba(15, 23, 42, 0.8);
             }
+
+            /* Netflix-style Loading Screen */
+            #loading-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                z-index: 9999;
+                transition: opacity 1s ease-out, visibility 1s ease-out;
+            }
+
+            #loading-screen.fade-out {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .loading-content {
+                text-align: center;
+                animation: fadeInScale 1.5s ease-out;
+            }
+
+            .loading-logo {
+                font-size: 3rem;
+                font-weight: 900;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #91a3fe 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 2rem;
+                letter-spacing: 2px;
+                animation: glowPulse 2s ease-in-out infinite;
+            }
+
+            .loading-spinner {
+                width: 60px;
+                height: 60px;
+                border: 3px solid rgba(102, 126, 234, 0.2);
+                border-top: 3px solid #667eea;
+                border-radius: 50%;
+                animation: spin 1.2s linear infinite;
+                margin: 0 auto 1.5rem;
+            }
+
+            @keyframes fadeInScale {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.8) translateY(20px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+            }
+
+            @keyframes glowPulse {
+                0%, 100% {
+                    filter: brightness(1) drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+                }
+                50% {
+                    filter: brightness(1.2) drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+                }
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            @keyframes fadeInUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 0.8;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Hide main content initially */
+            #main-content {
+                opacity: 0;
+                transition: opacity 1s ease-in-out 0.3s;
+            }
+
+            #main-content.show {
+                opacity: 1;
+            }
         </style>
     </head>
     <body class="bg-gray-900 text-gray-100 overflow-x-hidden">
+        <!-- Netflix-style Loading Screen -->
+        <div id="loading-screen">
+            <div class="loading-content">
+                <div class="loading-logo">
+                    Shehzaad Bhamla
+                </div>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+
         <!-- Main Content Wrapper -->
         <div id="main-content">
             <!-- Floating Background Elements -->
@@ -860,21 +964,66 @@
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
                 
-                // Additional timeout to ensure scroll position
-                setTimeout(() => {
-                    window.scrollTo(0, 0);
-                    document.documentElement.scrollTop = 0;
-                    document.body.scrollTop = 0;
-                }, 0);
-
-                // Hero banner rising effect
-                setTimeout(() => {
-                    const heroSection = document.getElementById('home');
-                    if (heroSection) {
-                        heroSection.style.opacity = '1';
-                        heroSection.style.transform = 'translateY(0)';
+                // Netflix-style loading screen logic
+                const loadingScreen = document.getElementById('loading-screen');
+                const mainContent = document.getElementById('main-content');
+                
+                // Check if user came from certifications.html using sessionStorage
+                const cameFromCertifications = sessionStorage.getItem('fromCertifications') === 'true';
+                
+                // Clear the flag after checking
+                if (cameFromCertifications) {
+                    sessionStorage.removeItem('fromCertifications');
+                }
+                
+                // Function to show main content immediately
+                function showMainContentImmediately() {
+                    if (loadingScreen && loadingScreen.parentNode) {
+                        loadingScreen.parentNode.removeChild(loadingScreen);
                     }
-                }, 300); // Small delay for smooth entrance
+                    mainContent.classList.add('show');
+                    
+                    // Hero banner rising effect
+                    setTimeout(() => {
+                        const heroSection = document.getElementById('home');
+                        if (heroSection) {
+                            heroSection.style.opacity = '1';
+                            heroSection.style.transform = 'translateY(0)';
+                        }
+                    }, 100);
+                }
+                
+                // Skip loading screen if coming from certifications.html
+                if (cameFromCertifications) {
+                    showMainContentImmediately();
+                } else {
+                    // Normal loading screen sequence
+                    setTimeout(() => {
+                        // Fade out loading screen
+                        loadingScreen.classList.add('fade-out');
+                        
+                        // Show main content after loading screen starts fading
+                        setTimeout(() => {
+                            mainContent.classList.add('show');
+                            
+                            // Hero banner rising effect after main content is visible
+                            setTimeout(() => {
+                                const heroSection = document.getElementById('home');
+                                if (heroSection) {
+                                    heroSection.style.opacity = '1';
+                                    heroSection.style.transform = 'translateY(0)';
+                                }
+                            }, 300);
+                        }, 200);
+                        
+                        // Remove loading screen from DOM after animation completes
+                        setTimeout(() => {
+                            if (loadingScreen && loadingScreen.parentNode) {
+                                loadingScreen.parentNode.removeChild(loadingScreen);
+                            }
+                        }, 1200);
+                    }, 1500); // Reduced from 3000ms to 1500ms
+                }
 
                 // Scroll down arrow functionality
                 const scrollDownArrow = document.getElementById('scroll-down-arrow');
@@ -923,6 +1072,13 @@
                                 icon.className = 'fas fa-bars text-xl';
                             }
                         }
+                    });
+                });
+
+                // Track navigation to certifications page
+                document.querySelectorAll('a[href="certifications.html"]').forEach(link => {
+                    link.addEventListener('click', function() {
+                        sessionStorage.setItem('fromCertifications', 'true');
                     });
                 });
 
