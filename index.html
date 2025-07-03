@@ -327,7 +327,7 @@
             </div>
             
             <!-- Scroll indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow cursor-pointer hover:text-white transition-colors duration-300" id="scroll-down-arrow">
                 <i class="fas fa-chevron-down text-gray-400 text-2xl"></i>
             </div>
         </section>
@@ -875,6 +875,20 @@
                         heroSection.style.transform = 'translateY(0)';
                     }
                 }, 300); // Small delay for smooth entrance
+
+                // Scroll down arrow functionality
+                const scrollDownArrow = document.getElementById('scroll-down-arrow');
+                if (scrollDownArrow) {
+                    scrollDownArrow.addEventListener('click', () => {
+                        const aboutSection = document.getElementById('about');
+                        if (aboutSection) {
+                            aboutSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                }
 
                 // Mobile menu toggle
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
