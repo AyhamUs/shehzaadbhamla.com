@@ -233,14 +233,16 @@
             </div>
         </div>
 
-        <!-- Floating Background Elements -->
-        <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float"></div>
-            <div class="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 2s;"></div>
-            <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 4s;"></div>
-        </div>
+        <!-- Main Content Wrapper -->
+        <div id="main-content" style="opacity: 0; transition: opacity 0.8s ease-in;">
+            <!-- Floating Background Elements -->
+            <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+                <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float"></div>
+                <div class="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 2s;"></div>
+                <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 4s;"></div>
+            </div>
 
-        <!-- Navigation -->
+            <!-- Navigation -->
         <nav class="fixed top-0 w-full z-50 nav-blur border-b border-gray-800 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center py-4">
@@ -844,13 +846,20 @@
         <script>
             // Wait for DOM to load
             document.addEventListener('DOMContentLoaded', function() {
-                // Loading screen
+                // Shorter loading screen with fade-in effect
                 setTimeout(() => {
-                    document.getElementById('loading-screen').style.opacity = '0';
+                    const loadingScreen = document.getElementById('loading-screen');
+                    const mainContent = document.getElementById('main-content');
+                    
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.4s ease-out';
+                    
+                    // Hide loading screen and fade in main content
                     setTimeout(() => {
-                        document.getElementById('loading-screen').style.display = 'none';
-                    }, 500);
-                }, 2000);
+                        loadingScreen.style.display = 'none';
+                        mainContent.style.opacity = '1';
+                    }, 400);
+                }, 1200); // Reduced from 2000ms to 1200ms
 
                 // Mobile menu toggle
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
