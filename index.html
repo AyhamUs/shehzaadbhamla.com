@@ -59,6 +59,11 @@
             }
 
             /* Custom Tailwind Configuration */
+            html, body {
+                scroll-behavior: smooth;
+                overflow-x: hidden;
+            }
+            
             body {
                 background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             }
@@ -224,17 +229,8 @@
         </style>
     </head>
     <body class="bg-gray-900 text-gray-100 overflow-x-hidden">
-        <!-- Loading Screen -->
-        <div id="loading-screen">
-            <div class="text-center flex flex-col items-center justify-center">
-                <div class="loading-spinner mb-6"></div>
-                <h2 class="text-3xl font-bold text-white mb-2">Shehzaad Bhamla</h2>
-                <p class="text-gray-300">Cybersecurity Specialist</p>
-            </div>
-        </div>
-
         <!-- Main Content Wrapper -->
-        <div id="main-content" style="opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);">
+        <div id="main-content">
             <!-- Floating Background Elements -->
             <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
                 <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float"></div>
@@ -291,9 +287,9 @@
         </nav>
 
         <!-- Hero Section -->
-        <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-                <div class="text-center">
+        <section id="home" class="relative min-h-screen flex items-center justify-center pt-20" style="opacity: 0; transform: translateY(100px); transition: opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
+                <div class="text-center flex flex-col items-center justify-center">
                     <div class="animate-scale-in" style="animation-delay: 0.2s;">
                         <div class="relative inline-block mb-8">
                             <img src="shehzaad.jpg" alt="Shehzaad Bhamla" 
@@ -319,7 +315,7 @@
                         </p>
                     </div>
                     
-                    <div class="animate-fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style="animation-delay: 0.8s;">
+                    <div class="animate-fade-in-up flex flex-col sm:flex-row gap-4 justify-center items-center" style="animation-delay: 0.8s;">
                         <a href="#experience" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-2xl transition-all duration-300 font-semibold hover-lift">
                             <i class="fas fa-briefcase mr-2"></i>View My Work
                         </a>
@@ -844,23 +840,41 @@
 
         <!-- JavaScript -->
         <script>
+            // Ensure page starts at top on reload - executed immediately
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+
+            // Additional fix for page load
+            window.addEventListener('beforeunload', function() {
+                window.scrollTo(0, 0);
+            });
+
             // Wait for DOM to load
             document.addEventListener('DOMContentLoaded', function() {
-                // Shorter loading screen with fade-in effect
+                // Force scroll to top immediately on DOM ready
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+                
+                // Additional timeout to ensure scroll position
                 setTimeout(() => {
-                    const loadingScreen = document.getElementById('loading-screen');
-                    const mainContent = document.getElementById('main-content');
-                    
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transition = 'opacity 0.4s ease-out';
-                    
-                    // Hide loading screen and fade in main content
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        mainContent.style.opacity = '1';
-                        mainContent.style.transform = 'translateY(0)';
-                    }, 400);
-                }, 1200); // Reduced from 2000ms to 1200ms
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                }, 0);
+
+                // Hero banner rising effect
+                setTimeout(() => {
+                    const heroSection = document.getElementById('home');
+                    if (heroSection) {
+                        heroSection.style.opacity = '1';
+                        heroSection.style.transform = 'translateY(0)';
+                    }
+                }, 300); // Small delay for smooth entrance
 
                 // Mobile menu toggle
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
