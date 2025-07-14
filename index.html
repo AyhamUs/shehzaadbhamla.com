@@ -967,12 +967,16 @@
                 const loadingScreen = document.getElementById('loading-screen');
                 const mainContent = document.getElementById('main-content');
                 
-                // Check if user came from certifications.html using sessionStorage
+                // Check if user came from certifications.html or tools.html using sessionStorage
                 const cameFromCertifications = sessionStorage.getItem('fromCertifications') === 'true';
+                const cameFromTools = sessionStorage.getItem('fromTools') === 'true';
                 
-                // Clear the flag after checking
+                // Clear the flags after checking
                 if (cameFromCertifications) {
                     sessionStorage.removeItem('fromCertifications');
+                }
+                if (cameFromTools) {
+                    sessionStorage.removeItem('fromTools');
                 }
                 
                 // Function to show main content immediately
@@ -992,8 +996,8 @@
                     }, 100);
                 }
                 
-                // Skip loading screen if coming from certifications.html
-                if (cameFromCertifications) {
+                // Skip loading screen if coming from certifications.html or tools.html
+                if (cameFromCertifications || cameFromTools) {
                     showMainContentImmediately();
                 } else {
                     // Normal loading screen sequence
@@ -1074,10 +1078,16 @@
                     });
                 });
 
-                // Track navigation to certifications page
+                // Track navigation to certifications and tools pages
                 document.querySelectorAll('a[href="certifications.html"]').forEach(link => {
                     link.addEventListener('click', function() {
                         sessionStorage.setItem('fromCertifications', 'true');
+                    });
+                });
+
+                document.querySelectorAll('a[href="tools.html"]').forEach(link => {
+                    link.addEventListener('click', function() {
+                        sessionStorage.setItem('fromTools', 'true');
                     });
                 });
 
