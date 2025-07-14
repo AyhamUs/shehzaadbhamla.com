@@ -568,6 +568,13 @@
 
             // Initialize smooth scroll behavior
             document.documentElement.style.scrollBehavior = 'smooth';
+
+            // Track navigation to index page
+            document.querySelectorAll('a[href="index.html"], a[href="index.html#home"], a[href="index.html#about"], a[href="index.html#experience"], a[href="index.html#projects"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    sessionStorage.setItem('fromTools', 'true');
+                });
+            });
         });
     </script>
 </body>
