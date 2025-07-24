@@ -1280,6 +1280,8 @@
                 const navLinks = document.querySelectorAll('.nav-link[data-section]');
                 const sections = document.querySelectorAll('section[id]');
                 let currentSection = 'home';
+                let isNavigating = false; // Flag to prevent conflicts during navigation clicks
+                let observerDebounceTimer = null;
 
                 function updateNavIndicator(activeLink) {
                     if (!navIndicator || !activeLink) return;
@@ -1296,7 +1298,10 @@
                     navIndicator.style.opacity = '1';
                 }
 
-                function setActiveNavLink(sectionId) {
+                function setActiveNavLink(sectionId, isFromClick = false) {
+                    // Prevent rapid switching by ignoring observer updates during navigation clicks
+                    if (!isFromClick && isNavigating) return;
+                    
                     // Remove active class from all nav links
                     navLinks.forEach(link => {
                         link.classList.remove('active');
@@ -1314,62 +1319,58 @@
 
                 // Intersection Observer for section detection
                 const sectionObserver = new IntersectionObserver((entries) => {
-                    let visibleSections = [];
+                    // Skip if we're currently navigating via clicks
+                    if (isNavigating) return;
                     
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const sectionId = entry.target.id;
-                            const rect = entry.boundingClientRect;
-                            const viewportHeight = window.innerHeight;
-                            
-                            // Calculate how much of the section is visible
-                            const visibleTop = Math.max(0, -rect.top);
-                            const visibleBottom = Math.min(rect.height, viewportHeight - rect.top);
-                            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-                            const visibilityRatio = visibleHeight / viewportHeight;
-                            
-                            visibleSections.push({
-                                id: sectionId,
-                                ratio: visibilityRatio,
-                                distanceFromTop: Math.abs(rect.top),
-                                rectTop: rect.top,
-                                rectHeight: rect.height,
-                                visibleHeight: visibleHeight
-                            });
-                        }
-                    });
-                    
-                    // Debug output
-                    if (visibleSections.length > 0) {
-                        console.log('Visible sections detected:', visibleSections.map(s => ({
-                            id: s.id,
-                            ratio: s.ratio.toFixed(3),
-                            distanceFromTop: s.distanceFromTop.toFixed(1),
-                            rectTop: s.rectTop.toFixed(1),
-                            visibleHeight: s.visibleHeight.toFixed(1)
-                        })));
+                    // Clear any existing debounce timer
+                    if (observerDebounceTimer) {
+                        clearTimeout(observerDebounceTimer);
                     }
                     
-                    if (visibleSections.length > 0) {
-                        // Sort by visibility ratio and distance from top
-                        visibleSections.sort((a, b) => {
-                            if (Math.abs(a.ratio - b.ratio) < 0.1) {
-                                return a.distanceFromTop - b.distanceFromTop;
+                    // Debounce the observer updates to prevent rapid switching
+                    observerDebounceTimer = setTimeout(() => {
+                        let visibleSections = [];
+                        
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const sectionId = entry.target.id;
+                                const rect = entry.boundingClientRect;
+                                const viewportHeight = window.innerHeight;
+                                
+                                // Calculate how much of the section is visible
+                                const visibleTop = Math.max(0, -rect.top);
+                                const visibleBottom = Math.min(rect.height, viewportHeight - rect.top);
+                                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                                const visibilityRatio = visibleHeight / viewportHeight;
+                                
+                                visibleSections.push({
+                                    id: sectionId,
+                                    ratio: visibilityRatio,
+                                    distanceFromTop: Math.abs(rect.top)
+                                });
                             }
-                            return b.ratio - a.ratio;
                         });
                         
-                        const mostVisibleSection = visibleSections[0];
-                        console.log('Most visible section:', mostVisibleSection.id, 'ratio:', mostVisibleSection.ratio.toFixed(3));
-                        
-                        if (mostVisibleSection.id && mostVisibleSection.id !== currentSection) {
-                            console.log('Switching to section:', mostVisibleSection.id);
-                            setActiveNavLink(mostVisibleSection.id);
+                        if (visibleSections.length > 0) {
+                            // Sort by visibility ratio and distance from top
+                            visibleSections.sort((a, b) => {
+                                if (Math.abs(a.ratio - b.ratio) < 0.15) {
+                                    return a.distanceFromTop - b.distanceFromTop;
+                                }
+                                return b.ratio - a.ratio;
+                            });
+                            
+                            const mostVisibleSection = visibleSections[0];
+                            
+                            // Only update if it's significantly different
+                            if (mostVisibleSection.id && mostVisibleSection.id !== currentSection && mostVisibleSection.ratio > 0.2) {
+                                setActiveNavLink(mostVisibleSection.id, false);
+                            }
                         }
-                    }
+                    }, 100); // 100ms debounce
                 }, {
-                    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
-                    rootMargin: '-10% 0px -10% 0px'
+                    threshold: [0, 0.2, 0.4, 0.6, 0.8],
+                    rootMargin: '-20% 0px -20% 0px'
                 });
 
                 // Observe all sections
@@ -1395,8 +1396,14 @@
                     // Fallback scroll-based section detection
                     let scrollTimeout;
                     window.addEventListener('scroll', () => {
+                        // Skip fallback detection during navigation clicks
+                        if (isNavigating) return;
+                        
                         clearTimeout(scrollTimeout);
                         scrollTimeout = setTimeout(() => {
+                            // Double-check navigation flag after timeout
+                            if (isNavigating) return;
+                            
                             const scrollPosition = window.scrollY + 100; // Offset for fixed nav
                             
                             // Get all sections and find which one is currently in view
@@ -1412,9 +1419,9 @@
                             );
                             
                             if (currentSectionData && currentSectionData.id !== currentSection) {
-                                setActiveNavLink(currentSectionData.id);
+                                setActiveNavLink(currentSectionData.id, false);
                             }
-                        }, 50); // Debounce scroll events
+                        }, 150); // Increased debounce time
                     });
                 }
 
@@ -1433,14 +1440,28 @@
                         const targetSection = document.getElementById(section);
                         
                         if (targetSection) {
+                            // Set navigation flag to prevent observer interference
+                            isNavigating = true;
+                            
+                            // Clear any pending observer updates
+                            if (observerDebounceTimer) {
+                                clearTimeout(observerDebounceTimer);
+                                observerDebounceTimer = null;
+                            }
+                            
                             // Immediately update visual state for responsiveness
-                            setActiveNavLink(section);
+                            setActiveNavLink(section, true);
                             
                             // Smooth scroll to section
                             targetSection.scrollIntoView({
                                 behavior: 'smooth',
                                 block: 'start'
                             });
+                            
+                            // Re-enable observer after scroll completes
+                            setTimeout(() => {
+                                isNavigating = false;
+                            }, 1200);
                             
                             // Close mobile menu if open
                             if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
