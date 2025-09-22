@@ -1,150 +1,87 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Secure Encryption Tool</title>
+  <title>Generac Phishing Test</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background-color: #f8f8f8;
+      color: #333;
       padding: 20px;
-      max-width: 800px;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      border: 2px solid #dd3333;
+      padding: 20px;
       margin: auto;
     }
-    textarea, input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      font-size: 16px;
+    .header {
+      text-align: center;
+      color: #dd3333;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
+    .logo {
+      max-width: 200px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    .title {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .subheading {
+      font-size: 1.2em;
       margin-bottom: 20px;
     }
-    .section {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .body-text {
+      line-height: 1.6;
+    }
+    .body-text ul {
+      margin-left: 20px;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <h1>🔐 Secure Message Encryptor</h1>
+  <div class="container">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Generac_Power_Systems_logo.png" alt="Generac Logo">
+    <div class="header">
+      <div class="title">You’ve Failed a Phishing Test!</div>
+      <div class="subheading">This was a simulated phishing email. Generac’s Security Team is monitoring results.</div>
+    </div>
 
-  <div class="section">
-    <h2>Encrypt Message</h2>
-    <textarea id="plainText" placeholder="Enter message to encrypt..."></textarea>
-    <button onclick="encryptMessage()">Encrypt</button>
-    <label>Encrypted Message (Base64):</label>
-    <textarea id="encryptedOutput" readonly></textarea>
-    <label>Key (Base64):</label>
-    <input id="keyOutput" readonly>
-    <label>IV (Base64):</label>
-    <input id="ivOutput" readonly>
+    <div class="body-text">
+      <p><strong>What went wrong:</strong></p>
+      <ul>
+        <li>Clicked a link in a message pretending to be from Generac.</li>
+        <li>Entered credentials or personal information on a site mimicking Generac’s appearance.</li>
+        <li>Did not verify the sender address or check the URL before clicking.</li>
+      </ul>
+
+      <p><strong>How to improve:</strong></p>
+      <ul>
+        <li>Check the sender’s email address—even if it looks familiar.</li>
+        <li>Hover over links to inspect the real URL.</li>
+        <li>If unsure, manually go to Generac’s official website instead of clicking links.</li>
+        <li>Report suspicious messages to IT / Security immediately.</li>
+      </ul>
+
+      <p><strong>Why it matters:</strong></p>
+      <p>Phishing attempts can lead to leaked credentials, data breaches, or financial loss. Maintaining vigilance helps protect everyone at Generac.</p>
+    </div>
+
+    <div class="footer">
+      Generac Power Systems &bull; Security Awareness Team<br>
+      “If you believe you have been phished, change your password now and contact the IT Security Team.”
+    </div>
   </div>
-
-  <div class="section">
-    <h2>Decrypt Message</h2>
-    <label>Encrypted Message (Base64):</label>
-    <textarea id="encryptedInput"></textarea>
-    <label>Key (Base64):</label>
-    <input id="keyInput">
-    <label>IV (Base64):</label>
-    <input id="ivInput">
-    <button onclick="decryptMessage()">Decrypt</button>
-    <label>Decrypted Message:</label>
-    <textarea id="decryptedOutput" readonly></textarea>
-  </div>
-
-  <script>
-    async function encryptMessage() {
-      const message = document.getElementById('plainText').value;
-
-      if (!message) {
-        alert("Please enter a message to encrypt.");
-        return;
-      }
-
-      const enc = new TextEncoder();
-      const encoded = enc.encode(message);
-
-      const key = await crypto.subtle.generateKey(
-        { name: "AES-GCM", length: 256 },
-        true,
-        ["encrypt", "decrypt"]
-      );
-
-      const iv = crypto.getRandomValues(new Uint8Array(12)); // 96-bit IV for AES-GCM
-
-      const ciphertext = await crypto.subtle.encrypt(
-        { name: "AES-GCM", iv: iv },
-        key,
-        encoded
-      );
-
-      const exportedKey = await crypto.subtle.exportKey("raw", key);
-
-      // Update UI
-      document.getElementById('encryptedOutput').value = arrayBufferToBase64(ciphertext);
-      document.getElementById('keyOutput').value = arrayBufferToBase64(exportedKey);
-      document.getElementById('ivOutput').value = arrayBufferToBase64(iv);
-    }
-
-    async function decryptMessage() {
-      const encryptedBase64 = document.getElementById('encryptedInput').value;
-      const keyBase64 = document.getElementById('keyInput').value;
-      const ivBase64 = document.getElementById('ivInput').value;
-
-      try {
-        const encryptedData = base64ToArrayBuffer(encryptedBase64);
-        const keyData = base64ToArrayBuffer(keyBase64);
-        const iv = base64ToArrayBuffer(ivBase64);
-
-        const key = await crypto.subtle.importKey(
-          "raw",
-          keyData,
-          { name: "AES-GCM" },
-          false,
-          ["decrypt"]
-        );
-
-        const decrypted = await crypto.subtle.decrypt(
-          { name: "AES-GCM", iv: iv },
-          key,
-          encryptedData
-        );
-
-        const dec = new TextDecoder();
-        document.getElementById('decryptedOutput').value = dec.decode(decrypted);
-      } catch (err) {
-        alert("Decryption failed. Please check that all values are correct.");
-        console.error(err);
-      }
-    }
-
-    function arrayBufferToBase64(buffer) {
-      const bytes = new Uint8Array(buffer);
-      let binary = "";
-      for (let b of bytes) {
-        binary += String.fromCharCode(b);
-      }
-      return btoa(binary);
-    }
-
-    function base64ToArrayBuffer(base64) {
-      const binary = atob(base64);
-      const bytes = new Uint8Array(binary.length);
-      for (let i = 0; i < binary.length; i++) {
-        bytes[i] = binary.charCodeAt(i);
-      }
-      return bytes.buffer;
-    }
-  </script>
 
 </body>
 </html>
