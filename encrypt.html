@@ -1,0 +1,150 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Encryption Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Secure Message Encryptor</h1>
+
+  <div class="section">
+    <h2>Encrypt Message</h2>
+    <textarea id="plainText" placeholder="Enter message to encrypt..."></textarea>
+    <button onclick="encryptMessage()">Encrypt</button>
+    <label>Encrypted Message (Base64):</label>
+    <textarea id="encryptedOutput" readonly></textarea>
+    <label>Key (Base64):</label>
+    <input id="keyOutput" readonly>
+    <label>IV (Base64):</label>
+    <input id="ivOutput" readonly>
+  </div>
+
+  <div class="section">
+    <h2>Decrypt Message</h2>
+    <label>Encrypted Message (Base64):</label>
+    <textarea id="encryptedInput"></textarea>
+    <label>Key (Base64):</label>
+    <input id="keyInput">
+    <label>IV (Base64):</label>
+    <input id="ivInput">
+    <button onclick="decryptMessage()">Decrypt</button>
+    <label>Decrypted Message:</label>
+    <textarea id="decryptedOutput" readonly></textarea>
+  </div>
+
+  <script>
+    async function encryptMessage() {
+      const message = document.getElementById('plainText').value;
+
+      if (!message) {
+        alert("Please enter a message to encrypt.");
+        return;
+      }
+
+      const enc = new TextEncoder();
+      const encoded = enc.encode(message);
+
+      const key = await crypto.subtle.generateKey(
+        { name: "AES-GCM", length: 256 },
+        true,
+        ["encrypt", "decrypt"]
+      );
+
+      const iv = crypto.getRandomValues(new Uint8Array(12)); // 96-bit IV for AES-GCM
+
+      const ciphertext = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv: iv },
+        key,
+        encoded
+      );
+
+      const exportedKey = await crypto.subtle.exportKey("raw", key);
+
+      // Update UI
+      document.getElementById('encryptedOutput').value = arrayBufferToBase64(ciphertext);
+      document.getElementById('keyOutput').value = arrayBufferToBase64(exportedKey);
+      document.getElementById('ivOutput').value = arrayBufferToBase64(iv);
+    }
+
+    async function decryptMessage() {
+      const encryptedBase64 = document.getElementById('encryptedInput').value;
+      const keyBase64 = document.getElementById('keyInput').value;
+      const ivBase64 = document.getElementById('ivInput').value;
+
+      try {
+        const encryptedData = base64ToArrayBuffer(encryptedBase64);
+        const keyData = base64ToArrayBuffer(keyBase64);
+        const iv = base64ToArrayBuffer(ivBase64);
+
+        const key = await crypto.subtle.importKey(
+          "raw",
+          keyData,
+          { name: "AES-GCM" },
+          false,
+          ["decrypt"]
+        );
+
+        const decrypted = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: iv },
+          key,
+          encryptedData
+        );
+
+        const dec = new TextDecoder();
+        document.getElementById('decryptedOutput').value = dec.decode(decrypted);
+      } catch (err) {
+        alert("Decryption failed. Please check that all values are correct.");
+        console.error(err);
+      }
+    }
+
+    function arrayBufferToBase64(buffer) {
+      const bytes = new Uint8Array(buffer);
+      let binary = "";
+      for (let b of bytes) {
+        binary += String.fromCharCode(b);
+      }
+      return btoa(binary);
+    }
+
+    function base64ToArrayBuffer(base64) {
+      const binary = atob(base64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      return bytes.buffer;
+    }
+  </script>
+
+</body>
+</html>
