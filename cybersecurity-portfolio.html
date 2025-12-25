@@ -4,24 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shehzaad Bhamla | Cybersecurity Analyst</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpg" href="shehzaad.jpg" />
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Shehzaad Bhamla - A Cybersecurity Analyst passionate about protecting digital assets and implementing security solutions. Explore my portfolio and projects." />
-    <meta name="keywords" content="Shehzaad Bhamla, Cybersecurity Analyst, IT Security, Portfolio, PAM Solutions, EDR, Security Analyst" />
-    <meta name="author" content="Shehzaad Bhamla" />
-
-    <!-- Social Media Sharing Metadata -->
-    <meta property="og:title" content="Shehzaad Bhamla | Cybersecurity Analyst Portfolio" />
-    <meta property="og:description" content="Explore Shehzaad Bhamla's portfolio as a Cybersecurity Analyst, with expertise in PAM solutions, EDR tools, and security implementations." />
-    <meta property="og:image" content="shehzaad.jpg" />
-    <meta property="og:url" content="https://shehzaadbhamla.com" />
-    <meta name="twitter:card" content="summary_large_image" />
-
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-
     <style>
         * {
             margin: 0;
@@ -76,7 +59,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image:
+            background-image: 
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -173,8 +156,6 @@
         nav {
             display: flex;
             gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
         }
 
         nav a {
@@ -267,7 +248,6 @@
         .hero {
             padding: 4rem 0 6rem;
             animation: fadeIn 1s ease-out 0.3s both;
-            text-align: center;
         }
 
         @keyframes fadeIn {
@@ -336,7 +316,7 @@
             max-width: 700px;
             font-size: 1rem;
             color: var(--text-tertiary);
-            margin: 0 auto 3rem auto;
+            margin-bottom: 3rem;
             line-height: 1.8;
         }
 
@@ -344,7 +324,6 @@
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .btn {
@@ -443,7 +422,7 @@
         .output { color: var(--text-secondary); }
         .success { color: var(--accent-green); }
 
-        /* Section Styles */
+        /* Skills Grid */
         .section {
             margin: 6rem 0;
             animation: fadeIn 1s ease-out 0.9s both;
@@ -451,7 +430,6 @@
 
         .section-header {
             margin-bottom: 3rem;
-            text-align: center;
         }
 
         .section-title {
@@ -467,7 +445,6 @@
             font-size: 1.1rem;
         }
 
-        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -541,7 +518,7 @@
             color: var(--accent-cyan);
         }
 
-        /* Timeline */
+        /* Projects Timeline */
         .timeline {
             position: relative;
             padding-left: 3rem;
@@ -604,83 +581,7 @@
             margin-bottom: 1rem;
         }
 
-        .timeline-list {
-            color: var(--text-tertiary);
-            margin-left: 1.5rem;
-        }
-
-        .timeline-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .project-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .project-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            color: var(--text-tertiary);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-status {
-            text-align: right;
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-        }
-
-        /* Contact Grid */
+        /* Contact Section */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -720,11 +621,6 @@
             font-weight: 600;
         }
 
-        .contact-value a {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
         /* Footer */
         footer {
             margin-top: 8rem;
@@ -749,7 +645,6 @@
             nav {
                 flex-direction: column;
                 gap: 1rem;
-                width: 100%;
             }
 
             .hero {
@@ -762,10 +657,6 @@
 
             .timeline-item::before {
                 left: -2.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -782,10 +673,8 @@
             <nav>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
-                <a href="certifications.html">Certifications</a>
+                <a href="#certifications">Certifications</a>
                 <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="tools.html">Tools</a>
                 <a href="#contact">Contact</a>
                 <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
                     <span class="theme-icon sun-icon">☀️</span>
@@ -795,7 +684,7 @@
             </nav>
         </header>
 
-        <section id="home" class="hero">
+        <section class="hero">
             <div class="status-badge">
                 <span class="status-dot"></span>
                 AVAILABLE FOR OPPORTUNITIES
@@ -803,8 +692,8 @@
             <h1>Shehzaad Bhamla</h1>
             <div class="hero-subtitle">Cybersecurity Analyst • Threat Hunter • Digital Guardian</div>
             <p class="hero-description">
-                Protecting digital assets through proactive threat detection, endpoint security management,
-                and security awareness initiatives. Specializing in PAM implementation, EDR monitoring,
+                Protecting digital assets through proactive threat detection, endpoint security management, 
+                and security awareness initiatives. Specializing in PAM implementation, EDR monitoring, 
                 and phishing defense strategies.
             </p>
             <div class="cta-buttons">
@@ -828,43 +717,6 @@
                     <div class="terminal-line"><span class="output">ISC2 Certified in Cybersecurity | CompTIA Security Pro | Qualys EDR</span></div>
                     <div class="terminal-line"><span class="prompt">$</span> <span class="command">./check_threats.sh</span></div>
                     <div class="terminal-line"><span class="success">✓ All systems secured. Monitoring active.</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Security Professional & Continuous Learner</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🛡️</div>
-                    <h3 class="skill-title">Security Professional</h3>
-                    <p class="skill-description">
-                        I'm a passionate cybersecurity analyst with expertise in implementing PAM solutions,
-                        managing endpoint security with tools like CrowdStrike EDR and SentinelOne, and ensuring robust security
-                        postures across enterprise environments.
-                    </p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
-                    <h3 class="skill-title">My Approach</h3>
-                    <p class="skill-description">
-                        My journey in cybersecurity is driven by a commitment to protecting digital assets
-                        and staying ahead of emerging threats through continuous learning and practical application.
-                    </p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">⚡</div>
-                    <h3 class="skill-title">Personal Interests</h3>
-                    <p class="skill-description">
-                        Beyond cybersecurity, I'm passionate about staying active through tennis, basketball, and golf.
-                        I believe in maintaining a healthy work-life balance and constantly challenging myself
-                        both physically and intellectually.
-                    </p>
                 </div>
             </div>
         </section>
@@ -943,6 +795,102 @@
             </div>
         </section>
 
+        <section id="certifications" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Certifications & Training</h2>
+                <p class="section-subtitle">Continuous learning and professional development</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🏆</div>
+                    <h3 class="skill-title">ISC2 - Certified in Cybersecurity</h3>
+                    <p class="skill-description">Industry-recognized certification validating foundational cybersecurity knowledge and skills</p>
+                    <div class="skill-tags">
+                        <span class="tag">Security Principles</span>
+                        <span class="tag">IAM</span>
+                        <span class="tag">Network Security</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">✅</div>
+                    <h3 class="skill-title">CompTIA TestOut Security Pro</h3>
+                    <p class="skill-description">Comprehensive security fundamentals and practical skills assessment</p>
+                    <div class="skill-tags">
+                        <span class="tag">Threat Detection</span>
+                        <span class="tag">Risk Management</span>
+                        <span class="tag">Compliance</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🔍</div>
+                    <h3 class="skill-title">Qualys - Endpoint Detection & Response</h3>
+                    <p class="skill-description">Specialized training in EDR platform capabilities and threat hunting</p>
+                    <div class="skill-tags">
+                        <span class="tag">EDR</span>
+                        <span class="tag">Threat Hunting</span>
+                        <span class="tag">Incident Response</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🛡️</div>
+                    <h3 class="skill-title">Windows Defender & Firewall</h3>
+                    <p class="skill-description">Microsoft security platform configuration and management</p>
+                    <div class="skill-tags">
+                        <span class="tag">Defender</span>
+                        <span class="tag">Firewall Rules</span>
+                        <span class="tag">Policy Management</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">📊</div>
+                    <h3 class="skill-title">Wireshark: Capture Packets</h3>
+                    <p class="skill-description">Network protocol analysis and packet inspection techniques</p>
+                    <div class="skill-tags">
+                        <span class="tag">Packet Analysis</span>
+                        <span class="tag">Network Forensics</span>
+                        <span class="tag">Traffic Monitoring</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-title">TCP Dump</h3>
+                    <p class="skill-description">Command-line packet analyzer for network troubleshooting</p>
+                    <div class="skill-tags">
+                        <span class="tag">CLI Tools</span>
+                        <span class="tag">Network Analysis</span>
+                        <span class="tag">Troubleshooting</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3 class="skill-title">Intro to Cybersecurity - Cisco</h3>
+                    <p class="skill-description">Cisco Networking Academy foundational cybersecurity course</p>
+                    <div class="skill-tags">
+                        <span class="tag">Cisco</span>
+                        <span class="tag">Security Basics</span>
+                        <span class="tag">Best Practices</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🎓</div>
+                    <h3 class="skill-title">Google IT Course</h3>
+                    <p class="skill-description">Google IT support professional certificate program</p>
+                    <div class="skill-tags">
+                        <span class="tag">IT Support</span>
+                        <span class="tag">Troubleshooting</span>
+                        <span class="tag">Systems Admin</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience" class="section">
             <div class="section-header">
                 <h2 class="section-title">Professional Journey</h2>
@@ -953,8 +901,8 @@
                     <div class="timeline-date">MARCH 2025 - PRESENT</div>
                     <h3 class="timeline-title">Cybersecurity Analyst</h3>
                     <p class="timeline-description">Generac • Milwaukee, WI</p>
-                    <ul class="timeline-list">
-                        <li>Implemented PAM solutions (Thycotic) to secure administrative access and enforce least privilege</li>
+                    <ul style="color: var(--text-tertiary); margin-left: 1.5rem;">
+                        <li>Implemented PAM solutions to secure administrative access and enforce least privilege</li>
                         <li>Monitor endpoints using CrowdStrike and SentinelOne EDR platforms</li>
                         <li>Investigate Microsoft Defender alerts and perform incident triage</li>
                         <li>Execute KnowBe4 phishing simulations and security awareness campaigns</li>
@@ -966,7 +914,7 @@
                     <div class="timeline-date">AUGUST 2022 - MARCH 2025</div>
                     <h3 class="timeline-title">Systems Support Specialist</h3>
                     <p class="timeline-description">Generac • Milwaukee, WI</p>
-                    <ul class="timeline-list">
+                    <ul style="color: var(--text-tertiary); margin-left: 1.5rem;">
                         <li>Resolved Level 1 technical issues with hardware, software, and peripherals</li>
                         <li>Deployed devices using Microsoft Autopilot and Azure AD</li>
                         <li>Created technical documentation and training materials</li>
@@ -982,142 +930,6 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
-            <div class="section-header">
-                <h2 class="section-title">Projects & Learning</h2>
-                <p class="section-subtitle">Hands-on cybersecurity projects and continuous learning initiatives</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">💻</div>
-                        <h3 class="project-title">SIEM & Analyst Relationship</h3>
-                    </div>
-                    <p class="project-description">
-                        Gained understanding of SIEM tools and their relationship with security analysts, including event correlation and incident detection.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">SIEM</span>
-                        <span class="tag">SOC</span>
-                        <span class="tag">LetsDefend</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">📄</div>
-                    <h3 class="project-title">Log Management</h3>
-                    <p class="project-description">
-                        Explored log normalization, correlation for threat detection, and hands-on experience with log queries for security investigations.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Log Analysis</span>
-                        <span class="tag">Correlation</span>
-                        <span class="tag">Queries</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🖥️</div>
-                    <h3 class="project-title">EDR Implementation</h3>
-                    <p class="project-description">
-                        Acquired knowledge of EDR tools for endpoint monitoring, threat detection, and incident response including system isolation and forensics.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">EDR</span>
-                        <span class="tag">Incident Response</span>
-                        <span class="tag">Forensics</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🤖</div>
-                    <h3 class="project-title">SOAR Platform</h3>
-                    <p class="project-description">
-                        Understanding SOAR platforms for automating security processes and integrating with SIEM, EDR, and other security tools.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">SOAR</span>
-                        <span class="tag">Automation</span>
-                        <span class="tag">Integration</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🔍</div>
-                    <h3 class="project-title">TryHackMe Nmap</h3>
-                    <p class="project-description">
-                        Mastered network scanning fundamentals including TCP/UDP scans, NSE scripting, and firewall evasion techniques.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Nmap</span>
-                        <span class="tag">Network Scanning</span>
-                        <span class="tag">NSE</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🐧</div>
-                    <h3 class="project-title">Linux Fundamentals</h3>
-                    <p class="project-description">
-                        Advanced Linux command line skills including file navigation, shell operators, piping, and system administration basics.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Linux</span>
-                        <span class="tag">Command Line</span>
-                        <span class="tag">TryHackMe</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🐛</div>
-                    <h3 class="project-title">Nessus Vulnerability Assessment</h3>
-                    <p class="project-description">
-                        Configured Nessus Essentials for comprehensive vulnerability scanning and implemented full vulnerability management lifecycle.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Nessus</span>
-                        <span class="tag">Vulnerability Scanning</span>
-                        <span class="tag">Risk Management</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">📡</div>
-                    <h3 class="project-title">Wireshark Network Analysis</h3>
-                    <p class="project-description">
-                        Packet capture and analysis expertise using Wireshark for HTTP/HTTPS traffic analysis and network security monitoring.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Wireshark</span>
-                        <span class="tag">Packet Analysis</span>
-                        <span class="tag">Traffic Monitoring</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🦠</div>
-                    <h3 class="project-title">Malware & Phishing Analysis</h3>
-                    <p class="project-description">
-                        Configured secure virtual environments for malware analysis using specialized tools like Procmon and network monitoring. Detected instances of phishing email campaigns and associated cyberattack activities.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Malware Analysis</span>
-                        <span class="tag">Virtual Labs</span>
-                        <span class="tag">Procmon</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-            </div>
-        </section>
-
         <section id="contact" class="section">
             <div class="section-header">
                 <h2 class="section-title">Let's Connect</h2>
@@ -1127,7 +939,7 @@
                 <div class="contact-card">
                     <div class="contact-icon">📧</div>
                     <div class="contact-label">Email</div>
-                    <div class="contact-value"><a href="mailto:shehzaadb@gmail.com">shehzaadb@gmail.com</a></div>
+                    <div class="contact-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81f2e3e9e0ecede0c1e8e2edeef4e5afe2eeec">[email&#160;protected]</a></div>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">📱</div>
@@ -1142,7 +954,7 @@
                 <div class="contact-card">
                     <div class="contact-icon">💼</div>
                     <div class="contact-label">LinkedIn</div>
-                    <div class="contact-value"><a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank">Connect with me</a></div>
+                    <div class="contact-value">Connect with me</div>
                 </div>
             </div>
         </section>
@@ -1158,7 +970,7 @@
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
+            
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         }
@@ -1167,20 +979,6 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
         });
     </script>
 </body>
