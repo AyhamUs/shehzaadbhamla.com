@@ -20,7 +20,7 @@
     <meta property="og:url" content="https://shehzaadbhamla.com" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&family=Inter:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -314,15 +314,16 @@
         }
 
         h1 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
+            font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.02em;
         }
 
         .hero-subtitle {
@@ -730,6 +731,43 @@
         .contact-value a:hover {
             color: var(--accent-green);
             text-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px var(--glow-cyan);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px var(--glow-cyan);
+        }
+
+        .scroll-to-top:active {
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -1184,11 +1222,6 @@
                     <div class="contact-value"><a href="mailto:sbhamla@icloud.com">sbhamla@icloud.com</a></div>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon">📱</div>
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-value">(414) 877-4050</div>
-                </div>
-                <div class="contact-card">
                     <div class="contact-icon">📍</div>
                     <div class="contact-label">Location</div>
                     <div class="contact-value">Milwaukee, WI</div>
@@ -1205,6 +1238,11 @@
             <p>&copy; 2026 Shehzaad Bhamla. Securing the digital frontier, one endpoint at a time.</p>
         </footer>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        ↑
+    </button>
 
     <script>
         // Theme toggle functionality
@@ -1250,6 +1288,26 @@
                 toggleBtn.textContent = 'Show More Experience';
             }
         }
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        // Show button when user scrolls down 300px
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>
