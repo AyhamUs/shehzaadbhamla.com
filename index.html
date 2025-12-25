@@ -721,8 +721,15 @@
         }
 
         .contact-value a {
-            color: var(--text-primary);
+            color: var(--accent-cyan);
             text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-green);
+            text-shadow: 0 0 10px var(--glow-cyan);
         }
 
         /* Footer */
