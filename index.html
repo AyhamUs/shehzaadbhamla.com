@@ -970,38 +970,6 @@
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
-                    <h3 class="skill-title">Security Automation</h3>
-                    <p class="skill-description">SOAR platforms and automated response workflows</p>
-                    <div class="skill-tags">
-                        <span class="tag">SOAR</span>
-                        <span class="tag">Playbooks</span>
-                        <span class="tag">Orchestration</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🐧</div>
-                    <h3 class="skill-title">Linux Security</h3>
-                    <p class="skill-description">Linux system administration and hardening</p>
-                    <div class="skill-tags">
-                        <span class="tag">Linux CLI</span>
-                        <span class="tag">Shell Scripting</span>
-                        <span class="tag">System Hardening</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
-                    <h3 class="skill-title">Threat Hunting</h3>
-                    <p class="skill-description">Proactive threat identification and investigation</p>
-                    <div class="skill-tags">
-                        <span class="tag">IOC Analysis</span>
-                        <span class="tag">Threat Intelligence</span>
-                        <span class="tag">Forensics</span>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1025,7 +993,7 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">AUGUST 2022 - MARCH 2025</div>
+                    <div class="timeline-date">AUGUST 2022 - PRESENT</div>
                     <h3 class="timeline-title">Systems Support Specialist</h3>
                     <p class="timeline-description">Generac • Milwaukee, WI</p>
                     <ul class="timeline-list">
@@ -1036,26 +1004,34 @@
                     </ul>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-date">JUNE 2019 - AUGUST 2022</div>
-                    <h3 class="timeline-title">Gas Station Manager</h3>
-                    <p class="timeline-description">Mians Oil Clark • Milwaukee, WI</p>
-                    <ul class="timeline-list">
-                        <li>Trained and managed employee teams</li>
-                        <li>Identified business needs and solutions</li>
-                    </ul>
+                <div id="additional-experience" style="display: none;">
+                    <div class="timeline-item">
+                        <div class="timeline-date">JUNE 2019 - AUGUST 2022</div>
+                        <h3 class="timeline-title">Gas Station Manager</h3>
+                        <p class="timeline-description">Mians Oil Clark • Milwaukee, WI</p>
+                        <ul class="timeline-list">
+                            <li>Trained and managed employee teams</li>
+                            <li>Identified business needs and solutions</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">JUNE 2017 - MAY 2019</div>
+                        <h3 class="timeline-title">Valet</h3>
+                        <p class="timeline-description">Progressive Parking Solutions • Milwaukee, WI</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">SEPTEMBER 2016 - MAY 2017</div>
+                        <h3 class="timeline-title">Dairy Clerk</h3>
+                        <p class="timeline-description">Pick N Save • Milwaukee, WI</p>
+                    </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-date">JUNE 2017 - MAY 2019</div>
-                    <h3 class="timeline-title">Valet</h3>
-                    <p class="timeline-description">Progressive Parking Solutions • Milwaukee, WI</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">SEPTEMBER 2016 - MAY 2017</div>
-                    <h3 class="timeline-title">Dairy Clerk</h3>
-                    <p class="timeline-description">Pick N Save • Milwaukee, WI</p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="toggle-experience" class="btn btn-secondary" onclick="toggleExperience()">
+                        Show More Experience
+                    </button>
                 </div>
             </div>
         </section>
@@ -1260,6 +1236,20 @@
                 }
             });
         });
+
+        // Toggle experience function
+        function toggleExperience() {
+            const additionalExp = document.getElementById('additional-experience');
+            const toggleBtn = document.getElementById('toggle-experience');
+
+            if (additionalExp.style.display === 'none') {
+                additionalExp.style.display = 'block';
+                toggleBtn.textContent = 'Show Less Experience';
+            } else {
+                additionalExp.style.display = 'none';
+                toggleBtn.textContent = 'Show More Experience';
+            }
+        }
     </script>
 </body>
 </html>
