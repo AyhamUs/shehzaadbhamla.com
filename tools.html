@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,797 +9,550 @@
     <link rel="icon" type="image/jpg" href="shehzaad.jpg">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Explore the tools used by Shehzaad Bhamla showcasing expertise in cybersecurity and IT systems support.">
-    <meta name="keywords" content="Shehzaad Bhamla, Tools, Cybersecurity, IT, Portfolio">
+    <meta name="description" content="Explore the cybersecurity and IT tools used by Shehzaad Bhamla in daily security operations.">
+    <meta name="keywords" content="Shehzaad Bhamla, Cybersecurity Tools, EDR, PAM, SIEM, Security Tools">
     <meta name="author" content="Shehzaad Bhamla">
 
-    <!-- Social Media Sharing Metadata -->
-    <meta property="og:title" content="Tools | Shehzaad Bhamla">
-    <meta property="og:description" content="Explore the tools used by Shehzaad Bhamla showcasing expertise in cybersecurity and IT systems support.">
-    <meta property="og:image" content="shehzaad.jpg">
-    <meta property="og:url" content="https://shehzaadbhamla.com/tools.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tools | Shehzaad Bhamla">
-    <meta name="twitter:description" content="Explore the tools used by Shehzaad Bhamla showcasing expertise in cybersecurity and IT systems support.">
-    <meta name="twitter:image" content="shehzaad.jpg">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    />
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
         * {
-            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Custom Tailwind Configuration */
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #121827;
+            --bg-tertiary: #1a2332;
+            --accent-cyan: #00f0ff;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --text-primary: #e8edf4;
+            --text-secondary: #8b96a8;
+            --text-tertiary: #5a6578;
+            --glow-cyan: rgba(0, 240, 255, 0.3);
+            --glow-green: rgba(0, 255, 136, 0.3);
+            --grid-color: rgba(0, 240, 255, 0.03);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e9ecef;
+            --accent-cyan: #0077ff;
+            --accent-green: #00c853;
+            --accent-red: #ff3366;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --glow-cyan: rgba(0, 119, 255, 0.2);
+            --glow-green: rgba(0, 200, 83, 0.2);
+            --grid-color: rgba(0, 119, 255, 0.05);
+        }
+
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Custom animations */
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .animate-scale-in {
-            animation: scaleIn 0.6s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.9);
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .animate-bounce-slow {
-            animation: bounce 2s infinite;
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-cyan);
+            top: -200px;
+            right: -100px;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-green);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: 7s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
         }
 
-        /* Glass morphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.025);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Apple-style Liquid Glass Buttons */
-        .liquid-glass-btn {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             position: relative;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.04) 50%,
-                rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
+            z-index: 1;
         }
 
-        .liquid-glass-btn::before {
-            content: '';
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 20px var(--glow-cyan);
+            text-decoration: none;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-green);
+            margin-right: 0.3rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '> ';
+            color: var(--accent-cyan);
+            opacity: 0;
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.08), 
-                transparent);
-            transition: left 0.6s ease;
+            left: -15px;
+            transition: all 0.3s ease;
         }
 
-        .liquid-glass-btn:hover::before {
-            left: 100%;
+        nav a:hover {
+            color: var(--accent-cyan);
+            transform: translateX(5px);
         }
 
-        .liquid-glass-btn:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0.06) 50%,
-                rgba(255, 255, 255, 0.04) 100%);
-            border-color: rgba(255, 255, 255, 0.18);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+        nav a:hover::before {
+            opacity: 1;
+            left: -20px;
         }
 
-        .liquid-glass-btn:active {
-            transform: translateY(-1px);
-            box-shadow: 
-                0 6px 20px rgba(0, 0, 0, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-        }
-
-        /* Gradient Liquid Glass Buttons */
-        .liquid-glass-gradient {
-            background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.15) 0%,
-                rgba(118, 75, 162, 0.15) 50%,
-                rgba(145, 163, 254, 0.15) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.25);
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        .liquid-glass-gradient:hover {
-            background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.25) 0%,
-                rgba(118, 75, 162, 0.25) 50%,
-                rgba(145, 163, 254, 0.25) 100%);
-            border-color: rgba(102, 126, 234, 0.35);
-            color: white;
-        }
-
-        /* Primary Action Button */
-        .liquid-glass-primary {
-            background: linear-gradient(135deg, 
-                rgba(59, 130, 246, 0.25) 0%,
-                rgba(147, 51, 234, 0.25) 100%);
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            color: white;
-            font-weight: 600;
-        }
-
-        .liquid-glass-primary:hover {
-            background: linear-gradient(135deg, 
-                rgba(59, 130, 246, 0.35) 0%,
-                rgba(147, 51, 234, 0.35) 100%);
-            border-color: rgba(59, 130, 246, 0.45);
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #764ba2;
-        }
-
-        /* Hover effects */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* Navigation styles */
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(15, 23, 42, 0.8);
-        }
-
-        /* Navigation Link Glass Effect */
-        .nav-link {
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 50px;
+            width: 60px;
+            height: 32px;
             position: relative;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            color: rgb(209, 213, 219);
-            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
         }
 
-        .nav-link::before {
+        .theme-toggle:hover {
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        .theme-toggle-slider {
+            width: 22px;
+            height: 22px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="light"] .theme-toggle-slider {
+            transform: translateX(28px);
+        }
+
+        .theme-icon {
+            position: absolute;
+            font-size: 0.85rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .sun-icon {
+            left: 8px;
+            opacity: 0;
+        }
+
+        .moon-icon {
+            right: 8px;
+            opacity: 1;
+        }
+
+        [data-theme="light"] .sun-icon {
+            opacity: 1;
+        }
+
+        [data-theme="light"] .moon-icon {
+            opacity: 0;
+        }
+
+        .hero {
+            padding: 4rem 0 6rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            color: var(--text-tertiary);
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .tool-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0.02) 50%,
-                rgba(255, 255, 255, 0.01) 100%);
-            backdrop-filter: blur(10px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 9999px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
-        .nav-link:hover::before {
-            opacity: 1;
-            transform: scale(1);
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.04) 50%,
-                rgba(255, 255, 255, 0.02) 100%);
-            border-color: rgba(255, 255, 255, 0.12);
+        .tool-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .nav-link:hover {
-            color: white;
-            transform: translateY(-1px);
+        .tool-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
         }
 
-        .nav-link.active::before {
-            opacity: 1;
-            transform: scale(1);
-            background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.15) 0%,
-                rgba(118, 75, 162, 0.15) 50%,
-                rgba(145, 163, 254, 0.15) 100%);
-            border-color: rgba(102, 126, 234, 0.25);
-            box-shadow: 
-                0 4px 16px rgba(102, 126, 234, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .nav-link.active {
-            color: white;
-            transform: translateY(-1px);
+        .tool-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
 
-        /* Certification card styles */
-        .cert-card {
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .tool-description {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
         }
 
-        .cert-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        .tool-category {
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            display: inline-block;
         }
 
-        .cert-image {
-            transition: transform 0.3s ease;
+        footer {
+            margin-top: 6rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            text-align: center;
+            color: var(--text-tertiary);
         }
 
-        .cert-card:hover .cert-image {
-            transform: scale(1.05);
-        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
 
-        /* Category filter styles */
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
 
-        .filter-btn.active {
-            background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.4) 0%,
-                rgba(118, 75, 162, 0.4) 50%,
-                rgba(145, 163, 254, 0.4) 100%);
-            border-color: rgba(102, 126, 234, 0.5);
-            color: white;
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<<body class="bg-gray-900 text-gray-100 overflow-x-hidden">
-    <!-- Floating Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float"></div>
-        <div class="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style="animation-delay: 4s;"></div>
-    </div>
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-gray-800 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        Shehzaad Bhamla
-                    </h1>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-2">
-                        <a href="index.html" class="nav-link">Home</a>
-                        <a href="index.html#about" class="nav-link">About</a>
-                        <a href="index.html#experience" class="nav-link">Experience</a>
-                        <a href="index.html#projects" class="nav-link">Projects</a>
-                        <a href="tools.html" class="nav-link active">Tools</a>
-                        <a href="certifications.html" class="nav-link">Certifications</a>
-                        <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" class="liquid-glass-btn liquid-glass-primary px-6 py-2 rounded-full transition-all duration-300 font-medium ml-4">
-                            <i class="fab fa-linkedin-in mr-2"></i>Connect
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-400 hover:text-white p-2">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="md:hidden nav-blur border-t border-gray-800 hidden">
-            <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="index.html" class="nav-link block text-center">Home</a>
-                <a href="index.html#about" class="nav-link block text-center">About</a>
-                <a href="index.html#experience" class="nav-link block text-center">Experience</a>
-                <a href="index.html#projects" class="nav-link block text-center">Projects</a>
-                <a href="tools.html" class="nav-link active block text-center">Tools</a>
-                <a href="certifications.html" class="nav-link block text-center">Certifications</a>
-                <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" class="block liquid-glass-btn liquid-glass-primary px-6 py-2 rounded-full text-center mt-4">
-                    <i class="fab fa-linkedin-in mr-2"></i>Connect
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-            <div class="text-center">
-                <div class="animate-scale-in" style="animation-delay: 0.2s;">
-                    <div class="relative inline-block mb-8">
-                        <div class="w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto flex items-center justify-center hover-lift">
-                            <i class="fas fa-tools text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-20 animate-pulse"></div>
-                    </div>
-                </div>
-                
-                <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                            Tools
-                        </span>
-                    </h1>
-                </div>
-                
-                <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
-                    <p class="text-xl md:text-2xl text-gray-300 mb-4 font-light">
-                        Cybersecurity Tools & Technologies
-                    </p>
-                    <p class="text-lg text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        Showcasing my expertise and dedication to continuous learning in cybersecurity, IT systems support, and emerging technologies
-                    </p>
-                </div>
-                
-                <div class="animate-fade-in-up" style="animation-delay: 0.8s;">
-                    <div class="flex justify-center">
-                        <div class="glass px-8 py-4 rounded-full">
-                            <span class="text-blue-400 font-semibold mr-4">
-                                <i class="fas fa-award mr-2"></i>8 Tools
-                            </span>
-                            <span class="text-purple-400 font-semibold">
-                                <i class="fas fa-shield-alt mr-2"></i>Cybersecurity Focus
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-            <a href="#tools-section" class="text-gray-400 hover:text-white transition-colors duration-300">
-                <i class="fas fa-chevron-down text-2xl"></i>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">
+                <span class="terminal-prompt">></span>SB_CYBER
             </a>
-        </div>
-    </section>
-
-    <!-- Tools Section -->
-    <section id="tools-section" class="py-20 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Category Filters -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="filter-btn active liquid-glass-btn liquid-glass-gradient px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="all">
-                    <i class="fas fa-globe mr-2"></i>All Tools
-                </button>
-                <button class="filter-btn liquid-glass-btn px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="security">
-                    <i class="fas fa-shield-alt mr-2"></i>Security
-                </button>
-                <button class="filter-btn liquid-glass-btn px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="vulnerability">
-                    <i class="fas fa-search mr-2"></i>Vulnerability Assessment
-                </button>
-                <button class="filter-btn liquid-glass-btn px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="network">
-                    <i class="fas fa-network-wired mr-2"></i>Network Analysis
-                </button>
-                <button class="filter-btn liquid-glass-btn px-6 py-3 rounded-full font-semibold transition-all duration-300" data-category="access">
-                    <i class="fas fa-key mr-2"></i>Access Management
-                </button>
-            </div>
-
-            <!-- Tools Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8" id="tools-grid">
-
-                <!-- Active Directory -->
-                <div class="cert-card access animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-domain-services', '_blank')" style="animation-delay: 0.6s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
-                            <i class="fas fa-server text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Active Directory</h3>
-                    <p class="text-gray-400 text-sm mb-3">Windows domain services and directory management</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-gray-500/20 text-gray-400 px-3 py-1 rounded-full text-xs">Directory</span>
-                        <i class="fas fa-folder-tree text-gray-400"></i>
-                    </div>
+            <nav>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="certifications.html">Certifications</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="tools.html">Tools</a>
+                <a href="index.html#contact">Contact</a>
+                <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+                    <span class="theme-icon sun-icon">☀️</span>
+                    <span class="theme-icon moon-icon">🌙</span>
+                    <div class="theme-toggle-slider"></div>
                 </div>
-                
-                <!-- Microsoft Entra -->
-                <div class="cert-card access animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id', '_blank')" style="animation-delay: 0.5s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
-                            <i class="fab fa-microsoft text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Microsoft Entra</h3>
-                    <p class="text-gray-400 text-sm mb-3">Cloud-based identity and access management service</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs">Identity</span>
-                        <i class="fas fa-cloud text-blue-400"></i>
-                    </div>
-                </div>
+            </nav>
+        </header>
 
-                <!-- KnowBe4 -->
-                <div class="cert-card security animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://www.knowbe4.com/', '_blank')" style="animation-delay: 0.55s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">KnowBe4</h3>
-                    <p class="text-gray-400 text-sm mb-3">Security awareness training and phishing simulation platform</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs">Training</span>
-                        <i class="fas fa-user-graduate text-orange-400"></i>
-                    </div>
-                </div>
+        <section class="hero">
+            <h1>Security Arsenal</h1>
+            <p class="hero-subtitle">Tools & Technologies</p>
+            <p class="hero-description">
+                Cybersecurity and IT tools I use daily to protect digital assets, detect threats, and maintain robust security postures
+            </p>
+        </section>
 
+        <section class="section">
+            <h2 class="section-title">Security & Monitoring Tools</h2>
+            <div class="tools-grid">
                 <!-- CrowdStrike -->
-                <div class="cert-card security animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://www.crowdstrike.com/en-us/platform/', '_blank')">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">CrowdStrike</h3>
-                    <p class="text-gray-400 text-sm mb-3">AI-powered endpoint detection and response platform</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs">EDR</span>
-                        <i class="fas fa-robot text-purple-400"></i>
-                    </div>
+                <div class="tool-card" onclick="window.open('https://www.crowdstrike.com', '_blank')">
+                    <div class="tool-icon">🦅</div>
+                    <h3 class="tool-title">CrowdStrike Falcon</h3>
+                    <p class="tool-description">Cloud-native endpoint protection platform with AI-powered threat detection</p>
+                    <span class="tool-category">EDR</span>
                 </div>
 
-                <!-- Delinea PAM -->
-                <div class="cert-card access animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://delinea.com/', '_blank')" style="animation-delay: 0.1s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center">
-                            <i class="fas fa-key text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Delinea PAM</h3>
-                    <p class="text-gray-400 text-sm mb-3">Privileged access management and security platform</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs">PAM</span>
-                        <i class="fas fa-user-shield text-green-400"></i>
-                    </div>
+                <!-- SentinelOne -->
+                <div class="tool-card" onclick="window.open('https://www.sentinelone.com', '_blank')">
+                    <div class="tool-icon">🛡️</div>
+                    <h3 class="tool-title">SentinelOne</h3>
+                    <p class="tool-description">Autonomous endpoint protection with behavioral AI</p>
+                    <span class="tool-category">EDR</span>
                 </div>
 
-                <!-- Wireshark -->
-                <div class="cert-card network animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://www.wireshark.org/', '_blank')" style="animation-delay: 0.2s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
-                            <i class="fas fa-network-wired text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Wireshark</h3>
-                    <p class="text-gray-400 text-sm mb-3">Network protocol analyzer and packet capture tool</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs">Network</span>
-                        <i class="fas fa-search text-blue-400"></i>
-                    </div>
+                <!-- Microsoft Defender -->
+                <div class="tool-card" onclick="window.open('https://www.microsoft.com/en-us/security/business/threat-protection/endpoint-defender', '_blank')">
+                    <div class="tool-icon">🛡️</div>
+                    <h3 class="tool-title">Microsoft Defender</h3>
+                    <p class="tool-description">Enterprise endpoint protection and threat intelligence platform</p>
+                    <span class="tool-category">EDR</span>
+                </div>
+
+                <!-- Qualys -->
+                <div class="tool-card" onclick="window.open('https://www.qualys.com', '_blank')">
+                    <div class="tool-icon">🔍</div>
+                    <h3 class="tool-title">Qualys EDR</h3>
+                    <p class="tool-description">Endpoint detection, response and vulnerability management</p>
+                    <span class="tool-category">EDR</span>
                 </div>
 
                 <!-- Nessus -->
-                <div class="cert-card vulnerability animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://www.tenable.com/products/nessus', '_blank')" style="animation-delay: 0.3s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center">
-                            <i class="fas fa-bug text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Nessus</h3>
-                    <p class="text-gray-400 text-sm mb-3">Vulnerability assessment and management scanner</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs">Scanner</span>
-                        <i class="fas fa-exclamation-triangle text-red-400"></i>
-                    </div>
+                <div class="tool-card" onclick="window.open('https://www.tenable.com/products/nessus', '_blank')">
+                    <div class="tool-icon">🐛</div>
+                    <h3 class="tool-title">Nessus</h3>
+                    <p class="tool-description">Vulnerability scanner for identifying security weaknesses</p>
+                    <span class="tool-category">Vulnerability</span>
                 </div>
 
+                <!-- Wireshark -->
+                <div class="tool-card" onclick="window.open('https://www.wireshark.org', '_blank')">
+                    <div class="tool-icon">📡</div>
+                    <h3 class="tool-title">Wireshark</h3>
+                    <p class="tool-description">Network protocol analyzer for packet capture and analysis</p>
+                    <span class="tool-category">Network</span>
+                </div>
 
                 <!-- Nmap -->
-                <div class="cert-card network animate-fade-in-up rounded-2xl p-6 hover-lift cursor-pointer" onclick="window.open('https://nmap.org/', '_blank')" style="animation-delay: 0.5s;">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-cyan-600 to-blue-600 flex items-center justify-center">
-                            <i class="fas fa-sitemap text-6xl text-white"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <p class="text-white p-4 font-semibold">
-                                <i class="fas fa-external-link-alt mr-2"></i>Learn More
-                            </p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Nmap</h3>
-                    <p class="text-gray-400 text-sm mb-3">Network discovery and security auditing scanner</p>
-                    <div class="flex items-center justify-between">
-                        <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Scanner</span>
-                        <i class="fas fa-radar text-cyan-400"></i>
-                    </div>
+                <div class="tool-card" onclick="window.open('https://nmap.org', '_blank')">
+                    <div class="tool-icon">🔎</div>
+                    <h3 class="tool-title">Nmap</h3>
+                    <p class="tool-description">Network discovery and security auditing tool</p>
+                    <span class="tool-category">Network</span>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="relative py-16 bg-gray-900 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                        Shehzaad Bhamla
-                    </h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Cybersecurity Specialist with a commitment to continuous learning and professional development.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
-                    <div class="space-y-2">
-                        <a href="index.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Home</a>
-                        <a href="index.html#about" class="block text-gray-400 hover:text-white transition-colors duration-300">About</a>
-                        <a href="index.html#experience" class="block text-gray-400 hover:text-white transition-colors duration-300">Experience</a>
-                        <a href="index.html#projects" class="block text-gray-400 hover:text-white transition-colors duration-300">Projects</a>
-                        <a href="tools.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Tools</a>
-                        <a href="certifications.html" class="block text-gray-400 hover:text-white transition-colors duration-300">Certifications</a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" 
-                           class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover-lift">
-                            <i class="fab fa-linkedin-in text-white text-xl"></i>
-                        </a>
-                    </div>
+                <!-- KnowBe4 -->
+                <div class="tool-card" onclick="window.open('https://www.knowbe4.com', '_blank')">
+                    <div class="tool-icon">🎣</div>
+                    <h3 class="tool-title">KnowBe4</h3>
+                    <p class="tool-description">Security awareness training and phishing simulation platform</p>
+                    <span class="tool-category">Training</span>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-gray-400">
-                    &copy; 2025 Shehzaad Bhamla. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- JavaScript -->
+        <section class="section">
+            <h2 class="section-title">Identity & Access Management</h2>
+            <div class="tools-grid">
+                <!-- Thycotic/Delinea PAM -->
+                <div class="tool-card" onclick="window.open('https://delinea.com', '_blank')">
+                    <div class="tool-icon">🔐</div>
+                    <h3 class="tool-title">Thycotic/Delinea PAM</h3>
+                    <p class="tool-description">Privileged access management for securing admin credentials</p>
+                    <span class="tool-category">PAM</span>
+                </div>
+
+                <!-- Active Directory -->
+                <div class="tool-card" onclick="window.open('https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-domain-services', '_blank')">
+                    <div class="tool-icon">🏢</div>
+                    <h3 class="tool-title">Active Directory</h3>
+                    <p class="tool-description">Directory service for Windows domain networks</p>
+                    <span class="tool-category">Identity</span>
+                </div>
+
+                <!-- Azure AD -->
+                <div class="tool-card" onclick="window.open('https://azure.microsoft.com/en-us/services/active-directory/', '_blank')">
+                    <div class="tool-icon">☁️</div>
+                    <h3 class="tool-title">Azure AD / Microsoft Entra</h3>
+                    <p class="tool-description">Cloud-based identity and access management service</p>
+                    <span class="tool-category">Identity</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Cloud & Device Management</h2>
+            <div class="tools-grid">
+                <!-- Microsoft Autopilot -->
+                <div class="tool-card" onclick="window.open('https://docs.microsoft.com/en-us/mem/autopilot/', '_blank')">
+                    <div class="tool-icon">🚀</div>
+                    <h3 class="tool-title">Microsoft Autopilot</h3>
+                    <p class="tool-description">Cloud-based device deployment and configuration</p>
+                    <span class="tool-category">Deployment</span>
+                </div>
+
+                <!-- Microsoft Intune -->
+                <div class="tool-card" onclick="window.open('https://www.microsoft.com/en-us/security/business/microsoft-intune', '_blank')">
+                    <div class="tool-icon">📱</div>
+                    <h3 class="tool-title">Microsoft Intune</h3>
+                    <p class="tool-description">Cloud-based unified endpoint management platform</p>
+                    <span class="tool-category">MDM</span>
+                </div>
+
+                <!-- Microsoft Exchange -->
+                <div class="tool-card" onclick="window.open('https://www.microsoft.com/en-us/microsoft-365/exchange/email', '_blank')">
+                    <div class="tool-icon">📧</div>
+                    <h3 class="tool-title">Microsoft Exchange</h3>
+                    <p class="tool-description">Email server and collaboration platform with security features</p>
+                    <span class="tool-category">Email</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Shehzaad Bhamla. Securing the digital frontier, one endpoint at a time.</p>
+        </footer>
+    </div>
+
     <script>
-        // Wait for DOM to load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    const icon = mobileMenuButton.querySelector('i');
-                    if (mobileMenu.classList.contains('hidden')) {
-                        icon.className = 'fas fa-bars text-xl';
-                    } else {
-                        icon.className = 'fas fa-times text-xl';
-                    }
-                });
-            }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        // Close mobile menu if open
-                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                            mobileMenu.classList.add('hidden');
-                            const icon = mobileMenuButton.querySelector('i');
-                            icon.className = 'fas fa-bars text-xl';
-                        }
-                    }
-                });
-            });
-
-            // Category filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const toolCards = document.querySelectorAll('.cert-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const category = button.getAttribute('data-category');
-                    
-                    // Update active button
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.classList.add('text-gray-300');
-                        btn.classList.remove('text-white');
-                    });
-                    button.classList.add('active', 'text-white');
-                    button.classList.remove('text-gray-300');
-
-                    // Filter tools
-                    toolCards.forEach(card => {
-                        if (category === 'all' || card.classList.contains(category)) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-
-            // Add hover effects to cards
-            document.querySelectorAll('.hover-lift').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Intersection Observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                        entry.target.style.opacity = '1';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all animated elements
-            document.querySelectorAll('.animate-fade-in-up, .animate-scale-in').forEach(el => {
-                el.style.animationPlayState = 'paused';
-                observer.observe(el);
-            });
-
-            // Navigation bar background on scroll
-            const nav = document.querySelector('nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    nav.classList.add('backdrop-blur-xl');
-                } else {
-                    nav.classList.remove('backdrop-blur-xl');
-                }
-            });
-
-            // Parallax effect for floating elements
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.animate-float');
-                
-                parallaxElements.forEach((element, index) => {
-                    const speed = 0.5 + (index * 0.1);
-                    element.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
-
-            // Initialize smooth scroll behavior
-            document.documentElement.style.scrollBehavior = 'smooth';
-
-            // Track navigation to index page
-            document.querySelectorAll('a[href="index.html"], a[href="index.html#home"], a[href="index.html#about"], a[href="index.html#experience"], a[href="index.html#projects"]').forEach(link => {
-                link.addEventListener('click', function() {
-                    sessionStorage.setItem('fromTools', 'true');
-                });
-            });
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
         });
     </script>
 </body>
