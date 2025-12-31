@@ -13,175 +13,160 @@
     <meta name="keywords" content="Shehzaad Bhamla, Certifications, Cybersecurity, IT, Portfolio">
     <meta name="author" content="Shehzaad Bhamla">
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&family=DM+Sans:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --accent-cyan: #00f5d4;
+            --accent-purple: #9b5de5;
+            --accent-pink: #f15bb5;
+            --accent-yellow: #fee440;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --glow-cyan: 0 0 30px rgba(0, 245, 212, 0.3);
+            --glow-purple: 0 0 30px rgba(155, 93, 229, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --accent-cyan: #0077ff;
+            --accent-purple: #7c3aed;
+            --accent-pink: #ec4899;
+            --accent-yellow: #f59e0b;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --glow-cyan: 0 0 20px rgba(0, 119, 255, 0.2);
+            --glow-purple: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e17;
-            --bg-secondary: #121827;
-            --bg-tertiary: #1a2332;
-            --accent-cyan: #00f0ff;
-            --accent-green: #00ff88;
-            --accent-red: #ff3366;
-            --text-primary: #e8edf4;
-            --text-secondary: #8b96a8;
-            --text-tertiary: #5a6578;
-            --glow-cyan: rgba(0, 240, 255, 0.3);
-            --glow-green: rgba(0, 255, 136, 0.3);
-            --grid-color: rgba(0, 240, 255, 0.03);
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f8f9fa;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #e9ecef;
-            --accent-cyan: #0077ff;
-            --accent-green: #00c853;
-            --accent-red: #ff3366;
-            --text-primary: #1a1a1a;
-            --text-secondary: #4a5568;
-            --text-tertiary: #718096;
-            --glow-cyan: rgba(0, 119, 255, 0.2);
-            --glow-green: rgba(0, 200, 83, 0.2);
-            --grid-color: rgba(0, 119, 255, 0.05);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Outfit', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        body::before {
-            content: '';
+        /* Animated Background Grid */
+        .bg-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+                linear-gradient(rgba(0, 245, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 212, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .orb {
+        .bg-gradient {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 15s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(155, 93, 229, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0, 245, 212, 0.1), transparent);
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
         }
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-cyan);
-            top: -200px;
-            right: -100px;
+        [data-theme="light"] .bg-gradient {
+            opacity: 0.3;
         }
 
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-green);
-            bottom: -150px;
-            left: -100px;
-            animation-delay: 7s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            padding: 2rem 0;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
-            margin-bottom: 3rem;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--accent-cyan);
-            text-shadow: 0 0 20px var(--glow-cyan);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
-        .terminal-prompt {
-            color: var(--accent-green);
-            margin-right: 0.3rem;
+        .logo span {
+            color: var(--text-muted);
         }
 
-        nav {
+        .nav-links {
             display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
+            gap: 2.5rem;
+            list-style: none;
         }
 
-        nav a {
+        .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        nav a::before {
-            content: '> ';
-            color: var(--accent-cyan);
-            opacity: 0;
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            left: -15px;
-            transition: all 0.3s ease;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-cyan);
-            transform: translateX(5px);
+        .nav-links a:hover {
+            color: var(--text-primary);
         }
 
-        nav a:hover::before {
-            opacity: 1;
-            left: -20px;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
+        /* Theme Toggle */
         .theme-toggle {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border: 2px solid var(--accent-cyan);
             border-radius: 50px;
             width: 60px;
@@ -192,10 +177,11 @@
             display: flex;
             align-items: center;
             padding: 0 4px;
+            margin-left: 1rem;
         }
 
         .theme-toggle:hover {
-            box-shadow: 0 0 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
         }
 
         .theme-toggle-slider {
@@ -234,33 +220,42 @@
             opacity: 0;
         }
 
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 4rem 0 6rem;
+            padding: 10rem 0 4rem;
             text-align: center;
         }
 
-        h1 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 700;
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
         }
 
         .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 2rem auto;
-            color: var(--text-tertiary);
+            margin: 0 auto 3rem;
         }
 
         .stats {
@@ -271,25 +266,34 @@
         }
 
         .stat-item {
-            padding: 1rem 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-radius: 8px;
+            padding: 1.5rem 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
         }
 
         .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
             color: var(--accent-cyan);
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
         }
 
         .stat-label {
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
-        .section {
-            margin: 4rem 0;
+        /* Certifications Grid */
+        section {
+            padding: 4rem 3rem 6rem;
         }
 
         .certs-grid {
@@ -299,11 +303,11 @@
         }
 
         .cert-card {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
         }
@@ -315,20 +319,19 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .cert-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .cert-card:hover {
             border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .cert-image {
@@ -343,21 +346,21 @@
         }
 
         .cert-content {
-            padding: 1.5rem;
+            padding: 1.75rem;
         }
 
         .cert-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .cert-description {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
         }
 
         .cert-footer {
@@ -367,17 +370,18 @@
         }
 
         .cert-tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 20px;
-            font-size: 0.7rem;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
             color: var(--accent-cyan);
         }
 
         .cert-icon {
-            color: var(--accent-green);
-            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
         }
 
         /* Scroll to Top Button */
@@ -396,7 +400,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 4px 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
@@ -410,36 +414,75 @@
 
         .scroll-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--glow-cyan);
+            box-shadow: 0 8px 30px rgba(0, 245, 212, 0.4);
         }
 
         .scroll-to-top:active {
             transform: translateY(-2px);
         }
 
+        /* Footer */
         footer {
-            margin-top: 6rem;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            padding: 2rem 3rem;
             text-align: center;
-            color: var(--text-tertiary);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--bg-primary);
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
             .container {
                 padding: 0 1.5rem;
             }
 
-            header {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-                width: 100%;
+            section {
+                padding: 4rem 1.5rem;
             }
 
             .certs-grid {
@@ -449,35 +492,40 @@
     </style>
 </head>
 <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
 
-    <div class="container">
-        <header>
-            <a href="index.html" class="logo">
-                🛡️ S.BHAMLA
-            </a>
-            <nav>
-                <a href="index.html#about">About</a>
-                <a href="index.html#skills">Skills</a>
-                <a href="index.html#experience">Experience</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="certifications.html">Certifications</a>
-                <a href="tools.html">Tools</a>
-                <a href="index.html#contact">Contact</a>
+    <nav>
+        <a href="index.html" class="logo">shehzaad<span>.sec</span></a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li>
                 <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
                     <span class="theme-icon sun-icon">☀️</span>
                     <span class="theme-icon moon-icon">🌙</span>
                     <div class="theme-toggle-slider"></div>
                 </div>
-            </nav>
-        </header>
+            </li>
+        </ul>
+    </nav>
 
+    <div class="container">
         <section class="hero">
+            <p class="section-tag">// Credentials</p>
             <h1>Certifications</h1>
-            <p class="hero-subtitle">Professional Credentials & Achievements</p>
             <p class="hero-description">
-                Showcasing my expertise and dedication to continuous learning in cybersecurity, IT systems support, and emerging technologies
+                Professional credentials showcasing expertise in cybersecurity, endpoint protection, and IT systems support
             </p>
             <div class="stats">
                 <div class="stat-item">
@@ -487,7 +535,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section>
             <div class="certs-grid">
                 <!-- Introduction to Cybersecurity Badge -->
                 <div class="cert-card" onclick="window.open('certs/Introduction_to_Cybersecurity_Badge.pdf', '_blank')">
@@ -632,6 +680,7 @@
     </button>
 
     <script>
+        // Theme toggle functionality
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -640,10 +689,16 @@
             localStorage.setItem('theme', newTheme);
         }
 
+        // Load saved theme on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
         });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -660,6 +715,18 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
             });
         });
     </script>

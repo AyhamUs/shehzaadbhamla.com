@@ -13,175 +13,160 @@
     <meta name="keywords" content="Shehzaad Bhamla, Cybersecurity Tools, EDR, PAM, SIEM, Security Tools">
     <meta name="author" content="Shehzaad Bhamla">
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&family=DM+Sans:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --accent-cyan: #00f5d4;
+            --accent-purple: #9b5de5;
+            --accent-pink: #f15bb5;
+            --accent-yellow: #fee440;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --glow-cyan: 0 0 30px rgba(0, 245, 212, 0.3);
+            --glow-purple: 0 0 30px rgba(155, 93, 229, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --accent-cyan: #0077ff;
+            --accent-purple: #7c3aed;
+            --accent-pink: #ec4899;
+            --accent-yellow: #f59e0b;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --glow-cyan: 0 0 20px rgba(0, 119, 255, 0.2);
+            --glow-purple: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e17;
-            --bg-secondary: #121827;
-            --bg-tertiary: #1a2332;
-            --accent-cyan: #00f0ff;
-            --accent-green: #00ff88;
-            --accent-red: #ff3366;
-            --text-primary: #e8edf4;
-            --text-secondary: #8b96a8;
-            --text-tertiary: #5a6578;
-            --glow-cyan: rgba(0, 240, 255, 0.3);
-            --glow-green: rgba(0, 255, 136, 0.3);
-            --grid-color: rgba(0, 240, 255, 0.03);
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f8f9fa;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #e9ecef;
-            --accent-cyan: #0077ff;
-            --accent-green: #00c853;
-            --accent-red: #ff3366;
-            --text-primary: #1a1a1a;
-            --text-secondary: #4a5568;
-            --text-tertiary: #718096;
-            --glow-cyan: rgba(0, 119, 255, 0.2);
-            --glow-green: rgba(0, 200, 83, 0.2);
-            --grid-color: rgba(0, 119, 255, 0.05);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Outfit', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        body::before {
-            content: '';
+        /* Animated Background Grid */
+        .bg-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+                linear-gradient(rgba(0, 245, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 212, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .orb {
+        .bg-gradient {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 15s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(155, 93, 229, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0, 245, 212, 0.1), transparent);
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
         }
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-cyan);
-            top: -200px;
-            right: -100px;
+        [data-theme="light"] .bg-gradient {
+            opacity: 0.3;
         }
 
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-green);
-            bottom: -150px;
-            left: -100px;
-            animation-delay: 7s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            padding: 2rem 0;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
-            margin-bottom: 3rem;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--accent-cyan);
-            text-shadow: 0 0 20px var(--glow-cyan);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
-        .terminal-prompt {
-            color: var(--accent-green);
-            margin-right: 0.3rem;
+        .logo span {
+            color: var(--text-muted);
         }
 
-        nav {
+        .nav-links {
             display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
+            gap: 2.5rem;
+            list-style: none;
         }
 
-        nav a {
+        .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        nav a::before {
-            content: '> ';
-            color: var(--accent-cyan);
-            opacity: 0;
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            left: -15px;
-            transition: all 0.3s ease;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-cyan);
-            transform: translateX(5px);
+        .nav-links a:hover {
+            color: var(--text-primary);
         }
 
-        nav a:hover::before {
-            opacity: 1;
-            left: -20px;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
+        /* Theme Toggle */
         .theme-toggle {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border: 2px solid var(--accent-cyan);
             border-radius: 50px;
             width: 60px;
@@ -192,10 +177,11 @@
             display: flex;
             align-items: center;
             padding: 0 4px;
+            margin-left: 1rem;
         }
 
         .theme-toggle:hover {
-            box-shadow: 0 0 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
         }
 
         .theme-toggle-slider {
@@ -234,60 +220,72 @@
             opacity: 0;
         }
 
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 4rem 0 6rem;
+            padding: 10rem 0 4rem;
             text-align: center;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
 
         h1 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
         }
 
         .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 2rem auto;
-            color: var(--text-tertiary);
+            margin: 0 auto 4rem;
         }
 
-        .section {
-            margin: 4rem 0;
+        /* Section */
+        section {
+            padding: 4rem 3rem;
         }
 
         .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
             text-align: center;
+            letter-spacing: -1px;
         }
 
+        /* Tools Grid */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            margin-bottom: 4rem;
         }
 
         .tool-card {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
             padding: 2rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -301,47 +299,49 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .tool-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .tool-card:hover {
             border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .tool-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
         }
 
         .tool-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .tool-description {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
         }
 
         .tool-category {
-            padding: 0.3rem 0.8rem;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 20px;
-            font-size: 0.7rem;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
             color: var(--accent-cyan);
             display: inline-block;
         }
@@ -362,7 +362,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 4px 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
@@ -376,36 +376,75 @@
 
         .scroll-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--glow-cyan);
+            box-shadow: 0 8px 30px rgba(0, 245, 212, 0.4);
         }
 
         .scroll-to-top:active {
             transform: translateY(-2px);
         }
 
+        /* Footer */
         footer {
-            margin-top: 6rem;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            padding: 2rem 3rem;
             text-align: center;
-            color: var(--text-tertiary);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--bg-primary);
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
             .container {
                 padding: 0 1.5rem;
             }
 
-            header {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-                width: 100%;
+            section {
+                padding: 4rem 1.5rem;
             }
 
             .tools-grid {
@@ -415,46 +454,51 @@
     </style>
 </head>
 <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
 
-    <div class="container">
-        <header>
-            <a href="index.html" class="logo">
-                🛡️ S.BHAMLA
-            </a>
-            <nav>
-                <a href="index.html#about">About</a>
-                <a href="index.html#skills">Skills</a>
-                <a href="index.html#experience">Experience</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="certifications.html">Certifications</a>
-                <a href="tools.html">Tools</a>
-                <a href="index.html#contact">Contact</a>
+    <nav>
+        <a href="index.html" class="logo">shehzaad<span>.sec</span></a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li>
                 <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
                     <span class="theme-icon sun-icon">☀️</span>
                     <span class="theme-icon moon-icon">🌙</span>
                     <div class="theme-toggle-slider"></div>
                 </div>
-            </nav>
-        </header>
+            </li>
+        </ul>
+    </nav>
 
+    <div class="container">
         <section class="hero">
-            <h1>Security Arsenal</h1>
-            <p class="hero-subtitle">Tools & Technologies</p>
+            <p class="section-tag">// Arsenal</p>
+            <h1>Security Tools</h1>
             <p class="hero-description">
-                Cybersecurity and IT tools I use daily to protect digital assets, detect threats, and maintain robust security postures
+                Cybersecurity and IT tools used daily to protect digital assets, detect threats, and maintain robust security postures
             </p>
         </section>
 
-        <section class="section">
-            <h2 class="section-title">Security & Monitoring Tools</h2>
+        <section>
+            <h2 class="section-title">Security & Monitoring</h2>
             <div class="tools-grid">
                 <!-- CrowdStrike -->
                 <div class="tool-card" onclick="window.open('https://www.crowdstrike.com', '_blank')">
                     <div class="tool-icon">🦅</div>
                     <h3 class="tool-title">CrowdStrike Falcon</h3>
-                    <p class="tool-description">Cloud-native endpoint protection platform with AI-powered threat detection</p>
+                    <p class="tool-description">Cloud-native endpoint protection platform with AI-powered threat detection and response</p>
                     <span class="tool-category">EDR</span>
                 </div>
 
@@ -470,7 +514,15 @@
                 <div class="tool-card" onclick="window.open('https://www.qualys.com', '_blank')">
                     <div class="tool-icon">🔍</div>
                     <h3 class="tool-title">Qualys EDR</h3>
-                    <p class="tool-description">Endpoint detection, response and vulnerability management</p>
+                    <p class="tool-description">Endpoint detection, response and vulnerability management solution</p>
+                    <span class="tool-category">EDR</span>
+                </div>
+
+                <!-- SentinelOne -->
+                <div class="tool-card" onclick="window.open('https://www.sentinelone.com', '_blank')">
+                    <div class="tool-icon">🤖</div>
+                    <h3 class="tool-title">SentinelOne</h3>
+                    <p class="tool-description">Autonomous AI-powered endpoint security and XDR platform</p>
                     <span class="tool-category">EDR</span>
                 </div>
 
@@ -478,7 +530,7 @@
                 <div class="tool-card" onclick="window.open('https://www.tenable.com/products/nessus', '_blank')">
                     <div class="tool-icon">🐛</div>
                     <h3 class="tool-title">Nessus</h3>
-                    <p class="tool-description">Vulnerability scanner for identifying security weaknesses</p>
+                    <p class="tool-description">Comprehensive vulnerability scanner for identifying security weaknesses</p>
                     <span class="tool-category">Vulnerability</span>
                 </div>
 
@@ -486,7 +538,7 @@
                 <div class="tool-card" onclick="window.open('https://www.wireshark.org', '_blank')">
                     <div class="tool-icon">📡</div>
                     <h3 class="tool-title">Wireshark</h3>
-                    <p class="tool-description">Network protocol analyzer for packet capture and analysis</p>
+                    <p class="tool-description">Network protocol analyzer for packet capture and deep inspection</p>
                     <span class="tool-category">Network</span>
                 </div>
 
@@ -494,7 +546,7 @@
                 <div class="tool-card" onclick="window.open('https://nmap.org', '_blank')">
                     <div class="tool-icon">🔎</div>
                     <h3 class="tool-title">Nmap</h3>
-                    <p class="tool-description">Network discovery and security auditing tool</p>
+                    <p class="tool-description">Network discovery and security auditing tool for scanning hosts</p>
                     <span class="tool-category">Network</span>
                 </div>
 
@@ -508,14 +560,14 @@
             </div>
         </section>
 
-        <section class="section">
+        <section>
             <h2 class="section-title">Identity & Access Management</h2>
             <div class="tools-grid">
                 <!-- Thycotic/Delinea PAM -->
                 <div class="tool-card" onclick="window.open('https://delinea.com', '_blank')">
                     <div class="tool-icon">🔐</div>
                     <h3 class="tool-title">Thycotic/Delinea PAM</h3>
-                    <p class="tool-description">Privileged access management for securing admin credentials</p>
+                    <p class="tool-description">Privileged access management for securing administrative credentials</p>
                     <span class="tool-category">PAM</span>
                 </div>
 
@@ -523,29 +575,37 @@
                 <div class="tool-card" onclick="window.open('https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-domain-services', '_blank')">
                     <div class="tool-icon">🏢</div>
                     <h3 class="tool-title">Active Directory</h3>
-                    <p class="tool-description">Directory service for Windows domain networks</p>
+                    <p class="tool-description">Directory service for Windows domain networks and user management</p>
                     <span class="tool-category">Identity</span>
                 </div>
 
                 <!-- Azure AD -->
                 <div class="tool-card" onclick="window.open('https://azure.microsoft.com/en-us/services/active-directory/', '_blank')">
                     <div class="tool-icon">☁️</div>
-                    <h3 class="tool-title">Azure AD / Microsoft Entra</h3>
+                    <h3 class="tool-title">Azure AD / Entra</h3>
                     <p class="tool-description">Cloud-based identity and access management service</p>
                     <span class="tool-category">Identity</span>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section>
             <h2 class="section-title">Cloud & Device Management</h2>
             <div class="tools-grid">
                 <!-- Microsoft Intune -->
                 <div class="tool-card" onclick="window.open('https://www.microsoft.com/en-us/security/business/microsoft-intune', '_blank')">
                     <div class="tool-icon">📱</div>
                     <h3 class="tool-title">Microsoft Intune</h3>
-                    <p class="tool-description">Cloud-based unified endpoint management platform</p>
+                    <p class="tool-description">Cloud-based unified endpoint management platform for devices</p>
                     <span class="tool-category">MDM</span>
+                </div>
+
+                <!-- Microsoft Autopilot -->
+                <div class="tool-card" onclick="window.open('https://docs.microsoft.com/en-us/mem/autopilot/', '_blank')">
+                    <div class="tool-icon">🚀</div>
+                    <h3 class="tool-title">Microsoft Autopilot</h3>
+                    <p class="tool-description">Cloud-based device deployment and configuration service</p>
+                    <span class="tool-category">Deployment</span>
                 </div>
 
                 <!-- Microsoft Exchange -->
@@ -569,6 +629,7 @@
     </button>
 
     <script>
+        // Theme toggle functionality
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -577,10 +638,16 @@
             localStorage.setItem('theme', newTheme);
         }
 
+        // Load saved theme on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
         });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -597,6 +664,18 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
             });
         });
     </script>

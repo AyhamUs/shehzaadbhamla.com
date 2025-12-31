@@ -20,193 +20,160 @@
     <meta property="og:url" content="https://shehzaadbhamla.com" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&family=DM+Sans:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --accent-cyan: #00f5d4;
+            --accent-purple: #9b5de5;
+            --accent-pink: #f15bb5;
+            --accent-yellow: #fee440;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --glow-cyan: 0 0 30px rgba(0, 245, 212, 0.3);
+            --glow-purple: 0 0 30px rgba(155, 93, 229, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --accent-cyan: #0077ff;
+            --accent-purple: #7c3aed;
+            --accent-pink: #ec4899;
+            --accent-yellow: #f59e0b;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --glow-cyan: 0 0 20px rgba(0, 119, 255, 0.2);
+            --glow-purple: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e17;
-            --bg-secondary: #121827;
-            --bg-tertiary: #1a2332;
-            --accent-cyan: #00f0ff;
-            --accent-green: #00ff88;
-            --accent-red: #ff3366;
-            --text-primary: #e8edf4;
-            --text-secondary: #8b96a8;
-            --text-tertiary: #5a6578;
-            --glow-cyan: rgba(0, 240, 255, 0.3);
-            --glow-green: rgba(0, 255, 136, 0.3);
-            --grid-color: rgba(0, 240, 255, 0.03);
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f8f9fa;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #e9ecef;
-            --accent-cyan: #0077ff;
-            --accent-green: #00c853;
-            --accent-red: #ff3366;
-            --text-primary: #1a1a1a;
-            --text-secondary: #4a5568;
-            --text-tertiary: #718096;
-            --glow-cyan: rgba(0, 119, 255, 0.2);
-            --glow-green: rgba(0, 200, 83, 0.2);
-            --grid-color: rgba(0, 119, 255, 0.05);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Outfit', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Animated background grid */
-        body::before {
-            content: '';
+        /* Animated Background Grid */
+        .bg-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+                linear-gradient(rgba(0, 245, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 212, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
-            z-index: 0;
-            transition: background-image 0.3s ease;
+            z-index: -1;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        /* Glowing orbs */
-        .orb {
+        .bg-gradient {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 15s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(155, 93, 229, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0, 245, 212, 0.1), transparent);
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
         }
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-cyan);
-            top: -200px;
-            right: -100px;
-            animation-delay: 0s;
+        [data-theme="light"] .bg-gradient {
+            opacity: 0.3;
         }
 
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-green);
-            bottom: -150px;
-            left: -100px;
-            animation-delay: 7s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header/Navigation */
-        header {
-            padding: 2rem 0;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
-            margin-bottom: 3rem;
-            animation: slideDown 0.8s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--accent-cyan);
-            text-shadow: 0 0 20px var(--glow-cyan);
+            text-decoration: none;
             letter-spacing: -0.5px;
         }
 
-        .terminal-prompt {
-            color: var(--accent-green);
-            margin-right: 0.3rem;
+        .logo span {
+            color: var(--text-muted);
         }
 
-        nav {
+        .nav-links {
             display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
+            gap: 2.5rem;
+            list-style: none;
         }
 
-        nav a {
+        .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        nav a::before {
-            content: '> ';
-            color: var(--accent-cyan);
-            opacity: 0;
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            left: -15px;
-            transition: all 0.3s ease;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-cyan);
-            transform: translateX(5px);
+        .nav-links a:hover {
+            color: var(--text-primary);
         }
 
-        nav a:hover::before {
-            opacity: 1;
-            left: -20px;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Theme Toggle */
         .theme-toggle {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border: 2px solid var(--accent-cyan);
             border-radius: 50px;
             width: 60px;
@@ -217,10 +184,11 @@
             display: flex;
             align-items: center;
             padding: 0 4px;
+            margin-left: 1rem;
         }
 
         .theme-toggle:hover {
-            box-shadow: 0 0 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
         }
 
         .theme-toggle-slider {
@@ -265,15 +233,121 @@
 
         /* Hero Section */
         .hero {
-            padding: 4rem 0 6rem;
-            animation: fadeIn 1s ease-out 0.3s both;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
         }
 
-        @keyframes fadeIn {
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -281,129 +355,34 @@
             }
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--accent-green);
-            border-radius: 50px;
-            color: var(--accent-green);
-            font-size: 0.8rem;
-            margin-bottom: 2rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 var(--glow-green); }
-            50% { box-shadow: 0 0 20px 5px var(--glow-green); }
-        }
-
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            margin-right: 0.5rem;
-            animation: blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        h1 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .hero-description {
-            max-width: 700px;
-            font-size: 1rem;
-            color: var(--text-tertiary);
-            margin: 0 auto 3rem auto;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--accent-cyan);
-            color: var(--bg-primary);
-            box-shadow: 0 0 30px var(--glow-cyan);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px var(--glow-cyan);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--accent-cyan);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 240, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Terminal Window */
-        .terminal-section {
-            margin: 6rem 0;
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-
-        .terminal {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+        /* Terminal Decoration */
+        .hero-terminal {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            background: var(--bg-card);
             border-radius: 12px;
+            border: 1px solid var(--border-subtle);
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease 0.5s forwards;
+            opacity: 0;
+            display: none;
+        }
+
+        @media (min-width: 1200px) {
+            .hero-terminal {
+                display: block;
+            }
         }
 
         .terminal-header {
-            background: var(--bg-tertiary);
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
         }
 
         .terminal-dot {
@@ -412,74 +391,135 @@
             border-radius: 50%;
         }
 
-        .dot-red { background: var(--accent-red); }
-        .dot-yellow { background: #ffaa00; }
-        .dot-green { background: var(--accent-green); }
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27c93f; }
 
         .terminal-body {
-            padding: 2rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
         .terminal-line {
-            margin-bottom: 0.8rem;
-            animation: typeWriter 0.05s steps(1) both;
+            margin-bottom: 0.5rem;
         }
 
-        .terminal-line:nth-child(1) { animation-delay: 0.7s; }
-        .terminal-line:nth-child(2) { animation-delay: 1s; }
-        .terminal-line:nth-child(3) { animation-delay: 1.3s; }
-        .terminal-line:nth-child(4) { animation-delay: 1.6s; }
-        .terminal-line:nth-child(5) { animation-delay: 1.9s; }
-        .terminal-line:nth-child(6) { animation-delay: 2.2s; }
+        .terminal-prompt {
+            color: var(--accent-cyan);
+        }
 
-        @keyframes typeWriter {
-            from { opacity: 0; }
+        .terminal-command {
+            color: var(--accent-yellow);
+        }
+
+        .terminal-output {
+            color: var(--text-muted);
+            margin-left: 1rem;
+        }
+
+        @keyframes fadeIn {
             to { opacity: 1; }
         }
 
-        .prompt { color: var(--accent-green); }
-        .command { color: var(--accent-cyan); }
-        .output { color: var(--text-secondary); }
-        .success { color: var(--accent-green); }
-
         /* Section Styles */
-        .section {
-            margin: 6rem 0;
-            animation: fadeIn 1s ease-out 0.9s both;
+        section {
+            padding: 6rem 3rem;
         }
 
         .section-header {
-            margin-bottom: 3rem;
-            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -1px;
         }
 
-        .section-subtitle {
-            color: var(--text-tertiary);
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
 
-        /* Skills Grid */
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-card {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
+            background: var(--bg-card);
             padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -492,57 +532,49 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .skill-card:hover {
+            transform: translateY(-4px);
             border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
         }
 
         .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .skill-description {
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-tags {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 245, 212, 0.1);
+            border-radius: 10px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--accent-cyan);
+        .skill-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
-        /* Timeline */
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Experience Timeline */
+        .experience {
+            background: var(--bg-secondary);
+        }
+
         .timeline {
             position: relative;
             padding-left: 3rem;
@@ -555,15 +587,15 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-green));
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
         }
 
         .timeline-item {
             position: relative;
             margin-bottom: 3rem;
             padding: 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 12px;
             transition: all 0.3s ease;
         }
@@ -577,36 +609,36 @@
             height: 12px;
             background: var(--accent-cyan);
             border-radius: 50%;
-            box-shadow: 0 0 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
         }
 
         .timeline-item:hover {
-            border-color: var(--accent-green);
+            border-color: var(--accent-cyan);
             transform: translateX(10px);
         }
 
         .timeline-date {
-            color: var(--accent-green);
-            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .timeline-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--text-primary);
         }
 
-        .timeline-description {
-            color: var(--text-tertiary);
+        .timeline-company {
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
 
         .timeline-list {
-            color: var(--text-tertiary);
+            color: var(--text-secondary);
             margin-left: 1.5rem;
         }
 
@@ -614,7 +646,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Projects Grid */
+        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -622,50 +654,42 @@
         }
 
         .project-card {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
         }
 
         .project-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .project-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .project-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
-            border-radius: 12px;
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
-            font-size: 1.5rem;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
+        .project-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg,
+                rgba(0, 245, 212, 0.1) 0%,
+                transparent 50%,
+                rgba(155, 93, 229, 0.1) 100%);
         }
 
-        .project-description {
-            color: var(--text-tertiary);
-            margin-bottom: 1rem;
-            flex-grow: 1;
+        .project-content {
+            padding: 1.75rem;
         }
 
         .project-tags {
@@ -675,62 +699,130 @@
             margin-bottom: 1rem;
         }
 
+        .project-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 245, 212, 0.1);
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+        }
+
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
         .project-status {
-            text-align: right;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             font-size: 0.85rem;
         }
 
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        /* Interests Section */
+        .interests {
+            background: var(--bg-secondary);
         }
 
-        .contact-card {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
+        .interests-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            background: var(--bg-card);
+            border-radius: 100px;
+            border: 1px solid var(--border-subtle);
             transition: all 0.3s ease;
         }
 
-        .contact-card:hover {
-            border-color: var(--accent-cyan);
+        .interest-item:hover {
+            border-color: var(--accent-purple);
             transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
         }
 
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-cyan);
+        .interest-icon {
+            font-size: 1.5rem;
         }
 
-        .contact-label {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
+        .interest-item span {
+            font-weight: 500;
         }
 
-        .contact-value {
-            font-size: 1.1rem;
+        /* Contact Section */
+        .contact-description {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
             color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .contact-value a {
-            color: var(--accent-cyan);
             text-decoration: none;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
-        .contact-value a:hover {
-            color: var(--accent-green);
-            text-shadow: 0 0 10px var(--glow-cyan);
+        .contact-link:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: var(--glow-cyan);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--accent-cyan);
+        }
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Scroll to Top Button */
@@ -749,7 +841,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 4px 20px var(--glow-cyan);
+            box-shadow: var(--glow-cyan);
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
@@ -763,42 +855,67 @@
 
         .scroll-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--glow-cyan);
+            box-shadow: 0 8px 30px rgba(0, 245, 212, 0.4);
         }
 
         .scroll-to-top:active {
             transform: translateY(-2px);
         }
 
-        /* Footer */
-        footer {
-            margin-top: 8rem;
-            padding: 3rem 0;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
-            text-align: center;
-            color: var(--text-tertiary);
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
-        /* Responsive */
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            header {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
                 width: 100%;
+                flex-direction: column;
+                background: var(--bg-primary);
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            section {
+                padding: 4rem 1.5rem;
             }
 
             .hero {
-                padding: 2rem 0 4rem;
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
             .timeline {
@@ -808,436 +925,389 @@
             .timeline-item::before {
                 left: -2.5rem;
             }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
 
-    <div class="container">
-        <header>
-            <div class="logo">
-                🛡️ S.BHAMLA
-            </div>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="certifications.html">Certifications</a>
-                <a href="tools.html">Tools</a>
-                <a href="#contact">Contact</a>
+    <nav>
+        <a href="#" class="logo">shehzaad<span>.sec</span></a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
                 <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
                     <span class="theme-icon sun-icon">☀️</span>
                     <span class="theme-icon moon-icon">🌙</span>
                     <div class="theme-toggle-slider"></div>
                 </div>
-            </nav>
-        </header>
+            </li>
+        </ul>
+    </nav>
 
-        <section id="home" class="hero">
-            <div class="status-badge">
-                <span class="status-dot"></span>
-                SYSTEMS SECURED
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">
+                <span>Systems Secured</span>
             </div>
             <h1>Shehzaad Bhamla</h1>
-            <div class="hero-subtitle">Cybersecurity Analyst • Digital Guardian</div>
             <p class="hero-description">
                 Protecting digital assets through proactive threat detection, endpoint security management,
                 and security awareness initiatives. Specializing in PAM implementation, EDR monitoring,
                 and Phishing defense strategies.
             </p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                <a href="#experience" class="btn btn-secondary">View Experience</a>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View Projects →</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
             </div>
-        </section>
+        </div>
 
-        <section class="terminal-section">
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="terminal-dot dot-red"></div>
-                    <div class="terminal-dot dot-yellow"></div>
-                    <div class="terminal-dot dot-green"></div>
-                    <span style="margin-left: 1rem; font-size: 0.85rem; color: var(--text-tertiary);">security_status.sh</span>
-                </div>
-                <div class="terminal-body">
-                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">whoami</span></div>
-                    <div class="terminal-line"><span class="output">Cybersecurity Analyst @ Generac | Milwaukee, WI</span></div>
-                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">cat certifications.txt</span></div>
-                    <div class="terminal-line"><span class="output">ISC2 Certified in Cybersecurity | CompTIA Security Pro | Qualys EDR</span></div>
-                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">./check_threats.sh</span></div>
-                    <div class="terminal-line"><span class="success">✓ All systems secured. Monitoring active.</span></div>
-                </div>
+        <div class="hero-terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
             </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Security Professional & Continuous Learner</p>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">➜ </span>
+                    <span class="terminal-command">whoami</span>
+                </div>
+                <div class="terminal-line terminal-output">Cybersecurity Analyst @ Generac</div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">➜ </span>
+                    <span class="terminal-command">cat certifications.txt</span>
+                </div>
+                <div class="terminal-line terminal-output">ISC2 CC | CompTIA Security Pro | Qualys EDR</div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">➜ </span>
+                    <span class="terminal-command">./check_threats.sh</span>
+                </div>
+                <div class="terminal-line terminal-output">[✓] All systems secured</div>
             </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🛡️</div>
-                    <h3 class="skill-title">Security Professional</h3>
-                    <p class="skill-description">
-                        I'm a passionate cybersecurity analyst with expertise in implementing PAM solutions,
-                        managing endpoint security with tools like CrowdStrike EDR, conducting phishing awareness campaigns,
-                        and ensuring robust security postures across enterprise environments.
-                    </p>
-                </div>
+        </div>
+    </section>
 
-                <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
-                    <h3 class="skill-title">My Approach</h3>
-                    <p class="skill-description">
-                        My journey in cybersecurity is driven by a commitment to protecting digital assets
-                        and staying ahead of emerging threats through continuous learning and practical application.
-                    </p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">⚡</div>
-                    <h3 class="skill-title">Personal Interests</h3>
-                    <p class="skill-description">
-                        Beyond cybersecurity, I'm passionate about staying active through tennis, basketball, and golf.
-                        I believe in maintaining a healthy work-life balance and constantly challenging myself
-                        both physically and intellectually.
-                    </p>
-                </div>
+    <section id="about" class="about">
+        <div class="section-header">
+            <p class="section-tag">// About</p>
+            <h2 class="section-title">Security Professional & Continuous Learner</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    I'm a passionate cybersecurity analyst with expertise in implementing PAM solutions,
+                    managing endpoint security with tools like CrowdStrike EDR, conducting phishing awareness campaigns,
+                    and ensuring robust security postures across enterprise environments.
+                </p>
+                <p>
+                    My journey in cybersecurity is driven by a commitment to protecting digital assets
+                    and staying ahead of emerging threats through continuous learning and practical application.
+                </p>
+                <p>
+                    Beyond cybersecurity, I'm passionate about staying active through tennis, basketball, and golf.
+                    I believe in maintaining a healthy work-life balance and constantly challenging myself
+                    both physically and intellectually.
+                </p>
             </div>
-        </section>
-
-        <section id="skills" class="section">
-            <div class="section-header">
-                <h2 class="section-title">Core Competencies</h2>
-                <p class="section-subtitle">Technical arsenal for modern threat landscape</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🛡️</div>
-                    <h3 class="skill-title">Endpoint Security</h3>
-                    <p class="skill-description">Advanced threat detection and response using enterprise-grade EDR platforms</p>
-                    <div class="skill-tags">
-                        <span class="tag">CrowdStrike</span>
-                        <span class="tag">SentinelOne</span>
-                        <span class="tag">Microsoft Defender</span>
-                    </div>
+            <div class="about-stats">
+                <div class="stat-card reveal">
+                    <div class="stat-icon">🎓</div>
+                    <p class="stat-label">Education</p>
+                    <p class="stat-value">UW-Milwaukee</p>
                 </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🔐</div>
-                    <h3 class="skill-title">Access Management</h3>
-                    <p class="skill-description">Implementing privileged access controls and identity security</p>
-                    <div class="skill-tags">
-                        <span class="tag">Thycotic PAM</span>
-                        <span class="tag">Azure AD</span>
-                        <span class="tag">Least Privilege</span>
-                    </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">🏢</div>
+                    <p class="stat-label">Current Role</p>
+                    <p class="stat-value">Generac</p>
                 </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🎣</div>
-                    <h3 class="skill-title">Phishing Defense</h3>
-                    <p class="skill-description">Security awareness training and simulated attack campaigns</p>
-                    <div class="skill-tags">
-                        <span class="tag">KnowBe4</span>
-                        <span class="tag">Email Trace</span>
-                        <span class="tag">User Training</span>
-                    </div>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">🛡️</div>
+                    <p class="stat-label">Specialization</p>
+                    <p class="stat-value">Security</p>
                 </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">📊</div>
-                    <h3 class="skill-title">Network Analysis</h3>
-                    <p class="skill-description">Traffic monitoring and packet-level investigation</p>
-                    <div class="skill-tags">
-                        <span class="tag">Wireshark</span>
-                        <span class="tag">TCPDump</span>
-                        <span class="tag">Network Protection</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">☁️</div>
-                    <h3 class="skill-title">Cloud Security</h3>
-                    <p class="skill-description">Azure infrastructure and device management</p>
-                    <div class="skill-tags">
-                        <span class="tag">Azure AD</span>
-                        <span class="tag">Autopilot</span>
-                        <span class="tag">Intune</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🔍</div>
-                    <h3 class="skill-title">Vulnerability Management</h3>
-                    <p class="skill-description">Continuous scanning and remediation workflows</p>
-                    <div class="skill-tags">
-                        <span class="tag">Nessus</span>
-                        <span class="tag">Risk Assessment</span>
-                        <span class="tag">Patching</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🛡️</div>
-                    <h3 class="skill-title">Microsoft Defender</h3>
-                    <p class="skill-description">Endpoint protection and threat intelligence analysis</p>
-                    <div class="skill-tags">
-                        <span class="tag">Defender ATP</span>
-                        <span class="tag">Threat Analytics</span>
-                        <span class="tag">Security Alerts</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">🔒</div>
-                    <h3 class="skill-title">SIEM & SOC</h3>
-                    <p class="skill-description">Security information and event management operations</p>
-                    <div class="skill-tags">
-                        <span class="tag">Log Analysis</span>
-                        <span class="tag">Event Correlation</span>
-                        <span class="tag">Incident Detection</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="experience" class="section">
-            <div class="section-header">
-                <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">Building expertise through hands-on security operations</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">MARCH 2025 - PRESENT</div>
-                    <h3 class="timeline-title">Cybersecurity Analyst</h3>
-                    <p class="timeline-description">Generac • Milwaukee, WI</p>
-                    <ul class="timeline-list">
-                        <li>Implemented PAM solutions (Thycotic) to secure administrative access and enforce least privilege</li>
-                        <li>Monitor endpoints using CrowdStrike and SentinelOne EDR platforms</li>
-                        <li>Investigate Microsoft Defender alerts and perform incident triage</li>
-                        <li>Execute KnowBe4 phishing simulations and security awareness campaigns</li>
-                        <li>Conduct Microsoft Exchange email trace analysis for threat detection</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">AUGUST 2022 - PRESENT</div>
-                    <h3 class="timeline-title">Systems Support Specialist</h3>
-                    <p class="timeline-description">Generac • Milwaukee, WI</p>
-                    <ul class="timeline-list">
-                        <li>Resolved Level 1 technical issues with hardware, software, and peripherals</li>
-                        <li>Deployed devices using Microsoft Autopilot and Azure AD</li>
-                        <li>Created technical documentation and training materials</li>
-                        <li>Collaborated with cross-functional teams for issue resolution</li>
-                    </ul>
-                </div>
-
-                <div id="additional-experience" style="display: none;">
-                    <div class="timeline-item">
-                        <div class="timeline-date">JUNE 2019 - AUGUST 2022</div>
-                        <h3 class="timeline-title">Gas Station Manager</h3>
-                        <p class="timeline-description">Mians Oil Clark • Milwaukee, WI</p>
-                        <ul class="timeline-list">
-                            <li>Trained and managed employee teams</li>
-                            <li>Identified business needs and solutions</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">JUNE 2017 - MAY 2019</div>
-                        <h3 class="timeline-title">Valet</h3>
-                        <p class="timeline-description">Progressive Parking Solutions • Milwaukee, WI</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">SEPTEMBER 2016 - MAY 2017</div>
-                        <h3 class="timeline-title">Dairy Clerk</h3>
-                        <p class="timeline-description">Pick N Save • Milwaukee, WI</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 2rem;">
-                    <button id="toggle-experience" class="btn btn-secondary" onclick="toggleExperience()">
-                        Show More Experience
-                    </button>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">📈</div>
+                    <p class="stat-label">Approach</p>
+                    <p class="stat-value">Proactive</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="section">
-            <div class="section-header">
-                <h2 class="section-title">Projects & Learning</h2>
-                <p class="section-subtitle">Hands-on cybersecurity projects and continuous learning initiatives</p>
+    <section id="skills">
+        <div class="section-header">
+            <p class="section-tag">// Expertise</p>
+            <h2 class="section-title">Core Competencies</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-icon">🛡️</div>
+                <h3>Endpoint Security</h3>
+                <p>Advanced threat detection and response using enterprise-grade EDR platforms like CrowdStrike and SentinelOne.</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">💻</div>
-                        <h3 class="project-title">SIEM & Analyst Relationship</h3>
-                    </div>
-                    <p class="project-description">
-                        Gained understanding of SIEM tools and their relationship with security analysts, including event correlation and incident detection.
-                    </p>
+            <div class="skill-card reveal">
+                <div class="skill-icon">🔐</div>
+                <h3>Access Management</h3>
+                <p>Implementing privileged access controls and identity security with Thycotic PAM and Azure AD.</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">🎣</div>
+                <h3>Phishing Defense</h3>
+                <p>Security awareness training and simulated attack campaigns using KnowBe4 and email trace analysis.</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">📊</div>
+                <h3>Network Analysis</h3>
+                <p>Traffic monitoring and packet-level investigation with Wireshark and TCPDump.</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">☁️</div>
+                <h3>Cloud Security</h3>
+                <p>Azure infrastructure and device management with Autopilot and Intune.</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">🔍</div>
+                <h3>Vulnerability Management</h3>
+                <p>Continuous scanning and remediation workflows using Nessus and risk assessment tools.</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">🛡️</div>
+                <h3>Microsoft Defender</h3>
+                <p>Endpoint protection and threat intelligence analysis with Defender ATP.</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">🔒</div>
+                <h3>SIEM & SOC</h3>
+                <p>Security information and event management operations with log analysis and correlation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="section-header">
+            <p class="section-tag">// Career</p>
+            <h2 class="section-title">Professional Journey</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-date">MARCH 2025 - PRESENT</div>
+                <h3 class="timeline-title">Cybersecurity Analyst</h3>
+                <p class="timeline-company">Generac • Milwaukee, WI</p>
+                <ul class="timeline-list">
+                    <li>Implemented PAM solutions (Thycotic) to secure administrative access and enforce least privilege</li>
+                    <li>Monitor endpoints using CrowdStrike and SentinelOne EDR platforms</li>
+                    <li>Investigate Microsoft Defender alerts and perform incident triage</li>
+                    <li>Execute KnowBe4 phishing simulations and security awareness campaigns</li>
+                    <li>Conduct Microsoft Exchange email trace analysis for threat detection</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-date">AUGUST 2022 - PRESENT</div>
+                <h3 class="timeline-title">Systems Support Specialist</h3>
+                <p class="timeline-company">Generac • Milwaukee, WI</p>
+                <ul class="timeline-list">
+                    <li>Resolved Level 1 technical issues with hardware, software, and peripherals</li>
+                    <li>Deployed devices using Microsoft Autopilot and Azure AD</li>
+                    <li>Created technical documentation and training materials</li>
+                    <li>Collaborated with cross-functional teams for issue resolution</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <p class="section-tag">// Portfolio</p>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-image">💻</div>
+                <div class="project-content">
                     <div class="project-tags">
-                        <span class="tag">SIEM</span>
-                        <span class="tag">SOC</span>
-                        <span class="tag">LetsDefend</span>
+                        <span class="project-tag">SIEM</span>
+                        <span class="project-tag">SOC</span>
+                        <span class="project-tag">LetsDefend</span>
                     </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">📄</div>
-                    <h3 class="project-title">Log Management</h3>
-                    <p class="project-description">
-                        Explored log normalization, correlation for threat detection, and hands-on experience with log queries for security investigations.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Log Analysis</span>
-                        <span class="tag">Correlation</span>
-                        <span class="tag">Queries</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🖥️</div>
-                    <h3 class="project-title">EDR Implementation</h3>
-                    <p class="project-description">
-                        Acquired knowledge of EDR tools for endpoint monitoring, threat detection, and incident response including system isolation and forensics.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">EDR</span>
-                        <span class="tag">Incident Response</span>
-                        <span class="tag">Forensics</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🤖</div>
-                    <h3 class="project-title">SOAR Platform</h3>
-                    <p class="project-description">
-                        Understanding SOAR platforms for automating security processes and integrating with SIEM, EDR, and other security tools.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">SOAR</span>
-                        <span class="tag">Automation</span>
-                        <span class="tag">Integration</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🔍</div>
-                    <h3 class="project-title">TryHackMe Nmap</h3>
-                    <p class="project-description">
-                        Mastered network scanning fundamentals including TCP/UDP scans, NSE scripting, and firewall evasion techniques.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Nmap</span>
-                        <span class="tag">Network Scanning</span>
-                        <span class="tag">NSE</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🐧</div>
-                    <h3 class="project-title">Linux Fundamentals</h3>
-                    <p class="project-description">
-                        Advanced Linux command line skills including file navigation, shell operators, piping, and system administration basics.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Linux</span>
-                        <span class="tag">Command Line</span>
-                        <span class="tag">TryHackMe</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🐛</div>
-                    <h3 class="project-title">Nessus Vulnerability Assessment</h3>
-                    <p class="project-description">
-                        Configured Nessus Essentials for comprehensive vulnerability scanning and implemented full vulnerability management lifecycle.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Nessus</span>
-                        <span class="tag">Vulnerability Scanning</span>
-                        <span class="tag">Risk Management</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">📡</div>
-                    <h3 class="project-title">Wireshark Network Analysis</h3>
-                    <p class="project-description">
-                        Packet capture and analysis expertise using Wireshark for HTTP/HTTPS traffic analysis and network security monitoring.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Wireshark</span>
-                        <span class="tag">Packet Analysis</span>
-                        <span class="tag">Traffic Monitoring</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">🦠</div>
-                    <h3 class="project-title">Malware & Phishing Analysis</h3>
-                    <p class="project-description">
-                        Configured secure virtual environments for malware analysis using specialized tools like Procmon and network monitoring. Detected instances of phishing email campaigns and associated cyberattack activities.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Malware Analysis</span>
-                        <span class="tag">Virtual Labs</span>
-                        <span class="tag">Procmon</span>
-                    </div>
-                    <div class="project-status">✓ Completed</div>
+                    <h3>SIEM & Analyst Relationship</h3>
+                    <p>Gained understanding of SIEM tools and their relationship with security analysts, including event correlation and incident detection.</p>
+                    <p class="project-status">✓ Completed</p>
                 </div>
             </div>
-        </section>
 
-        <section id="contact" class="section">
-            <div class="section-header">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Open to cybersecurity opportunities and collaborations</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value"><a href="mailto:sbhamla@icloud.com">sbhamla@icloud.com</a></div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-label">Location</div>
-                    <div class="contact-value">Milwaukee, WI</div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">💼</div>
-                    <div class="contact-label">LinkedIn</div>
-                    <div class="contact-value"><a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank">Connect with me</a></div>
+            <div class="project-card reveal">
+                <div class="project-image">📄</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Log Analysis</span>
+                        <span class="project-tag">Correlation</span>
+                    </div>
+                    <h3>Log Management</h3>
+                    <p>Explored log normalization, correlation for threat detection, and hands-on experience with log queries for security investigations.</p>
+                    <p class="project-status">✓ Completed</p>
                 </div>
             </div>
-        </section>
 
-        <footer>
-            <p>&copy; 2026 Shehzaad Bhamla. Securing the digital frontier, one endpoint at a time.</p>
-        </footer>
-    </div>
+            <div class="project-card reveal">
+                <div class="project-image">🖥️</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">EDR</span>
+                        <span class="project-tag">Incident Response</span>
+                    </div>
+                    <h3>EDR Implementation</h3>
+                    <p>Acquired knowledge of EDR tools for endpoint monitoring, threat detection, and incident response including system isolation and forensics.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">SOAR</span>
+                        <span class="project-tag">Automation</span>
+                    </div>
+                    <h3>SOAR Platform</h3>
+                    <p>Understanding SOAR platforms for automating security processes and integrating with SIEM, EDR, and other security tools.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🔍</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Nmap</span>
+                        <span class="project-tag">Network Scanning</span>
+                    </div>
+                    <h3>TryHackMe Nmap</h3>
+                    <p>Mastered network scanning fundamentals including TCP/UDP scans, NSE scripting, and firewall evasion techniques.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🐧</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Linux</span>
+                        <span class="project-tag">CLI</span>
+                    </div>
+                    <h3>Linux Fundamentals</h3>
+                    <p>Advanced Linux command line skills including file navigation, shell operators, piping, and system administration basics.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🐛</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Nessus</span>
+                        <span class="project-tag">Risk Management</span>
+                    </div>
+                    <h3>Nessus Vulnerability Assessment</h3>
+                    <p>Configured Nessus Essentials for comprehensive vulnerability scanning and implemented full vulnerability management lifecycle.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">📡</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Wireshark</span>
+                        <span class="project-tag">Packet Analysis</span>
+                    </div>
+                    <h3>Wireshark Network Analysis</h3>
+                    <p>Packet capture and analysis expertise using Wireshark for HTTP/HTTPS traffic analysis and network security monitoring.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-image">🦠</div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Malware</span>
+                        <span class="project-tag">Virtual Lab</span>
+                    </div>
+                    <h3>Malware & Phishing Analysis</h3>
+                    <p>Configured secure virtual environments for malware analysis using specialized tools like Procmon and network monitoring.</p>
+                    <p class="project-status">✓ Completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="interests">
+        <div class="section-header" style="text-align: center;">
+            <p class="section-tag">// Beyond the Screen</p>
+            <h2 class="section-title">Personal Interests</h2>
+        </div>
+        <div class="interests-content">
+            <div class="interest-item reveal">
+                <span class="interest-icon">🎾</span>
+                <span>Tennis</span>
+            </div>
+            <div class="interest-item reveal">
+                <span class="interest-icon">🏀</span>
+                <span>Basketball</span>
+            </div>
+            <div class="interest-item reveal">
+                <span class="interest-icon">⛳</span>
+                <span>Golf</span>
+            </div>
+            <div class="interest-item reveal">
+                <span class="interest-icon">📚</span>
+                <span>Continuous Learning</span>
+            </div>
+            <div class="interest-item reveal">
+                <span class="interest-icon">🧠</span>
+                <span>Problem Solving</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header" style="text-align: center;">
+            <p class="section-tag">// Connect</p>
+            <h2 class="section-title">Let's Connect</h2>
+        </div>
+        <p class="contact-description">
+            Open to cybersecurity opportunities and collaborations. Feel free to reach out!
+        </p>
+        <div class="contact-links">
+            <a href="mailto:sbhamla@icloud.com" class="contact-link">
+                📧 Email
+            </a>
+            <a href="https://www.linkedin.com/in/shehzaad-bhamla-ab8630208" target="_blank" class="contact-link">
+                💼 LinkedIn
+            </a>
+            <a href="#" class="contact-link">
+                📍 Milwaukee, WI
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Shehzaad Bhamla. Securing the digital frontier, one endpoint at a time.</p>
+    </footer>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
@@ -1250,7 +1320,6 @@
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         }
@@ -1261,38 +1330,32 @@
             document.documentElement.setAttribute('data-theme', savedTheme);
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Scroll reveal animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
                 }
             });
-        });
-
-        // Toggle experience function
-        function toggleExperience() {
-            const additionalExp = document.getElementById('additional-experience');
-            const toggleBtn = document.getElementById('toggle-experience');
-
-            if (additionalExp.style.display === 'none') {
-                additionalExp.style.display = 'block';
-                toggleBtn.textContent = 'Show Less Experience';
-            } else {
-                additionalExp.style.display = 'none';
-                toggleBtn.textContent = 'Show More Experience';
-            }
         }
+
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
 
-        // Show button when user scrolls down 300px
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollToTopBtn.classList.add('visible');
@@ -1301,11 +1364,22 @@
             }
         });
 
-        // Scroll to top when button is clicked
         scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
             });
         });
     </script>
