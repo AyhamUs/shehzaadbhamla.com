@@ -152,7 +152,7 @@
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--accent-cyan);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 400;
@@ -667,7 +667,9 @@
                 <div class="tool-card" onclick="window.open('https://docs.microsoft.com/en-us/mem/autopilot/', '_blank')">
                     <div class="tool-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2.81 2.81L1.39 4.22l2.27 2.27A2 2 0 0 0 3 8v8c0 1.1.9 2 2 2h10c.28 0 .53-.11.74-.28l2.04 2.04 1.41-1.41L2.81 2.81zM5 16V8.27L14.73 18H5zM8 5h11v11l2 2V5c0-1.1-.9-2-2-2H6.73l2 2H8z"/>
+                            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2zm0 4.83l3 6-3-1.5-3 1.5 3-6z"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <path d="M12 7l-1.5 3 1.5-.75 1.5.75L12 7z"/>
                         </svg>
                     </div>
                     <h3 class="tool-title">Microsoft Autopilot</h3>
@@ -696,7 +698,9 @@
                 <div class="tool-card" onclick="window.open('https://www.microsoft.com/en-us/microsoft-365/microsoft-copilot', '_blank')">
                     <div class="tool-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 12l-4 4-1.41-1.41L18.17 13H13v-2h5.17l-1.58-1.59L18 8l4 4zm-10 0l-4 4-1.41-1.41L8.17 13H3v-2h5.17L6.59 9.59 8 8l4 4z"/>
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                            <circle cx="12" cy="8" r="1.5"/>
+                            <path d="M9 14.5c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2V16H9v-1.5z"/>
                         </svg>
                     </div>
                     <h3 class="tool-title">Microsoft Copilot</h3>
@@ -708,7 +712,9 @@
                 <div class="tool-card" onclick="window.open('https://claude.ai', '_blank')">
                     <div class="tool-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.05-.99-7-5.27-7-9.5V8.3l7-3.11v15.31zm2-15.31L21 8.3v2.7c0 4.23-2.95 8.51-7 9.5V5.19z"/>
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <path d="M7 12l3-3 2 2 4-4 1.5 1.5-5.5 5.5L10 12z"/>
+                            <circle cx="12" cy="12" r="2"/>
                         </svg>
                     </div>
                     <h3 class="tool-title">Claude AI</h3>
@@ -825,7 +831,9 @@
             }
 
             draw() {
-                ctx.fillStyle = `rgba(0, 245, 212, ${this.opacity})`;
+                const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+                const color = isLightMode ? '0, 119, 255' : '0, 245, 212'; // Blue in light mode, cyan in dark mode
+                ctx.fillStyle = `rgba(${color}, ${this.opacity})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -856,8 +864,10 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < 150) {
+                        const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+                        const color = isLightMode ? '0, 119, 255' : '0, 245, 212'; // Blue in light mode, cyan in dark mode
                         const opacity = (1 - distance / 150) * 0.2;
-                        ctx.strokeStyle = `rgba(0, 245, 212, ${opacity})`;
+                        ctx.strokeStyle = `rgba(${color}, ${opacity})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
